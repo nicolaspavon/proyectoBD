@@ -5,29 +5,42 @@
  */
 package proyectobd;
 
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 /**
  *
  * @author Lore
  */
 public class CrearBase {
-    
+    public static Connection connection = null;
+
+    public Connection getCurrentConnection()
+    {
+        if(connection != null)
+        {
+            return connection;
+        }
+        else
+        {
+            try{
+                return connection = DriverManager.getConnection("jdbc:postgresql://192.168.56.7:5432/Obli", "postgres", "hola1234");
+            }catch (SQLException ex) {
+                Logger lgr = Logger.getLogger(ProyectoBD.class.getName());
+                lgr.log(Level.SEVERE, ex.getMessage(), ex);
+            }
+            return null;
+        }
+    }
     public void  Creador(){
-        Connection c = null;
         Statement stmt = null;
         try {
-            Class.forName("org.postgresql.Driver");
-            c = DriverManager.getConnection("jdbc:postgresql://192.168.56.7:5432/prueba_datos",
-                    "postgres", "hola1234");
-            System.out.println("Opened database successfully");
 
-            stmt = c.createStatement();
+            stmt = connection.createStatement();
             String sql ="";
             
             this.Aplicacion(sql);
@@ -71,7 +84,7 @@ public class CrearBase {
             
             
         } catch (Exception e) {
-            System.out.println("Tabla1 ya creada ");
+            System.out.println("No abre bd");
         }
     }
     private void Aplicacion(String base){
