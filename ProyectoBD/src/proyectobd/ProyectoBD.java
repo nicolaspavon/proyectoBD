@@ -16,6 +16,8 @@ public class ProyectoBD {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        CrearBase nueva = new CrearBase();
+        nueva.Creador();
     }
     
 }
