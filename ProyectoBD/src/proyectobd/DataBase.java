@@ -8,6 +8,7 @@ package proyectobd;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
@@ -104,7 +105,37 @@ public class DataBase {
                 System.out.println(e);
             }
         }
-    }  
+    }
+    public static void insertar(String datos, String nombreTabla, Statement stmt){
+        try {
+            String stringDatos = "INSERT INTO " + nombreTabla + " VALUES " 
+                    + "(" + datos + ");";
+
+            stmt.executeUpdate(stringDatos);
+            stmt.close();
+        }
+        catch (Exception e){
+            System.out.println("Error en insertar en " + nombreTabla);
+            System.out.println(e);
+        }
+    }
+	
+    public String obtener(String nombreTabla, Statement stmt){
+        try{
+
+        ResultSet rs = stmt.executeQuery("SELECT * FROM "+nombreTabla+";");
+        String busqueda ="";
+            while (rs.next()) {
+                
+                int id = rs.getInt("id");
+                String name = rs.getString("nombre");
+            }
+        }
+        catch (Exception x){
+                
+        }
+        return "";
+    }
     
     private void Menu(Statement stmt){
         try {
