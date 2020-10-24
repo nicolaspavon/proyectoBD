@@ -145,7 +145,7 @@ public class DataBase {
         stmt.executeUpdate("CREATE TABLE Aplicacion_Menu ("
             + "Menu_ID serial, "
             + "Aplicacion_ID serial, "
-            + "CONSTRAINT PK_Menu_Funcionalidad PRIMARY KEY( "
+            + "CONSTRAINT PK_Menu_Aplicacion PRIMARY KEY( "
             + "Menu_ID, "
             + "Aplicacion_ID), "
             + "FOREIGN KEY(Menu_ID) REFERENCES Menu(Menu_ID), "
@@ -169,7 +169,7 @@ public class DataBase {
             + "FOREIGN KEY(Menu_ID) REFERENCES Menu(Menu_ID), "
             + "FOREIGN KEY(Funcionalidad_ID) REFERENCES Funcionalidad(Funcionalidad_ID));" );
         } catch (Exception e) {
-            if (!e.getMessage().contains("already exists")){
+            if (e.getMessage().contains("already exists")){
                 System.out.println("Menu_Funcionalidad");
                 System.out.println(e);
             }
