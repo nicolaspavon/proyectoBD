@@ -38,7 +38,7 @@ public class CrearBase {
                 if (seleccion.equals("1")){
                     return connection = DriverManager.getConnection("jdbc:postgresql://192.168.56.7:5432/obli", "postgres", "qweqweqwe");
                 } else if (seleccion.equals("2")){
-                    return connection = DriverManager.getConnection("jdbc:postgresql://192.168.56.2:5432/obli", "postgres", "qweqweqwe");
+                    return connection = DriverManager.getConnection("jdbc:postgresql://192.168.56.102:5432/postgres", "postgres", "holaquetal");
                 } else if (seleccion.equals("3")){
                     return connection = DriverManager.getConnection("jdbc:postgresql://192.168.56.2:5432/obli", "postgres", "qweqweqwe");
                 } else {
