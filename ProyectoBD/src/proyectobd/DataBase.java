@@ -17,7 +17,7 @@ import java.util.Scanner;
  *
  * @author Lore
  */
-public class CrearBase {
+public class DataBase {
     public static Connection connection = null;
 
     public Connection getCurrentConnection()
@@ -53,7 +53,7 @@ public class CrearBase {
     }
 
     
-    public void  Creador(){
+    public void  CrearDB(){
         Statement stmt = null;
         String sql ="";
         try {

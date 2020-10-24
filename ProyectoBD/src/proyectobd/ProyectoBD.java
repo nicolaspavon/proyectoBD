@@ -25,9 +25,9 @@ public class ProyectoBD {
     public static void main(String[] args) {
         
         // TODO code application logic here
-        CrearBase nueva = new CrearBase(); 
+        DataBase nueva = new DataBase(); 
         Connection con = nueva.getCurrentConnection();
-        nueva.Creador();
+        nueva.CrearDB();
     }
     
 }
