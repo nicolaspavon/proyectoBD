@@ -36,7 +36,7 @@ public class DataBase {
                 System.out.println("3: Nico");
                 String seleccion = teclado.nextLine();
                 if (seleccion.equals("1")){
-                    return connection = DriverManager.getConnection("jdbc:postgresql://192.168.56.7:5432/obli", "postgres", "qweqweqwe");
+                    return connection = DriverManager.getConnection("jdbc:postgresql://192.168.56.7:5432/obli", "postgres", "hola1234");
                 } else if (seleccion.equals("2")){
                     return connection = DriverManager.getConnection("jdbc:postgresql://192.168.56.102:5432/postgres", "postgres", "holaquetal");
                 } else if (seleccion.equals("3")){
@@ -81,6 +81,10 @@ public class DataBase {
         this.Persona(stmt);
 
         this.Usuario(stmt);
+        
+        this.Rol_Usuario(stmt);
+        
+        this.Usuario_Aplicacion(stmt);
 
         this.Administrador_General(stmt);
 
@@ -225,6 +229,41 @@ public class DataBase {
         }
     }
     
+    private void Rol_Usuario (Statement stmt){
+        try {
+        stmt.executeUpdate("CREATE TABLE Rol_Usuario ( "
+            + "Usuario_ID varchar, "
+            + "Rol_ID serial, " 
+            + "CONSTRAINT PK_Rol_Usuario PRIMARY KEY( " 
+            + "Usuario_ID, "
+            + "Rol_ID), "
+            + "FOREIGN KEY(Usuario_ID) REFERENCES Usuario(Usuario_ID), "
+            + "FOREIGN KEY(Rol_ID) REFERENCES Rol(Rol_ID));"); 
+        } catch (Exception e) {
+            if (!e.getMessage().contains("already exists")){
+                System.out.println("Rol_Usuario");
+                System.out.println(e);
+            }
+        }
+    }
+    
+    private void Usuario_Aplicacion (Statement stmt){
+        try {
+        stmt.executeUpdate("CREATE TABLE Usuario_Aplicacion ( "
+            + "Usuario_ID varchar, "
+            + "Aplicacion_ID serial, " 
+            + "CONSTRAINT PK_Usuario_Aplicacion PRIMARY KEY( " 
+            + "Usuario_ID, "
+            + "Aplicacion_ID), "
+            + "FOREIGN KEY(Usuario_ID) REFERENCES Usuario(Usuario_ID), "
+            + "FOREIGN KEY(Aplicacion_ID) REFERENCES Aplicacion(Aplicacion_ID));"); 
+        } catch (Exception e) {
+            if (!e.getMessage().contains("already exists")){
+                System.out.println("Usuario_Aplicacion");
+                System.out.println(e);
+            }
+        }
+    }
     private void Administrador_General (Statement stmt){
         try {
         stmt.executeUpdate("CREATE TABLE Administrador_General ( Rol_ID serial PRIMARY KEY REFERENCES Rol(Rol_ID));");
