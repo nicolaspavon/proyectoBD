@@ -140,6 +140,32 @@ public class DataBase {
         return null;
     }
     
+    public void Borrar(String nombreTabla, String clausula){
+        try{
+            Statement stmt = connection.createStatement();
+            String columna = clausula.split("=")[0];
+            String dato = clausula.split("=")[1];
+            stmt.executeUpdate("DELETE FROM "+nombreTabla+" WHERE "+clausula+";");
+        }
+        catch (Exception e){
+            System.out.println("Error borrando " + clausula);
+            System.out.println(e);  
+        }
+    }
+    
+     public void Actualizar(String nombreTabla,  String cambio, String clausula){
+        try{
+            Statement stmt = connection.createStatement();
+            stmt.executeUpdate("UPDATE " + nombreTabla + " SET " + cambio + " WHERE "+clausula+";");
+        }
+        catch (Exception e){
+            System.out.println("Error corrigiendo " + clausula + " de la tabla " + nombreTabla);
+            System.out.println(e);  
+        }
+    }
+    
+    
+    
     public void Imprimir(ResultSet rs){
         try {
             ResultSetMetaData rsMetaData = rs.getMetaData();

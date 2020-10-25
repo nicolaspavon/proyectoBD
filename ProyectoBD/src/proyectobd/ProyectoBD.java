@@ -24,12 +24,19 @@ public class ProyectoBD {
      */
     public static void main(String[] args) {
         
-        // TODO code application logic here
         DataBase nueva = new DataBase(); 
-        Connection con = nueva.getCurrentConnection();
-        nueva.Imprimir(nueva.Listar("Persona", "nombre=Juan"));
-        System.out.println("askdlhbasoibdhalsbdhla");
-        nueva.Imprimir(nueva.Listar("Persona"));
+        Connection con = nueva.getCurrentConnection(); //PA QUE ESTA ACA?
+        //nueva.Imprimir(nueva.Listar("Usuario", "nombre=Juan"));
+        nueva.Insertar("'este','contrasena',46012394", "Usuario");
+        System.out.println("");
+        nueva.Imprimir(nueva.Listar("Usuario"));
+        
+        System.out.println("");
+        nueva.Actualizar("Usuario", "contrasena = 'cambio12'", "usuario_id = 'este'");
+       // nueva.Borrar("Usuario", "usuario_id = 'este'");
+        
+        nueva.Imprimir(nueva.Listar("Usuario"));
+        
     }
     
 }
