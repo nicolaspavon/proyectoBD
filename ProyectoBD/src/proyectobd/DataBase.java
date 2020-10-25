@@ -128,9 +128,7 @@ public class DataBase {
     public ResultSet Listar(String nombreTabla, String clausula){
         try{
             Statement stmt = connection.createStatement();
-            String columna = clausula.split("=")[0];
-            String dato = clausula.split("=")[1];
-            ResultSet rs = stmt.executeQuery("SELECT * FROM "+nombreTabla+" WHERE "+columna+"='"+dato+"';");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM "+nombreTabla+" WHERE "+clausula+";");
             return rs;
         }
         catch (Exception e){
@@ -143,8 +141,6 @@ public class DataBase {
     public void Borrar(String nombreTabla, String clausula){
         try{
             Statement stmt = connection.createStatement();
-            String columna = clausula.split("=")[0];
-            String dato = clausula.split("=")[1];
             stmt.executeUpdate("DELETE FROM "+nombreTabla+" WHERE "+clausula+";");
         }
         catch (Exception e){
