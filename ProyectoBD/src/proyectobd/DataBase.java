@@ -112,26 +112,36 @@ public class DataBase {
         }
     }
 	
-    public String Listar(String nombreTabla){
+    public ResultSet Listar(String nombreTabla){
         try{
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM "+nombreTabla+";");
-            System.out.println(rs);
-            return rs.toString();
+            return rs;
         }
         catch (Exception e){
             System.out.println("Error listando " + nombreTabla);
             System.out.println(e);  
         }
-        return "Error?";
+        return null;
     }
     
-    public String Buscar(String nombreTabla, String clausula){
+    public ResultSet Listar(String nombreTabla, String clausula){
         try{
             Statement stmt = connection.createStatement();
             String columna = clausula.split("=")[0];
             String dato = clausula.split("=")[1];
             ResultSet rs = stmt.executeQuery("SELECT * FROM "+nombreTabla+" WHERE "+columna+"='"+dato+"';");
+            return rs;
+        }
+        catch (Exception e){
+            System.out.println("Error listando " + nombreTabla);
+            System.out.println(e);  
+        }
+        return null;
+    }
+    
+    public void Imprimir(ResultSet rs){
+        try {
             ResultSetMetaData rsMetaData = rs.getMetaData();
             int count = rsMetaData.getColumnCount();
             while (rs.next()) {
@@ -139,13 +149,9 @@ public class DataBase {
                     System.out.println(rs.getObject(rsMetaData.getColumnName(i)));
                 }
             }
-            return rs.toString();
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
         }
-        catch (Exception e){
-            System.out.println("Error listando " + nombreTabla);
-            System.out.println(e);  
-        }
-        return "Error?";
     }
     
     private void Aplicacion(){

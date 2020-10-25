@@ -27,7 +27,9 @@ public class ProyectoBD {
         // TODO code application logic here
         DataBase nueva = new DataBase(); 
         Connection con = nueva.getCurrentConnection();
-        nueva.Buscar("Persona", "nombre=Juan");
+        nueva.Imprimir(nueva.Listar("Persona", "nombre=Juan"));
+        System.out.println("askdlhbasoibdhalsbdhla");
+        nueva.Imprimir(nueva.Listar("Persona"));
     }
     
 }
