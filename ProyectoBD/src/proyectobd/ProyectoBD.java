@@ -5,6 +5,8 @@
  */
 package proyectobd;
 
+import baseDeDatos.DBHandler;
+import baseDeDatos.DataBase;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -12,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import proyectobd.ui.Login;
 
 /**
  *
@@ -22,10 +25,14 @@ public class ProyectoBD {
     /**
      * @param args the command line arguments
      */
+    DataBase base = new DataBase();
+    
     public static void main(String[] args) {
         
-        DataBase nueva = new DataBase();
+        
         DBHandler manejador = new DBHandler();
+        
+        new Login().setVisible(true);
         
 //        //nueva.Imprimir(nueva.Listar("Usuario", "nombre=Juan"));
 //        manejador.Insertar("'este','contrasena',46012394", "Usuario");
@@ -37,7 +44,13 @@ public class ProyectoBD {
 //       // nueva.Borrar("Usuario", "usuario_id = 'este'");
 //        
 //        manejador.Imprimir(manejador.Listar("Usuario"));
+
+        
         
     }
-    
+    public static void conectar(String user, String pass){
+        
+        base.getCurrentConnection(user, pass);
+    }
+        
 }

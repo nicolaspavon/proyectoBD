@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyectobd.GUI;
+package proyectobd.ui;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -23,14 +23,14 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import proyectobd.ProyectoBD;
-import static proyectobd.DataBase.connection;
+import static baseDeDatos.DataBase.connection;
 ;
 
 /**
  *
  * @author Vale
  */
-public class GUI implements ActionListener{
+public class UI implements ActionListener{
 
     private JPanel panel;
     private JFrame frame;
@@ -41,7 +41,7 @@ public class GUI implements ActionListener{
     private JButton button;
     
     public static void main(String[] args) {
-        GUI gui = new GUI();
+        UI gui = new UI();
         gui.Login();
         
     }

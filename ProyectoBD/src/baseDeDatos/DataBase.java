@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyectobd;
+package baseDeDatos;
 
 
 import java.sql.Connection;
@@ -15,6 +15,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.Scanner;
+import proyectobd.ProyectoBD;
 /**
  *
  * @author Lore
@@ -22,9 +23,6 @@ import java.util.Scanner;
 public class DataBase {
     public static Connection connection = null;
     
-    public DataBase(){
-        this.getCurrentConnection("postgres", "qweqweqwe");
-    }
 
     public Connection getCurrentConnection(String user, String password)
     {
