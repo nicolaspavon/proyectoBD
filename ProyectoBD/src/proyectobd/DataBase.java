@@ -23,10 +23,10 @@ public class DataBase {
     public static Connection connection = null;
     
     public DataBase(){
-        this.getCurrentConnection();
+        this.getCurrentConnection("postgres", "qweqweqwe");
     }
 
-    public Connection getCurrentConnection()
+    public Connection getCurrentConnection(String user, String password)
     {
         if(connection != null)
         {
@@ -35,21 +35,7 @@ public class DataBase {
         else
         {
             try{
-                Scanner teclado = new Scanner(System.in);
-                System.out.println("seleccione la configuracion:");
-                System.out.println("1: Lore");
-                System.out.println("2: Vale");
-                System.out.println("3: Nico");
-                String seleccion = teclado.nextLine();
-                if (seleccion.equals("1")){
-                    return connection = DriverManager.getConnection("jdbc:postgresql://192.168.56.7:5432/obli", "postgres", "hola1234");
-                } else if (seleccion.equals("2")){
-                    return connection = DriverManager.getConnection("jdbc:postgresql://192.168.56.102:5432/postgres", "postgres", "holaquetal");
-                } else if (seleccion.equals("3")){
-                    return connection = DriverManager.getConnection("jdbc:postgresql://192.168.56.2:5432/obli", "postgres", "qweqweqwe");
-                } else {
-                    System.out.println(" :( ");
-                }
+                return connection = DriverManager.getConnection("jdbc:postgresql://192.168.56.7:5432/obli", user, password);
             }catch (SQLException ex) {
                 Logger lgr = Logger.getLogger(ProyectoBD.class.getName());
                 lgr.log(Level.SEVERE, ex.getMessage(), ex);

@@ -27,16 +27,16 @@ public class ProyectoBD {
         DataBase nueva = new DataBase();
         DBHandler manejador = new DBHandler();
         
-        //nueva.Imprimir(nueva.Listar("Usuario", "nombre=Juan"));
-        manejador.Insertar("'este','contrasena',46012394", "Usuario");
-        System.out.println("");
-        manejador.Imprimir(manejador.Listar("Usuario"));
-        
-        System.out.println("");
-        manejador.Actualizar("Usuario", "contrasena = 'cambio12'", "usuario_id = 'este'");
-       // nueva.Borrar("Usuario", "usuario_id = 'este'");
-        
-        manejador.Imprimir(manejador.Listar("Usuario"));
+//        //nueva.Imprimir(nueva.Listar("Usuario", "nombre=Juan"));
+//        manejador.Insertar("'este','contrasena',46012394", "Usuario");
+//        System.out.println("");
+//        manejador.Imprimir(manejador.Listar("Usuario"));
+//        
+//        System.out.println("");
+//        manejador.Actualizar("Usuario", "contrasena = 'cambio12'", "usuario_id = 'este'");
+//       // nueva.Borrar("Usuario", "usuario_id = 'este'");
+//        
+//        manejador.Imprimir(manejador.Listar("Usuario"));
         
     }
     
