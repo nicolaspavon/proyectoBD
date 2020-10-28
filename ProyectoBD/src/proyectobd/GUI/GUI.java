@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyectobd;
+package proyectobd.GUI;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -22,6 +22,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import proyectobd.ProyectoBD;
 import static proyectobd.DataBase.connection;
 ;
 
