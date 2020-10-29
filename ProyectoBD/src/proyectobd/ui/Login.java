@@ -5,6 +5,7 @@
  */
 package proyectobd.ui;
 
+import javax.swing.JButton;
 import proyectobd.ProyectoBD;
 
 /**
@@ -111,9 +112,19 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        System.out.println(userText.getText());
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    public String getUserTextfield(){
+        return userText.getText();
+    }
+    
+    public String getPassTextfield(){
+        return passText.getText();
+    }
+    
+    public JButton getLastnameSaveButton() {
+        return jButton1;
+    }
     /**
      * @param args the command line arguments
      */

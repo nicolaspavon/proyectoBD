@@ -87,6 +87,7 @@ public class DBHandler {
     
     
     public void Imprimir(ResultSet rs){
+        System.out.println("aca?");
         try {
             ResultSetMetaData rsMetaData = rs.getMetaData();
             int count = rsMetaData.getColumnCount();
@@ -97,7 +98,6 @@ public class DBHandler {
                 }
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

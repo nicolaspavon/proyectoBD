@@ -25,14 +25,12 @@ public class ProyectoBD {
     /**
      * @param args the command line arguments
      */
-    DataBase base = new DataBase();
+    
     
     public static void main(String[] args) {
-        
-        
-        DBHandler manejador = new DBHandler();
-        
-        new Login().setVisible(true);
+        DataBase base = new DataBase();
+        Login login = new Login();
+        ControladorDeSesion controlador = new ControladorDeSesion(base, login);
         
 //        //nueva.Imprimir(nueva.Listar("Usuario", "nombre=Juan"));
 //        manejador.Insertar("'este','contrasena',46012394", "Usuario");
@@ -47,10 +45,5 @@ public class ProyectoBD {
 
         
         
-    }
-    public static void conectar(String user, String pass){
-        
-        base.getCurrentConnection(user, pass);
-    }
-        
+    }   
 }
