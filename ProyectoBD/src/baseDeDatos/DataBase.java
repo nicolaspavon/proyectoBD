@@ -35,10 +35,9 @@ public class DataBase {
             try{
                 return connection = DriverManager.getConnection("jdbc:postgresql://192.168.56.7:5432/obli", user, password);
             }catch (SQLException ex) {
-                Logger lgr = Logger.getLogger(ProyectoBD.class.getName());
-                lgr.log(Level.SEVERE, ex.getMessage(), ex);
+                System.out.println("No conexion");
+                return null;
             }
-            return null;
         }
     }
 

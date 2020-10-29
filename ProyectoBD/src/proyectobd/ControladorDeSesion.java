@@ -7,6 +7,8 @@ package proyectobd;
 
 import baseDeDatos.DBHandler;
 import baseDeDatos.DataBase;
+import java.sql.Connection;
+import javax.swing.JLabel;
 import proyectobd.ui.Login;
 
 /**
@@ -15,13 +17,22 @@ import proyectobd.ui.Login;
  */
 public class ControladorDeSesion {
     public ControladorDeSesion(DataBase base, Login login) {
-        login.setVisible(true);
-        login.getLastnameSaveButton().addActionListener(e -> connect(base, login));
+        
+       login.setVisible(true);
+       login.getLastnameSaveButton().addActionListener(e -> connect(base, login));
+           
+        
     }
     
     public void connect(DataBase base, Login login){
-        base.getCurrentConnection(login.getUserTextfield(), login.getPassTextfield());
-        DBHandler manejador = new DBHandler();
-        manejador.Imprimir(manejador.Listar("Usuario"));
+        Connection con = base.getCurrentConnection(login.getUserTextfield(), login.getPassTextfield());
+        if (con == null){
+            System.out.println("Datos incorrectos");
+            login.datosIncorrectos();
+        }
+        
+       // base.getCurrentConnection(login.getUserTextfield(), login.getPassTextfield());
+        //DBHandler manejador = new DBHandler();
+        //manejador.Imprimir(manejador.Listar("Usuario"));
     }
 }

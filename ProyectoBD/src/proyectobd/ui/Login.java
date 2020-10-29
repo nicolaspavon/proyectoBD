@@ -6,7 +6,6 @@
 package proyectobd.ui;
 
 import javax.swing.JButton;
-import proyectobd.ProyectoBD;
 
 /**
  *
@@ -17,10 +16,9 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-    ProyectoBD p;
     public Login() {
-        ProyectoBD p = new ProyectoBD();
         initComponents();
+        labelIncorrectos.setVisible(false);
     }
 
     /**
@@ -37,6 +35,7 @@ public class Login extends javax.swing.JFrame {
         userText = new javax.swing.JTextField();
         passText = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
+        labelIncorrectos = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,6 +62,8 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        labelIncorrectos.setText("Datos incorrectos");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -71,22 +72,27 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelUsuario)
-                            .addComponent(labelPass))
-                        .addGap(38, 38, 38)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(passText, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
-                            .addComponent(userText)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(labelIncorrectos)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelUsuario)
+                                    .addComponent(labelPass))
+                                .addGap(38, 38, 38)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(passText, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                                    .addComponent(userText)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
+                        .addGap(136, 136, 136)
                         .addComponent(jButton1)))
                 .addContainerGap(173, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(70, 70, 70)
+                .addGap(38, 38, 38)
+                .addComponent(labelIncorrectos)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelUsuario)
                     .addComponent(userText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -125,6 +131,10 @@ public class Login extends javax.swing.JFrame {
     public JButton getLastnameSaveButton() {
         return jButton1;
     }
+    
+    public void datosIncorrectos(){
+        labelIncorrectos.setVisible(true);
+    }
     /**
      * @param args the command line arguments
      */
@@ -156,12 +166,17 @@ public class Login extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Login().setVisible(true);
+                
+                
+                
             }
+           
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel labelIncorrectos;
     private javax.swing.JLabel labelPass;
     private javax.swing.JLabel labelUsuario;
     private javax.swing.JPasswordField passText;
