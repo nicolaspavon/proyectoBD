@@ -6,6 +6,7 @@
 package Controladores;
 
 import Base.DataBase;
+import Pantallas.Aplicaciones;
 import Pantallas.Login;
 
 /**
@@ -22,7 +23,8 @@ public class ProyectoBD {
     public static void main(String[] args) {
         DataBase base = new DataBase();
         Login login = new Login();
-        ControladorDeSesion controlador = new ControladorDeSesion(base, login);
+        Aplicaciones app = new Aplicaciones();
+        ControladorDeSesion controlador = new ControladorDeSesion(base, login, app);
         
 //        //nueva.Imprimir(nueva.Listar("Usuario", "nombre=Juan"));
 //        manejador.Insertar("'este','contrasena',46012394", "Usuario");
