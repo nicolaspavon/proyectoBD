@@ -3,36 +3,35 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyectobd;
+package Controladores;
 
-import baseDeDatos.DBHandler;
-import baseDeDatos.DataBase;
+import Base.DBHandler;
+import Base.DataBase;
 import java.sql.Connection;
 import javax.swing.JLabel;
-import proyectobd.ui.Login;
+import Pantallas.Login;
 
 /**
  *
  * @author nikok
  */
 public class ControladorDeSesion {
+    public String Usuario;
     public ControladorDeSesion(DataBase base, Login login) {
-        
        login.setVisible(true);
-       login.getLastnameSaveButton().addActionListener(e -> connect(base, login));
-           
+       login.getIngresarButton().addActionListener(e -> connect(base, login));
         
     }
     
     public void connect(DataBase base, Login login){
-        Connection con = base.getCurrentConnection(login.getUserTextfield(), login.getPassTextfield());
+        Connection con = base.getCurrentConnection(login.getUser(), login.getPass());
         if (con == null){
             System.out.println("Datos incorrectos");
             login.datosIncorrectos();
+        }else{
+            DBHandler manejador = new DBHandler();
+            Usuario = manejador.Imprimir(manejador.Listar("Usuario", "usuario_id = '"+login.getUser()+"'")).get(0).get("usuario_id").toString();
+            System.out.println(Usuario);
         }
-        
-       // base.getCurrentConnection(login.getUserTextfield(), login.getPassTextfield());
-        //DBHandler manejador = new DBHandler();
-        //manejador.Imprimir(manejador.Listar("Usuario"));
     }
 }

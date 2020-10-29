@@ -3,16 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package baseDeDatos;
+package Base;
 
-import baseDeDatos.DataBase;
+import Base.DataBase;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import static baseDeDatos.DataBase.connection;
+import static Base.DataBase.connection;
+import java.awt.List;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -86,18 +90,22 @@ public class DBHandler {
     
     
     
-    public void Imprimir(ResultSet rs){
-        System.out.println("aca?");
+    public ArrayList<Map> Imprimir(ResultSet rs){
+        ArrayList<Map> resultado = new ArrayList<>();
         try {
             ResultSetMetaData rsMetaData = rs.getMetaData();
-            int count = rsMetaData.getColumnCount();
+            int cantColumnas = rsMetaData.getColumnCount();
             while (rs.next()) {
-                for(int i = 1; i<=count; i++) {
-                    System.out.println(rs.getObject(rsMetaData.getColumnName(i)));
+                Map<String, String> fila = new HashMap<>();
+                for(int i = 1; i<=cantColumnas; i++) {
+                    fila.put(rsMetaData.getColumnName(i), rs.getObject(rsMetaData.getColumnName(i)).toString());
                 }
+                resultado.add(fila);
             }
+
         } catch (SQLException ex) {
         }
+        return resultado;
     }
     
 }

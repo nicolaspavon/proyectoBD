@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyectobd.ui;
+package Pantallas;
 
 import javax.swing.JButton;
 
@@ -34,7 +34,7 @@ public class Login extends javax.swing.JFrame {
         labelPass = new javax.swing.JLabel();
         userText = new javax.swing.JTextField();
         passText = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        Ingresar = new javax.swing.JButton();
         labelIncorrectos = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -55,10 +55,10 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Ingresar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Ingresar.setText("Ingresar");
+        Ingresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                IngresarActionPerformed(evt);
             }
         });
 
@@ -84,7 +84,7 @@ public class Login extends javax.swing.JFrame {
                                     .addComponent(userText)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(136, 136, 136)
-                        .addComponent(jButton1)))
+                        .addComponent(Ingresar)))
                 .addContainerGap(173, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -101,7 +101,7 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(labelPass)
                     .addComponent(passText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(Ingresar)
                 .addContainerGap(122, Short.MAX_VALUE))
         );
 
@@ -116,20 +116,20 @@ public class Login extends javax.swing.JFrame {
        
     }//GEN-LAST:event_userTextActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresarActionPerformed
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_IngresarActionPerformed
 
-    public String getUserTextfield(){
+    public String getUser(){
         return userText.getText();
     }
     
-    public String getPassTextfield(){
+    public String getPass(){
         return passText.getText();
     }
     
-    public JButton getLastnameSaveButton() {
-        return jButton1;
+    public JButton getIngresarButton() {
+        return Ingresar;
     }
     
     public void datosIncorrectos(){
@@ -166,16 +166,12 @@ public class Login extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Login().setVisible(true);
-                
-                
-                
             }
-           
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton Ingresar;
     private javax.swing.JLabel labelIncorrectos;
     private javax.swing.JLabel labelPass;
     private javax.swing.JLabel labelUsuario;
