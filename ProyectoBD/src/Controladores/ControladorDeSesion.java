@@ -30,22 +30,23 @@ public class ControladorDeSesion
        login.setVisible(true);
        login.getIngresarButton().addActionListener(e -> connect(base));
        pantallaApp = app;
-       
+       pantallaApp.getIngresarButton().addActionListener(e -> ingresarAppSeleccionada());
     }
     
     public void obtenerApps(){
         DBHandler manejador = new DBHandler();
         
         ArrayList<Map> apps = manejador.Imprimir(manejador.Listar("usuario_aplicacion", "usuario_id = '"+ Usuario + "'"));
-        System.out.println("jeje");
         for (Map m : apps){
             pantallaApp.agregarItem((m.get("aplicacion_id")).toString());
         }
-        /*Iterator it = apps.keySet().iterator();
-        while(it.hasNext()){
-          Integer key = it.next();
-          System.out.println("Clave: " + key + " -> Valor: " + map.get(key));
-        }*/
+    }
+    
+    public void ingresarAppSeleccionada(){
+        System.out.println("alla vamos");
+        System.out.println(pantallaApp.getAppSeleccionada());
+        //pantallaApp.setVisible(false);
+        
     }
     
     public void connect(DataBase base){

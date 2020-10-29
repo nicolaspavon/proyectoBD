@@ -5,6 +5,8 @@
  */
 package Pantallas;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author Vale
@@ -32,6 +34,7 @@ public class Aplicaciones extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         comboBox = new javax.swing.JComboBox<>();
+        Ingresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -41,6 +44,13 @@ public class Aplicaciones extends javax.swing.JFrame {
         comboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxActionPerformed(evt);
+            }
+        });
+
+        Ingresar.setText("Ingresar");
+        Ingresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IngresarActionPerformed(evt);
             }
         });
 
@@ -55,8 +65,10 @@ public class Aplicaciones extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(47, 47, 47)
-                        .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(251, Short.MAX_VALUE))
+                        .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(72, 72, 72)
+                        .addComponent(Ingresar)))
+                .addContainerGap(152, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -64,8 +76,10 @@ public class Aplicaciones extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(224, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Ingresar))
+                .addContainerGap(221, Short.MAX_VALUE))
         );
 
         pack();
@@ -75,6 +89,17 @@ public class Aplicaciones extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_comboBoxActionPerformed
 
+    private void IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_IngresarActionPerformed
+
+    public JButton getIngresarButton() {
+        return Ingresar;
+    }
+    
+    public String getAppSeleccionada() {
+        return comboBox.getSelectedItem().toString();
+    }
     /**
      * @param args the command line arguments
      */
@@ -115,6 +140,7 @@ public class Aplicaciones extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Ingresar;
     private javax.swing.JComboBox<String> comboBox;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
