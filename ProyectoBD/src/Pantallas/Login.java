@@ -19,6 +19,8 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         labelIncorrectos.setVisible(false);
+        labelErrorUsuario.setVisible(false);
+        this.setTitle("Login");
     }
 
     /**
@@ -36,6 +38,7 @@ public class Login extends javax.swing.JFrame {
         passText = new javax.swing.JPasswordField();
         Ingresar = new javax.swing.JButton();
         labelIncorrectos = new javax.swing.JLabel();
+        labelErrorUsuario = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,6 +67,8 @@ public class Login extends javax.swing.JFrame {
 
         labelIncorrectos.setText("Datos incorrectos");
 
+        labelErrorUsuario.setText("Error en el usuario, contacte admin");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -85,7 +90,11 @@ public class Login extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(136, 136, 136)
                         .addComponent(Ingresar)))
-                .addContainerGap(173, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 100, Short.MAX_VALUE)
+                .addComponent(labelErrorUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,7 +111,9 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(passText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(Ingresar)
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(labelErrorUsuario)
+                .addContainerGap(90, Short.MAX_VALUE))
         );
 
         pack();
@@ -134,6 +145,10 @@ public class Login extends javax.swing.JFrame {
     
     public void datosIncorrectos(){
         labelIncorrectos.setVisible(true);
+    }
+    
+    public void errorUsuario(){
+        labelErrorUsuario.setVisible(true);
     }
     /**
      * @param args the command line arguments
@@ -172,6 +187,7 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Ingresar;
+    private javax.swing.JLabel labelErrorUsuario;
     private javax.swing.JLabel labelIncorrectos;
     private javax.swing.JLabel labelPass;
     private javax.swing.JLabel labelUsuario;
