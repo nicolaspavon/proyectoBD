@@ -94,7 +94,6 @@ public class DBHandler {
             while (rs.next()) {
                 for(int i = 1; i<=count; i++) {
                     System.out.println(rs.getObject(rsMetaData.getColumnName(i)));
-                    System.out.println(rs.getObject(rsMetaData.getColumnClassName(i)));
                 }
             }
         } catch (SQLException ex) {
