@@ -14,33 +14,16 @@ import Pantallas.Login;
  * @author nikok
  */
 public class ProyectoBD {
-
-    /**
-     * @param args the command line arguments
-     */
-    
     
     public static void main(String[] args) {
-        
-//       Login login = new Login();
-//        Aplicaciones app = new Aplicaciones();
-//        ControladorDePantallas controlador = new ControladorDePantallas(app,login);
-      
+
+        ControladorDePantallas controlador = new ControladorDePantallas();
     
-    
-//        //nueva.Imprimir(nueva.Listar("Usuario", "nombre=Juan"));
-//        manejador.Insertar("'este','contrasena',46012394", "Usuario");
-//        System.out.println("");
-//        manejador.Imprimir(manejador.Listar("Usuario"));
-//        
-//        System.out.println("");
-//        manejador.Actualizar("Usuario", "contrasena = 'cambio12'", "usuario_id = 'este'");
-//       // nueva.Borrar("Usuario", "usuario_id = 'este'");
-//        
-//        manejador.Imprimir(manejador.Listar("Usuario"));
-        DataBase base = new DataBase();
-        base.getCurrentConnection("postgres", "qweqweqwe");
-        base.CrearDB();
+//        HOLA BASE DE DATOS!!
+//        --------------------------------------------------------------------
+//        DataBase base = new DataBase();
+//        base.getCurrentConnection("postgres", "qweqweqwe");
+//        base.CrearDB();
         
         
     }   

@@ -8,19 +8,29 @@ package Controladores;
 import Base.DBHandler;
 import java.util.ArrayList;
 import java.util.Map;
+import Pantallas.Aplicaciones;
 
 /**
  *
  * @author Vale
  */
 public class ControladorAplicaciones {
+    private Aplicaciones pantallaAplicaciones;
+    private ControladorDePantallas contrPantallas;
+    public ControladorAplicaciones(ControladorDePantallas contrPantalla) 
+    {
+       pantallaAplicaciones = new Aplicaciones();
+       contrPantallas = contrPantalla;
+       pantallaAplicaciones.getIngresarButton().addActionListener(e -> ingresarAppSeleccionada());
+        
+    }
     
-    public void obtenerApps(String user, ControladorDePantallas contrPantalla){
+    public void obtenerApps(String user){
         DBHandler manejador = new DBHandler();
         
         ArrayList<Map> apps = manejador.Imprimir(manejador.Listar("usuario_aplicacion", "usuario_id = '"+ user + "'"));
         for (Map m : apps){
-            contrPantalla.agregarElemento((m.get("aplicacion_id")).toString());
+            agregarElemento((m.get("aplicacion_id")).toString());
         }
     }
     
@@ -29,5 +39,16 @@ public class ControladorAplicaciones {
         //System.out.println(pantallaApp.getAppSeleccionada());
         //pantallaApp.setVisible(false);
         
+    }
+    
+    public void activarAplicaciones(String user){
+        pantallaAplicaciones.setVisible(true);
+        obtenerApps(user);
+    }
+    public void desactivarAplicaciones(){
+        pantallaAplicaciones.setVisible(false);
+    }
+    public void agregarElemento(String item){
+        pantallaAplicaciones.agregarItem(item);
     }
 }
