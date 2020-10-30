@@ -19,57 +19,35 @@ import java.util.Map;
  */
 public class ControladorDeSesion 
 {
+    private String Usuario;
+    private DataBase base;
     
-    public String Usuario;
-    public Login login;
-    public Aplicaciones pantallaApp;
-    
-    public ControladorDeSesion(DataBase base, Login log, Aplicaciones app) 
+    public ControladorDeSesion() 
     {
-       login = log;
-       login.setVisible(true);
-       login.getIngresarButton().addActionListener(e -> connect(base));
-       pantallaApp = app;
-       pantallaApp.getIngresarButton().addActionListener(e -> ingresarAppSeleccionada());
+       base = new DataBase();
     }
     
-    public void obtenerApps(){
-        DBHandler manejador = new DBHandler();
-        
-        ArrayList<Map> apps = manejador.Imprimir(manejador.Listar("usuario_aplicacion", "usuario_id = '"+ Usuario + "'"));
-        for (Map m : apps){
-            pantallaApp.agregarItem((m.get("aplicacion_id")).toString());
-        }
-    }
-    
-    public void ingresarAppSeleccionada(){
-        System.out.println("alla vamos");
-        System.out.println(pantallaApp.getAppSeleccionada());
-        //pantallaApp.setVisible(false);
-        
-    }
-    
-    public void connect(DataBase base){
-        
-        Connection con = base.getCurrentConnection(login.getUser(), login.getPass());
+    public void connect(ControladorDePantallas contrPantallas, String user, String pass){
+        Connection con = base.getCurrentConnection(user, pass);
         
         if (con == null){
             System.out.println("Datos incorrectos");
-            login.datosIncorrectos();
-        }else{
+            contrPantallas.mensajeErrorConexion();
+        }
+        else{
             
             DBHandler manejador = new DBHandler();
-            if(!manejador.Imprimir(manejador.Listar("Usuario", "usuario_id = '"+login.getUser()+"'")).isEmpty()){
+            if(!manejador.Imprimir(manejador.Listar("Usuario", "usuario_id = '"+user+"'")).isEmpty()){
                     
-                Usuario = manejador.Imprimir(manejador.Listar("Usuario", "usuario_id = '"+login.getUser()+"'")).get(0).get("usuario_id").toString();  
+                Usuario = manejador.Imprimir(manejador.Listar("Usuario", "usuario_id = '"+user+"'")).get(0).get("usuario_id").toString();  
                 System.out.println("Ingresado con usuario: " + Usuario);
-                login.setVisible(false);
-                pantallaApp.setVisible(true);
-                obtenerApps();
+                contrPantallas.desactivarLogin();
+                contrPantallas.activarAplicaciones(user);
+                
             }
             else{
                 System.out.println("no existe en la tabla Usuario");
-                login.errorUsuario();
+                contrPantallas.mensajeErrorUsuario();
             }
             
         }

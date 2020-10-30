@@ -21,10 +21,10 @@ public class ProyectoBD {
     
     
     public static void main(String[] args) {
-        DataBase base = new DataBase();
+        
         Login login = new Login();
         Aplicaciones app = new Aplicaciones();
-        ControladorDeSesion controlador = new ControladorDeSesion(base, login, app);
+        ControladorDePantallas controlador = new ControladorDePantallas(app,login);
         
 //        //nueva.Imprimir(nueva.Listar("Usuario", "nombre=Juan"));
 //        manejador.Insertar("'este','contrasena',46012394", "Usuario");
