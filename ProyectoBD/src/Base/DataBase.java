@@ -156,9 +156,9 @@ public class DataBase {
                 + "CONSTRAINT PK_Menu_Aplicacion PRIMARY KEY( "
                 + "Menu_ID, "
                 + "Aplicacion_ID), "
-                + "FOREIGN KEY(Menu_ID) REFERENCES Menu(Menu_ID), "
+                + "FOREIGN KEY(Menu_ID) REFERENCES Menu(Menu_ID) ON DELETE CASCADE, "
                 + "Habilitado boolean, "    
-                + "FOREIGN KEY(Aplicacion_ID) REFERENCES Aplicacion(Aplicacion_ID)); "); 
+                + "FOREIGN KEY(Aplicacion_ID) REFERENCES Aplicacion(Aplicacion_ID) ON DELETE CASCADE); "); 
         } catch (Exception e) {
             if (!e.getMessage().contains("already exists")){
                 System.out.println("Aplicacion_Menu");
@@ -177,8 +177,8 @@ public class DataBase {
                 + "Menu_ID, "
                 + "Funcionalidad_ID), "
                 + "Habilitado boolean, "
-                + "FOREIGN KEY(Menu_ID) REFERENCES Menu(Menu_ID), "
-                + "FOREIGN KEY(Funcionalidad_ID) REFERENCES Funcionalidad(Funcionalidad_ID));" );
+                + "FOREIGN KEY(Menu_ID) REFERENCES Menu(Menu_ID) ON DELETE CASCADE, "
+                + "FOREIGN KEY(Funcionalidad_ID) REFERENCES Funcionalidad(Funcionalidad_ID) ON DELETE CASCADE);" );
         } catch (Exception e) {
             if (e.getMessage().contains("already exists")){
                 System.out.println("Menu_Funcionalidad");
@@ -197,8 +197,8 @@ public class DataBase {
                 + "Menu_ID, "
                 + "Rol_ID), "                    
                 + "Habilitado boolean, "
-                + "FOREIGN KEY(Menu_ID) REFERENCES Menu(Menu_ID), "
-                + "FOREIGN KEY(Rol_ID) REFERENCES Rol(Rol_ID));"); 
+                + "FOREIGN KEY(Menu_ID) REFERENCES Menu(Menu_ID) ON DELETE CASCADE, "
+                + "FOREIGN KEY(Rol_ID) REFERENCES Rol(Rol_ID) ON DELETE CASCADE);"); 
         } catch (Exception e) {
             if (!e.getMessage().contains("already exists")){
                 System.out.println("Menu_Rol");
@@ -252,8 +252,8 @@ public class DataBase {
                 + "Usuario_ID, "
                 + "Rol_ID), "
                 + "Habilitado boolean, "
-                + "FOREIGN KEY(Usuario_ID) REFERENCES Usuario(Usuario_ID), "
-                + "FOREIGN KEY(Rol_ID) REFERENCES Rol(Rol_ID));"); 
+                + "FOREIGN KEY(Usuario_ID) REFERENCES Usuario(Usuario_ID) ON DELETE CASCADE, "
+                + "FOREIGN KEY(Rol_ID) REFERENCES Rol(Rol_ID ON DELETE CASCADE));"); 
         } catch (Exception e) {
             if (!e.getMessage().contains("already exists")){
                 System.out.println("Rol_Usuario");
@@ -272,8 +272,8 @@ public class DataBase {
                 + "Usuario_ID, "
                 + "Aplicacion_ID), "
                 + "Habilitado boolean, "
-                + "FOREIGN KEY(Usuario_ID) REFERENCES Usuario(Usuario_ID), "
-                + "FOREIGN KEY(Aplicacion_ID) REFERENCES Aplicacion(Aplicacion_ID));"); 
+                + "FOREIGN KEY(Usuario_ID) REFERENCES Usuario(Usuario_ID) ON DELETE CASCADE, "
+                + "FOREIGN KEY(Aplicacion_ID) REFERENCES Aplicacion(Aplicacion_ID) ON DELETE CASCADE);"); 
         } catch (Exception e) {
             if (!e.getMessage().contains("already exists")){
                 System.out.println("Usuario_Aplicacion");

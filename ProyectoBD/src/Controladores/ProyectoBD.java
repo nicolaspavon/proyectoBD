@@ -39,7 +39,7 @@ public class ProyectoBD {
 //        
 //        manejador.Imprimir(manejador.Listar("Usuario"));
         DataBase base = new DataBase();
-        base.getCurrentConnection("postgres", "hola1234");
+        base.getCurrentConnection("postgres", "qweqweqwe");
         base.CrearDB();
         
         
