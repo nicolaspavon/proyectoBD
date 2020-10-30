@@ -31,7 +31,7 @@ public class DataBase {
         else
         {
             try{
-                return connection = DriverManager.getConnection("jdbc:postgresql://192.168.56.7:5432/obli", user, password);
+                return connection = DriverManager.getConnection("jdbc:postgresql://192.168.56.7:5432/obli2", user, password);
             }catch (SQLException ex) {
                 System.out.println("No conexion");
                 return null;
@@ -41,6 +41,7 @@ public class DataBase {
 
     
     public void  CrearDB(){
+        
         Statement stmt = null;
         String sql ="";
         try {
@@ -83,7 +84,10 @@ public class DataBase {
     private void Aplicacion(){
         try {
             Statement stmt = connection.createStatement();
-            stmt.executeUpdate("CREATE TABLE Aplicacion (Aplicacion_ID serial PRIMARY KEY); ");
+            stmt.executeUpdate("CREATE TABLE Aplicacion (Aplicacion_ID serial PRIMARY KEY, "
+                    + "Nombre varchar, "
+                    + "Descripcion varchar, "
+                    + "Habilitado boolean); ");
         } catch (Exception e) {
             if (!e.getMessage().contains("already exists")){
                 System.out.println("Aplicacion");
@@ -96,7 +100,10 @@ public class DataBase {
         try {
             Statement stmt = connection.createStatement();
             stmt.executeUpdate("CREATE TABLE Menu ( "
-                +"Menu_ID serial PRIMARY KEY ); ");
+                + "Menu_ID serial PRIMARY KEY, "
+                + "Nombre varchar, "
+                + "Descripcion varchar, "
+                + "Habilitado boolean ); ");
         } catch (Exception e) {
             if (!e.getMessage().contains("already exists")){
                 System.out.println("Menu");
@@ -108,7 +115,10 @@ public class DataBase {
     private void Rol(){
         try {
             Statement stmt = connection.createStatement();
-            stmt.executeUpdate("CREATE TABLE Rol (Rol_ID serial PRIMARY KEY); ");
+            stmt.executeUpdate("CREATE TABLE Rol (Rol_ID serial PRIMARY KEY, "
+                + "Nombre varchar, "
+                + "Descripcion varchar, "
+                + "Habilitado boolean ); ");
         } catch (Exception e) {
             if (!e.getMessage().contains("already exists")){
                 System.out.println("Rol");
@@ -123,7 +133,11 @@ public class DataBase {
             stmt.executeUpdate("CREATE TABLE Funcionalidad ( "
                 + "Funcionalidad_ID serial PRIMARY KEY, "
                 + "Rol_ID_Autorizador serial, "
+                + "Nombre varchar, "
                 + "Descripcion varchar, "
+                + "Habilitado boolean, "
+                + "NombreTabla varchar, "
+                + "Tipo varchar, "    
                 + "FOREIGN KEY(Rol_ID_Autorizador) REFERENCES Rol(Rol_ID)); ");
         } catch (Exception e) {
             if (!e.getMessage().contains("already exists")){
@@ -143,6 +157,7 @@ public class DataBase {
                 + "Menu_ID, "
                 + "Aplicacion_ID), "
                 + "FOREIGN KEY(Menu_ID) REFERENCES Menu(Menu_ID), "
+                + "Habilitado boolean, "    
                 + "FOREIGN KEY(Aplicacion_ID) REFERENCES Aplicacion(Aplicacion_ID)); "); 
         } catch (Exception e) {
             if (!e.getMessage().contains("already exists")){
@@ -161,6 +176,7 @@ public class DataBase {
                 + "CONSTRAINT PK_Menu_Funcionalidad PRIMARY KEY( "
                 + "Menu_ID, "
                 + "Funcionalidad_ID), "
+                + "Habilitado boolean, "
                 + "FOREIGN KEY(Menu_ID) REFERENCES Menu(Menu_ID), "
                 + "FOREIGN KEY(Funcionalidad_ID) REFERENCES Funcionalidad(Funcionalidad_ID));" );
         } catch (Exception e) {
@@ -179,7 +195,8 @@ public class DataBase {
                 + "Menu_ID serial, "
                 + "CONSTRAINT PK_Menu_Rol PRIMARY KEY( " 
                 + "Menu_ID, "
-                + "Rol_ID), "
+                + "Rol_ID), "                    
+                + "Habilitado boolean, "
                 + "FOREIGN KEY(Menu_ID) REFERENCES Menu(Menu_ID), "
                 + "FOREIGN KEY(Rol_ID) REFERENCES Rol(Rol_ID));"); 
         } catch (Exception e) {
@@ -195,10 +212,11 @@ public class DataBase {
             Statement stmt = connection.createStatement();
             stmt.executeUpdate("CREATE TABLE Persona ("
                 + "Cedula serial PRIMARY KEY,"
-                + "Nombre varchar(15), "
-                + "Apellido varchar(15), "
+                + "Nombre varchar, "
+                + "Apellido varchar, "
                 + "Telefono INTEGER, "
-                + "Direccion varchar(30));");
+                + "Direccion varchar, "
+                + "Habilitado boolean);");
         } catch (Exception e) {
             if (!e.getMessage().contains("already exists")){
                 System.out.println("Persona");
@@ -212,8 +230,9 @@ public class DataBase {
             Statement stmt = connection.createStatement();
             stmt.executeUpdate("CREATE TABLE Usuario ( "
                 + "Usuario_ID varchar PRIMARY KEY, " 
-                + "Contrasena varchar(15), "
+                + "Contrasena varchar, "
                 + "Cedula serial, "
+                + "Habilitado boolean, "
                 + "FOREIGN KEY(Cedula) REFERENCES Persona(Cedula));");
         } catch (Exception e) {
             if (!e.getMessage().contains("already exists")){
@@ -232,6 +251,7 @@ public class DataBase {
                 + "CONSTRAINT PK_Rol_Usuario PRIMARY KEY( " 
                 + "Usuario_ID, "
                 + "Rol_ID), "
+                + "Habilitado boolean, "
                 + "FOREIGN KEY(Usuario_ID) REFERENCES Usuario(Usuario_ID), "
                 + "FOREIGN KEY(Rol_ID) REFERENCES Rol(Rol_ID));"); 
         } catch (Exception e) {
@@ -251,6 +271,7 @@ public class DataBase {
                 + "CONSTRAINT PK_Usuario_Aplicacion PRIMARY KEY( " 
                 + "Usuario_ID, "
                 + "Aplicacion_ID), "
+                + "Habilitado boolean, "
                 + "FOREIGN KEY(Usuario_ID) REFERENCES Usuario(Usuario_ID), "
                 + "FOREIGN KEY(Aplicacion_ID) REFERENCES Aplicacion(Aplicacion_ID));"); 
         } catch (Exception e) {
@@ -308,6 +329,7 @@ public class DataBase {
                 + "Referencia_ID varchar, "
                 + "Descripcion varchar, "
                 + "Funcionalidad_ID serial, "
+                + "Estado varchar, "
                 + "FOREIGN KEY(Usuario_validador_ID) REFERENCES Usuario(Usuario_ID), "
                 + "FOREIGN KEY(Funcionalidad_ID) REFERENCES Funcionalidad(Funcionalidad_ID), "
                 + "FOREIGN KEY(Usuario_solicitante_ID) REFERENCES Usuario(Usuario_ID)); ");

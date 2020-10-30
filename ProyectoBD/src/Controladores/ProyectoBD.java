@@ -22,10 +22,12 @@ public class ProyectoBD {
     
     public static void main(String[] args) {
         
-        Login login = new Login();
-        Aplicaciones app = new Aplicaciones();
-        ControladorDePantallas controlador = new ControladorDePantallas(app,login);
-        
+//       Login login = new Login();
+//        Aplicaciones app = new Aplicaciones();
+//        ControladorDePantallas controlador = new ControladorDePantallas(app,login);
+      
+    
+    
 //        //nueva.Imprimir(nueva.Listar("Usuario", "nombre=Juan"));
 //        manejador.Insertar("'este','contrasena',46012394", "Usuario");
 //        System.out.println("");
@@ -36,7 +38,9 @@ public class ProyectoBD {
 //       // nueva.Borrar("Usuario", "usuario_id = 'este'");
 //        
 //        manejador.Imprimir(manejador.Listar("Usuario"));
-
+        DataBase base = new DataBase();
+        base.getCurrentConnection("postgres", "hola1234");
+        base.CrearDB();
         
         
     }   
