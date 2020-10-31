@@ -18,6 +18,7 @@ import Pantallas.Menues;
 public class ControladorMenues {
     private Menues pantallaMenues;
     private ControladorDePantallas contrPantallas;
+    private ArrayList<Map> listaMenues;
     public ControladorMenues(ControladorDePantallas contrPantalla) 
     {
        pantallaMenues = new Menues();
@@ -29,16 +30,21 @@ public class ControladorMenues {
     public void obtenerMenues(String user, String aplicacion){
         DBHandler manejador = new DBHandler();
         
-        ArrayList<Map> menues = manejador.Imprimir(manejador.ObtenerMenues(user, aplicacion));
-        for (Map m : menues){
-            System.out.println(m.get("menu_id"));
+        listaMenues = manejador.Imprimir(manejador.ObtenerMenues(user, aplicacion));
+        for (Map m : listaMenues){
             agregarElemento((m.get("menu_id")).toString());
         }
     }
     
     public void ingresarMenuSeleccionado(String menu){
         System.out.println("alla vamos");
-        System.out.println(menu);
+        for (Map m : listaMenues){
+            if(m.get("menu_id").toString() == menu){
+                System.out.println(m.get("menu_id"));
+                System.out.println(m.get("nombre"));
+                System.out.println(m.get("descripcion"));
+            }
+        }
         //System.out.println(pantallaApp.getAppSeleccionada());
         //pantallaApp.setVisible(false);
         

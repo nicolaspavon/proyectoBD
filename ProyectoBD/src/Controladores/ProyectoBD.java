@@ -17,14 +17,14 @@ public class ProyectoBD {
     
     public static void main(String[] args) {
 
-        //ControladorDePantallas controlador = new ControladorDePantallas();
+        ControladorDePantallas controlador = new ControladorDePantallas();
     
 //        HOLA BASE DE DATOS!!
 //        --------------------------------------------------------------------
-        DataBase base = new DataBase();
-        base.getCurrentConnection("postgres", "hola1234");
-        base.CrearDB();
-        base.cargarDatos();
+//        DataBase base = new DataBase();
+//        base.getCurrentConnection("postgres", "qweqweqwe");
+//        base.CrearDB();
+//        base.cargarDatos();
         
         
     }   
