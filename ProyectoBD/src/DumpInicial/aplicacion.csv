@@ -1,0 +1,4 @@
+aplicacion_id,nombre,descripcion,habilitado
+1,'prueba','Hello world',true
+2,'basica','Minimas funcionalidades',true
+3,'seguridad','Aplicacion de seguridad',true

@@ -6,6 +6,10 @@
 package Base;
 
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -71,12 +75,6 @@ public class DataBase {
         this.Rol_Usuario();
         
         this.Usuario_Aplicacion();
-
-        this.Administrador_General();
-
-        this.Administrador_Seguridad();
-
-        this.Administrador_Auditoria();
 
         this.Autorizacion();
     }
@@ -180,7 +178,7 @@ public class DataBase {
                 + "FOREIGN KEY(Menu_ID) REFERENCES Menu(Menu_ID) ON DELETE CASCADE, "
                 + "FOREIGN KEY(Funcionalidad_ID) REFERENCES Funcionalidad(Funcionalidad_ID) ON DELETE CASCADE);" );
         } catch (Exception e) {
-            if (e.getMessage().contains("already exists")){
+            if (!e.getMessage().contains("already exists")){
                 System.out.println("Menu_Funcionalidad");
                 System.out.println(e);
             }
@@ -253,7 +251,7 @@ public class DataBase {
                 + "Rol_ID), "
                 + "Habilitado boolean, "
                 + "FOREIGN KEY(Usuario_ID) REFERENCES Usuario(Usuario_ID) ON DELETE CASCADE, "
-                + "FOREIGN KEY(Rol_ID) REFERENCES Rol(Rol_ID ON DELETE CASCADE));"); 
+                + "FOREIGN KEY(Rol_ID) REFERENCES Rol(Rol_ID) ON DELETE CASCADE);"); 
         } catch (Exception e) {
             if (!e.getMessage().contains("already exists")){
                 System.out.println("Rol_Usuario");
@@ -282,42 +280,6 @@ public class DataBase {
         }
     }
 
-    private void Administrador_General (){
-        try {
-            Statement stmt = connection.createStatement();
-            stmt.executeUpdate("CREATE TABLE Administrador_General ( Rol_ID serial PRIMARY KEY REFERENCES Rol(Rol_ID));");
-        } catch (Exception e) {
-            if (!e.getMessage().contains("already exists")){
-                System.out.println("Administrador_General");
-                System.out.println(e);
-            }
-        }
-    }
-
-    private void Administrador_Seguridad (){
-        try {
-            Statement stmt = connection.createStatement();
-            stmt.executeUpdate("CREATE TABLE Administrador_Seguridad(Rol_ID serial PRIMARY KEY REFERENCES Rol(Rol_ID));");
-        } catch (Exception e) {
-            if (!e.getMessage().contains("already exists")){
-                System.out.println("Administrador_Seguridad");
-                System.out.println(e);
-            }
-        }
-    }
-    
-    private void Administrador_Auditoria (){
-        try {
-            Statement stmt = connection.createStatement();
-            stmt.executeUpdate("CREATE TABLE Administrador_Auditoria( Rol_ID serial PRIMARY KEY REFERENCES Rol(Rol_ID));");
-        } catch (Exception e) {
-            if (!e.getMessage().contains("already exists")){
-                System.out.println("Administrador_Auditoria");
-                System.out.println(e);
-            }
-        }
-    }
-    
     private void Autorizacion (){
         try {
             Statement stmt = connection.createStatement();
@@ -340,5 +302,50 @@ public class DataBase {
             }
         }
     }
- 
+
+    private void InsertarDatos(String archivo, String nombreTabla) {
+        String datos;
+        FileReader f;
+        DBHandler handler = new DBHandler();
+        try {
+            f = new FileReader(archivo);
+            BufferedReader b = new BufferedReader(f);
+            datos = b.readLine();
+            while((datos = b.readLine())!=null) {
+                handler.Insertar(datos, nombreTabla);
+            }
+            b.close();
+        } catch (Exception ex) {
+            System.out.println("No se encuentra archivo "+archivo + nombreTabla);
+        } 
+        
+    }
+    
+    public void cargarDatos(){
+    
+        this.InsertarDatos("src/DumpInicial/aplicacion.csv","Aplicacion");
+        
+        this.InsertarDatos("src/DumpInicial/menu.csv", "Menu");
+        
+        this.InsertarDatos("src/DumpInicial/rol.csv", "Rol");
+        
+        this.InsertarDatos("src/DumpInicial/aplicacion_menu.csv", "Aplicacion_Menu");
+        
+        this.InsertarDatos("src/DumpInicial/menu_rol.csv", "Menu_Rol");
+        
+        this.InsertarDatos("src/DumpInicial/persona.csv", "Persona");
+        
+        this.InsertarDatos("src/DumpInicial/usuario.csv", "Usuario");
+            
+        this.InsertarDatos("src/DumpInicial/rol_usuario.csv", "Rol_Usuario");
+        
+        this.InsertarDatos("src/DumpInicial/usuario_aplicacion.csv", "Usuario_Aplicacion");
+        
+        this.InsertarDatos("src/DumpInicial/funcionalidad.csv", "Funcionalidad");
+        
+        this.InsertarDatos("src/DumpInicial/menu_funcionalidad.csv", "Menu_Funcionalidad");
+        
+        this.InsertarDatos("src/DumpInicial/autorizacion.csv", "Autorizacion");
+        
+    }
 }
