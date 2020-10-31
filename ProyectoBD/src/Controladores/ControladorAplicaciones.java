@@ -21,23 +21,21 @@ public class ControladorAplicaciones {
     {
        pantallaAplicaciones = new Aplicaciones();
        contrPantallas = contrPantalla;
-       pantallaAplicaciones.getIngresarButton().addActionListener(e -> ingresarAppSeleccionada());
+       pantallaAplicaciones.getSeleccionarAppButton().addActionListener(e -> ingresarAppSeleccionada(pantallaAplicaciones.getAppSeleccionada()));
         
     }
     
     public void obtenerApps(String user){
         DBHandler manejador = new DBHandler();
-        
         ArrayList<Map> apps = manejador.Imprimir(manejador.Listar("usuario_aplicacion", "usuario_id = '"+ user + "'"));
         for (Map m : apps){
             agregarElemento((m.get("aplicacion_id")).toString());
         }
     }
     
-    public void ingresarAppSeleccionada(){
-        System.out.println("alla vamos");
-        //System.out.println(pantallaApp.getAppSeleccionada());
-        //pantallaApp.setVisible(false);
+    public void ingresarAppSeleccionada(String app){
+        contrPantallas.activarMenues(app);
+        pantallaAplicaciones.setVisible(false);
         
     }
     

@@ -11,16 +11,15 @@ import javax.swing.JButton;
  *
  * @author Vale
  */
-public class Aplicaciones extends javax.swing.JFrame {
+public class Menues extends javax.swing.JFrame {
 
     /**
-     * Creates new form Aplicaciones
+     * Creates new form Menues
      */
-    public Aplicaciones() {
+    public Menues() {
         initComponents();
-        this.setTitle("Aplicaciones");
+        this.setTitle("Menues");
         comboBox.removeAllItems();
-        
     }
 
     /**
@@ -93,11 +92,11 @@ public class Aplicaciones extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_IngresarActionPerformed
 
-    public JButton getSeleccionarAppButton() {
+    public JButton getIngresarButton() {
         return Ingresar;
     }
     
-    public String getAppSeleccionada() {
+    public String getMenuSeleccionado() {
         return comboBox.getSelectedItem().toString();
     }
     /**
@@ -117,20 +116,21 @@ public class Aplicaciones extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Aplicaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menues.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Aplicaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menues.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Aplicaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menues.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Aplicaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menues.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Aplicaciones().setVisible(true);
+                new Menues().setVisible(true);
             }
         });
     }

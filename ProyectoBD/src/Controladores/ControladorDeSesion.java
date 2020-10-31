@@ -57,16 +57,20 @@ public class ControladorDeSesion
         }
     }
     
-        public void activarLogin(){
-            login.setVisible(true);
-        }
-        public void desactivarLogin(){
-            login.setVisible(false);
-        }
-        public void mensajeErrorConexion(){
-            login.datosIncorrectos();
-        }
-        public void mensajeErrorUsuario(){
-            login.errorUsuario();
-        }
+    public String getUser(){
+        return this.Usuario;
+    }
+
+    public void activarLogin(){
+        login.setVisible(true);
+    }
+    public void desactivarLogin(){
+        login.setVisible(false);
+    }
+    public void mensajeErrorConexion(){
+        login.datosIncorrectos();
+    }
+    public void mensajeErrorUsuario(){
+        login.errorUsuario();
+    }
 }

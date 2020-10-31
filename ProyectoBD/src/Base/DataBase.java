@@ -79,6 +79,8 @@ public class DataBase {
         this.Administrador_Auditoria();
 
         this.Autorizacion();
+        
+        this.User_Menu_View();
     }
     
     private void Aplicacion(){
@@ -336,6 +338,22 @@ public class DataBase {
         } catch (Exception e) {
             if (!e.getMessage().contains("already exists")){
                 System.out.println("Autorizacion");
+                System.out.println(e);
+            }
+        }
+    }
+    
+    private void User_Menu_View(){
+        try {
+            Statement stmt = connection.createStatement();
+            stmt.executeUpdate("CREATE VIEW user_menu_view" +
+                "AS SELECT aplicacion_id FROM " +
+                "INTER menu m, usuario u, rol r, aplicacion a " +
+                "WHERE a.cust_code=b.cust_code" +
+                "AND a.agent_code=c.agent_code;");
+        } catch (Exception e) {
+            if (!e.getMessage().contains("already exists")){
+                System.out.println("Aplicacion");
                 System.out.println(e);
             }
         }

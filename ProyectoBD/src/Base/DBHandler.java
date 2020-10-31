@@ -108,4 +108,20 @@ public class DBHandler {
         return resultado;
     }
     
+    public ResultSet ObtenerMenues(String usuario, String aplicacion){
+        try{
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT menu.menu_id, menu.nombre, menu.descripcion " +
+                "FROM menu " +
+                "INNER JOIN rol_usuario ON rol_usuario.usuario_id = '"+usuario+"' " +
+                "INNER JOIN menu_rol ON menu_rol.rol_id = rol_usuario.rol_id " +
+                "INNER JOIN aplicacion_menu ON aplicacion_menu.aplicacion_id = '"+aplicacion+"' AND aplicacion_menu.menu_id = menu.menu_id;");
+            return rs;
+        }
+        catch (Exception e){
+            System.out.println("Error obteniendo menues para el usuario " + usuario);
+            System.out.println(e);  
+        }
+        return null;
+    }
 }

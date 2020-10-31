@@ -15,15 +15,21 @@ public class ControladorDePantallas {
     private Aplicaciones pantallaApp;
     private ControladorDeSesion contrSesion;
     private ControladorAplicaciones contrAplicaciones;
+    private ControladorMenues contrMenues;
     
     public ControladorDePantallas(){
         contrSesion = new ControladorDeSesion(this);
         contrAplicaciones = new ControladorAplicaciones(this);
+        contrMenues = new ControladorMenues(this);
         contrSesion.activarLogin();
     }
     
     public void activarAplicaciones(String user){
         contrAplicaciones.activarAplicaciones(user);
+    }
+    
+    public void activarMenues(String app){
+        contrMenues.activarMenues(contrSesion.getUser(), app);
     }
     
 
