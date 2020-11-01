@@ -1,5 +1,4 @@
 menu_id,nombre,descripcion,habilitado
-1,'login','iniciar sesion',true
 2,'mostrar aplicaciones','mostrar las aplicaciones disponibles para el usuario',true
 3,'menu para modificar','permite modificar algun dato',true
 4,'menu para crear','permite insertar elemento nuevo',true

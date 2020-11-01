@@ -336,7 +336,7 @@ public class DataBase {
         
         this.InsertarDatos("src/DumpInicial/persona.csv", "Persona");
         
-        this.InsertarDatos("src/DumpInicial/usuario.csv", "Usuario");
+        this.CrearUsuario("src/DumpInicial/usuario.csv", "Usuario");
             
         this.InsertarDatos("src/DumpInicial/rol_usuario.csv", "Rol_Usuario");
         
@@ -348,5 +348,13 @@ public class DataBase {
         
         this.InsertarDatos("src/DumpInicial/autorizacion.csv", "Autorizacion");
         
+    }
+
+    private void CrearUsuario(String srcDumpInicialusuariocsv) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void CrearUsuario(String srcDumpInicialusuariocsv, String usuario) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
