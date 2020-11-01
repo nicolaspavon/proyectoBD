@@ -32,7 +32,8 @@ public class DBHandler {
                     + "(" + datos + ");";
 
             stmt.executeUpdate(stringDatos);
-            stmt.close();
+            stmt.close();              
+            
         }
         catch (Exception e){
             System.out.println("Error en insertar en " + nombreTabla);
@@ -111,12 +112,11 @@ public class DBHandler {
     public ResultSet ObtenerMenues(String usuario, String aplicacion){
         try{
             Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT menu.menu_id, menu.nombre, menu.descripcion " +
-                "FROM menu " +
-                "INNER JOIN rol_usuario ON rol_usuario.usuario_id = '"+usuario+"' " +
-                "INNER JOIN menu_rol ON menu_rol.rol_id = rol_usuario.rol_id " +
-                "INNER JOIN aplicacion_menu ON aplicacion_menu.aplicacion_id = '"+aplicacion+"' AND aplicacion_menu.menu_id = menu.menu_id;");
-            return rs;
+            ResultSet rs = stmt.executeQuery("SELECT DISTINCT menu_rol.menu_id" +
+                    "FROM menu_rol,rol_usuario,aplicacion_menu" +
+                    "WHERE menu_rol.rol_id=rol_usuario.rol_id AND rol_usuario.usuario_id=" + usuario 
+                    + "AND menu_rol.menu_id=aplicacion_menu.menu_id AND aplicacion_menu.aplicacion_id=" + aplicacion);
+                    return rs;
         }
         catch (Exception e){
             System.out.println("Error obteniendo menues para el usuario " + usuario);
@@ -124,4 +124,6 @@ public class DBHandler {
         }
         return null;
     }
+
+   
 }
