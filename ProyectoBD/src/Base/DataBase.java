@@ -71,6 +71,8 @@ public class DataBase {
         this.Persona();
 
         this.Usuario();
+        
+        this.TriggerUsuario();
        
         this.Rol_Usuario();
         
@@ -241,6 +243,36 @@ public class DataBase {
         }
     }
     
+    private void TriggerUsuario (){
+        try {
+            Statement stmt = connection.createStatement();
+            stmt.executeUpdate("CREATE OR REPLACE FUNCTION mirror_user_roles() RETURNS TRIGGER AS $$\n" +
+                "    BEGIN\n" +
+                "        --\n" +
+                "        -- Perform the required operation on emp, and create a row in emp_audit\n" +
+                "        -- to reflect the change made to emp.\n" +
+                "        --\n" +
+                "        IF (TG_OP = 'DELETE') THEN\n" +
+                "			execute 'drop user ' || quote_ident(old.usuario_id);\n" +
+                "			RETURN OLD;\n" +
+                "        ELSIF (TG_OP = 'UPDATE') THEN\n" +
+                "			execute 'alter user ' || quote_ident(old.usuario_id);\n" +
+                "			RETURN NEW;\n" +
+                "        ELSIF (TG_OP = 'INSERT') THEN\n" +
+                "			execute ' create user ' || quote_ident(new.usuario_id) || ' password ''' || quote_ident(new.contrasena) || '''';\n" +
+                "			RETURN NEW;\n" +
+                "        END IF;\n" +
+                "    END;\n" +
+                "$$ LANGUAGE plpgsql;\n" +
+                "\n" +
+                "CREATE TRIGGER mirror_user_roles_trigger\n" +
+                "BEFORE INSERT OR UPDATE OR DELETE ON usuario\n" +
+                "    FOR EACH ROW EXECUTE FUNCTION mirror_user_roles();");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
     private void Rol_Usuario (){
         try {
             Statement stmt = connection.createStatement();
@@ -336,7 +368,7 @@ public class DataBase {
         
         this.InsertarDatos("src/DumpInicial/persona.csv", "Persona");
         
-        this.CrearUsuario("src/DumpInicial/usuario.csv", "Usuario");
+        this.InsertarDatos("src/DumpInicial/usuario.csv", "Usuario");
             
         this.InsertarDatos("src/DumpInicial/rol_usuario.csv", "Rol_Usuario");
         
@@ -346,15 +378,7 @@ public class DataBase {
         
         this.InsertarDatos("src/DumpInicial/menu_funcionalidad.csv", "Menu_Funcionalidad");
         
-        this.InsertarDatos("src/DumpInicial/autorizacion.csv", "Autorizacion");
+//        this.InsertarDatos("src/DumpInicial/autorizacion.csv", "Autorizacion");
         
-    }
-
-    private void CrearUsuario(String srcDumpInicialusuariocsv) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private void CrearUsuario(String srcDumpInicialusuariocsv, String usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

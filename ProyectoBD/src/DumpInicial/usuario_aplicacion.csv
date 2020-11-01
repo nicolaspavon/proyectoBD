@@ -1,10 +1,7 @@
 usuario_id,aplicacion_id,habilitado
 'nico',1,true
 'nico',2,true
-'nico',3,true
-'joca',2,true
-'lore',3,true
+'lore',1,true
 'lore',2,true
-'chiappe',2,true
-'scampos',2,true
-'mari20',2,true
+'vale',1,true
+'vale',2,true

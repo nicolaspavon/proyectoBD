@@ -1,5 +1,8 @@
 menu_id,nombre,descripcion,habilitado
-2,'mostrar aplicaciones','mostrar las aplicaciones disponibles para el usuario',true
-3,'menu para modificar','permite modificar algun dato',true
-4,'menu para crear','permite insertar elemento nuevo',true
-5,'autorizacion','muestra las autorizaciones',true
+1,'Personas','CRUD Personas',true
+2,'Usuarios','CRUD Usuarios',true
+3,'Roles','CRUD Roles',true
+4,'Auditoría','Menú para realizar la traza de auditoría y aprobar/rechazar acciones',true
+5,'Aplicaciones','CRUD Aplicaciones',true
+6,'Menues','CRUD Menues',true
+7,'Negocio','Menú principal de la aplicacion de negocio',true

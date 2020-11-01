@@ -1,5 +1,5 @@
 rol_id,nombre,descripcion,habilitado
 1,'administrador general','superusuario',true
-2,'administrador de seguridad','encargado de autorizaciones',true
-3,'administrador de auditoria','acceso a registros',true
-4,'usuario regular','usuario comun',true
+2,'administrador de seguridad','encargado de la administracion del sistema de seguridad',true
+3,'administrador de auditoria','acceso a registros y auditorías',true
+4,'usuario regular','usuario basico de lectura',true
