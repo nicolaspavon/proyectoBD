@@ -16,11 +16,13 @@ public class ControladorDePantallas {
     private ControladorDeSesion contrSesion;
     private ControladorAplicaciones contrAplicaciones;
     private ControladorMenues contrMenues;
+    private ControladorFuncionalidades contrFunc;
     
     public ControladorDePantallas(){
         contrSesion = new ControladorDeSesion(this);
         contrAplicaciones = new ControladorAplicaciones(this);
         contrMenues = new ControladorMenues(this);
+        contrFunc = new ControladorFuncionalidades(this);
         contrSesion.activarLogin();
     }
     
@@ -32,7 +34,8 @@ public class ControladorDePantallas {
         contrMenues.activarMenues(contrSesion.getUser(), app);
     }
     
-
+     public void activarFuncionalidades (String menu){
+        contrFunc.activarFunc(menu);
+    }
     
-
 }

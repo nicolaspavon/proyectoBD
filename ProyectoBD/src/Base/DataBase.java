@@ -35,7 +35,7 @@ public class DataBase {
         else
         {
             try{
-                return connection = DriverManager.getConnection("jdbc:postgresql://192.168.56.7:5432/obli2", user, password);
+                return connection = DriverManager.getConnection("jdbc:postgresql://192.168.56.7:5432/obli", user, password);
             }catch (SQLException ex) {
                 System.out.println("No conexion");
                 return null;

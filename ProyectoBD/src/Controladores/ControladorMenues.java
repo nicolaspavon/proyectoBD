@@ -43,6 +43,9 @@ public class ControladorMenues {
                 System.out.println(m.get("menu_id"));
                 System.out.println(m.get("nombre"));
                 System.out.println(m.get("descripcion"));
+                
+                pantallaMenues.setVisible(false);
+                contrPantallas.activarFuncionalidades(menu);
             }
         }
         //System.out.println(pantallaApp.getAppSeleccionada());
