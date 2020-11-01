@@ -1,4 +1,4 @@
 usuario_id,rol_id,habilitado
-'nico',1,true
-'lore',1,true
-'vale',1,true
+'nico','administrador_general',true
+'lore','administrador_general',true
+'vale','administrador_general',true

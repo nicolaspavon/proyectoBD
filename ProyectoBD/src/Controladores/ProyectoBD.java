@@ -20,9 +20,9 @@ public class ProyectoBD {
         ControladorDePantallas controlador = new ControladorDePantallas();
     
 //        HOLA BASE DE DATOS!!
-//        --------------------------------------------------------------------
+////        --------------------------------------------------------------------
 //        DataBase base = new DataBase();
-//        base.getCurrentConnection("postgres", "qweqweqwe");
+//        base.getCurrentConnection("postgres", "hola1234");
 //        base.CrearDB();
 //        base.cargarDatos();
         

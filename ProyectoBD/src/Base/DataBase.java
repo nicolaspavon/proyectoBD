@@ -116,8 +116,7 @@ public class DataBase {
     private void Rol(){
         try {
             Statement stmt = connection.createStatement();
-            stmt.executeUpdate("CREATE TABLE Rol (Rol_ID serial PRIMARY KEY, "
-                + "Nombre varchar, "
+            stmt.executeUpdate("CREATE TABLE Rol (Rol_ID varchar PRIMARY KEY, "
                 + "Descripcion varchar, "
                 + "Habilitado boolean ); ");
         } catch (Exception e) {
@@ -133,7 +132,7 @@ public class DataBase {
             Statement stmt = connection.createStatement();
             stmt.executeUpdate("CREATE TABLE Funcionalidad ( "
                 + "Funcionalidad_ID serial PRIMARY KEY, "
-                + "Rol_ID_Autorizador serial, "
+                + "Rol_ID_Autorizador varchar, "
                 + "Nombre varchar, "
                 + "Descripcion varchar, "
                 + "Habilitado boolean, "
@@ -192,7 +191,7 @@ public class DataBase {
         try {
             Statement stmt = connection.createStatement();
             stmt.executeUpdate("CREATE TABLE Menu_Rol ( "
-                + "Rol_ID serial, "
+                + "Rol_ID varchar, "
                 + "Menu_ID serial, "
                 + "CONSTRAINT PK_Menu_Rol PRIMARY KEY( " 
                 + "Menu_ID, "
@@ -278,7 +277,7 @@ public class DataBase {
             Statement stmt = connection.createStatement();
             stmt.executeUpdate("CREATE TABLE Rol_Usuario ( "
                 + "Usuario_ID varchar, "
-                + "Rol_ID serial, " 
+                + "Rol_ID varchar, " 
                 + "CONSTRAINT PK_Rol_Usuario PRIMARY KEY( " 
                 + "Usuario_ID, "
                 + "Rol_ID), "
