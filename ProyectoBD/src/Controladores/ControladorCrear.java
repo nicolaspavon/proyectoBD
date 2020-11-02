@@ -36,8 +36,5 @@ public class ControladorCrear {
         manejador.Insertar(datos, objeto.get("nombretabla").toString());
     }
     
-    public void agregarElemento(String item){
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
 }

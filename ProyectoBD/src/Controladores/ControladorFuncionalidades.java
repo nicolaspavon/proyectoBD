@@ -41,7 +41,7 @@ public class ControladorFuncionalidades {
     
     public void obtenerFuncionalidades(String menu){
         DBHandler manejador = new DBHandler();
-        listaFunc = manejador.Imprimir(manejador.Listar("menu_funcionalidad", "menu_id = '"+ menu + "'"));
+        listaFunc = manejador.Imprimir(manejador.Listar("menu_funcionalidad", "menu_id = '"+ menu + "'")); // usar prim elemento
         for (Map m : listaFunc){
             Map func = manejador.PrimerElemento(manejador.Listar("funcionalidad", "funcionalidad_id = '"+ (m.get("funcionalidad_id")).toString() + "'",true));
             agregarElemento((func.get("funcionalidad_id")).toString()+" "+(func.get("nombre")).toString());
@@ -51,13 +51,11 @@ public class ControladorFuncionalidades {
     private void ingresarFuncionalidad(String funcSeleccionada) {
         
         DBHandler manejador = new DBHandler();
-        ArrayList<Map> func = manejador.Imprimir(manejador.Listar("funcionalidad", "funcionalidad_id = '"+ funcSeleccionada.split(" ")[0] + "'"));
-        for (Map m : func){
-            if (m.get("tipo").equals("crear")){
-                pantallaFunc.setVisible(false);
-                contrPantallas.activarCrear(m);
-            };
-        }
+        Map<String, String> func = manejador.PrimerElemento(manejador.Listar("funcionalidad", "funcionalidad_id = '"+ funcSeleccionada.split(" ")[0] + "'"));
+        if (func.get("tipo").equals("crear")){
+            pantallaFunc.setVisible(false);
+            contrPantallas.activarCrear(func);
+        };
     }
     
     public void agregarElemento(String item){

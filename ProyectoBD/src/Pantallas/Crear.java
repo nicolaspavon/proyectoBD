@@ -12,6 +12,7 @@ import javax.swing.*;
 public class Crear{
     public JButton crear;
     public ArrayList<JTextField> texts;
+    
     public Crear(ArrayList<String> tabla, String nombre){
         JFrame frame = new JFrame(nombre);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
