@@ -37,7 +37,7 @@ public class Menues extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Aplicaciones disponibles: ");
+        jLabel1.setText("Menus disponibles: ");
 
         comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         comboBox.addActionListener(new java.awt.event.ActionListener() {

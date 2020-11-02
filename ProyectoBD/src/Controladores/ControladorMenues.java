@@ -28,24 +28,25 @@ public class ControladorMenues {
     }
     
     public void obtenerMenues(String user, String aplicacion){
-        DBHandler manejador = new DBHandler();
-        
+        DBHandler manejador = new DBHandler();        
         listaMenues = manejador.Imprimir(manejador.ObtenerMenues(user, aplicacion));
         for (Map m : listaMenues){
-            agregarElemento((m.get("menu_id")).toString());
+            
+            agregarElemento((m.get("menu_id")).toString()+" "+(m.get("nombre")).toString());
         }
     }
     
     public void ingresarMenuSeleccionado(String menu){
         System.out.println("alla vamos");
+        String menuElegido = menu.split(" ")[0];
         for (Map m : listaMenues){
-            if(m.get("menu_id").toString() == menu){
+            if(m.get("menu_id").toString().equals(menuElegido)){
                 System.out.println(m.get("menu_id"));
                 System.out.println(m.get("nombre"));
                 System.out.println(m.get("descripcion"));
                 
                 pantallaMenues.setVisible(false);
-                contrPantallas.activarFuncionalidades(menu);
+                contrPantallas.activarFuncionalidades(menuElegido);
             }
         }
         //System.out.println(pantallaApp.getAppSeleccionada());

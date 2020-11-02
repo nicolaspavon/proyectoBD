@@ -29,12 +29,15 @@ public class ControladorAplicaciones {
         DBHandler manejador = new DBHandler();
         ArrayList<Map> apps = manejador.Imprimir(manejador.Listar("usuario_aplicacion", "usuario_id = '"+ user + "'"));
         for (Map m : apps){
-            agregarElemento((m.get("aplicacion_id")).toString());
+            ArrayList<Map> aplicacion = manejador.Imprimir(manejador.Listar("aplicacion", "aplicacion_id = '"+(m.get("aplicacion_id")).toString() + "'"));
+            Map app=aplicacion.get(0);
+            agregarElemento((app.get("aplicacion_id")).toString()+" "+(app.get("nombre")).toString() );
         }
     }
     
     public void ingresarAppSeleccionada(String app){
-        contrPantallas.activarMenues(app);
+        String[] aplicacion= app.split(" ");
+        contrPantallas.activarMenues(aplicacion[0]);
         pantallaAplicaciones.setVisible(false);
         
     }

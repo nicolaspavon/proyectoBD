@@ -112,10 +112,11 @@ public class DBHandler {
     public ResultSet ObtenerMenues(String usuario, String aplicacion){
         try{
             Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT DISTINCT menu_rol.menu_id " +
-                    "FROM menu_rol, rol_usuario, aplicacion_menu " +
+            ResultSet rs = stmt.executeQuery("SELECT DISTINCT menu_rol.menu_id,menu.nombre " +
+                    "FROM menu_rol, rol_usuario, aplicacion_menu , menu " +
                     "WHERE menu_rol.rol_id=rol_usuario.rol_id AND rol_usuario.usuario_id='" + usuario + "'" +
-                    "AND menu_rol.menu_id = aplicacion_menu.menu_id AND aplicacion_menu.aplicacion_id=" + aplicacion +";");
+                    "AND menu_rol.menu_id = aplicacion_menu.menu_id AND menu.menu_id = aplicacion_menu.menu_id "+ 
+                    "AND aplicacion_menu.aplicacion_id=" + aplicacion +";");
             return rs;
         }
         catch (Exception e){
@@ -125,5 +126,16 @@ public class DBHandler {
         return null;
     }
 
-   
+   public ResultSet ListarAplicaciones(String usuario, String columnas){
+        try{
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT aplicacion.nombre,usuario_aplicacion.aplicacion_id FROM aplicacion, usuario_aplicacion WHERE aplicacion.aplicacion_id = usuario_aplicacion.aplicacion_id AND usuario_aplicacion.usuario_id='"+usuario+"';");
+            return rs;
+        }
+        catch (Exception e){
+            System.out.println("Error listando apps de " + usuario);
+            System.out.println(e);  
+        }
+        return null;
+    }
 }

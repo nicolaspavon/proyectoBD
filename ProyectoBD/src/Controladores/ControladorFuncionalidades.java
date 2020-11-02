@@ -34,11 +34,14 @@ public class ControladorFuncionalidades {
         DBHandler manejador = new DBHandler();
         ArrayList<Map> funcs = manejador.Imprimir(manejador.Listar("menu_funcionalidad", "menu_id = '"+ menu + "'"));
         for (Map m : funcs){
-            agregarElemento((m.get("funcionalidad_id")).toString());
+            ArrayList<Map> funciones = manejador.Imprimir(manejador.Listar("funcionalidad", "funcionalidad_id = '"+ (m.get("funcionalidad_id")).toString() + "'"));
+            Map func = funciones.get(0);
+            agregarElemento((func.get("funcionalidad_id")).toString()+" "+(func.get("nombre")).toString());
         }
     }
 
     private void ingresarFuncionalidad(String funcSeleccionada) {
+        String func = funcSeleccionada.split(" ")[0];
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
