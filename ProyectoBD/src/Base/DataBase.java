@@ -59,6 +59,8 @@ public class DataBase {
         this.Menu();
 
         this.Rol();
+        
+        this.TriggerRol();
 
         this.Funcionalidad();
 
@@ -75,6 +77,8 @@ public class DataBase {
         this.TriggerUsuario();
        
         this.Rol_Usuario();
+        
+        this.TriggerRol_Usuario();
         
         this.Usuario_Aplicacion();
 
@@ -124,6 +128,33 @@ public class DataBase {
                 System.out.println("Rol");
                 System.out.println(e);
             }
+        }
+    }
+    
+    private void TriggerRol (){
+        try {
+            Statement stmt = connection.createStatement();
+            stmt.executeUpdate("CREATE OR REPLACE FUNCTION mirror_roles_groupRoles() RETURNS TRIGGER AS $$\n" +
+                "    BEGIN\n" +
+                "        IF (TG_OP = 'DELETE') THEN\n" +
+                "			execute 'drop role ' || quote_ident(old.rol_id);\n" +
+                "			RETURN OLD;\n" +
+                "        ELSIF (TG_OP = 'UPDATE') THEN\n" +
+                "			execute 'alter role ' || quote_ident(old.rol_id);\n" +
+                "			RETURN NEW;\n" +
+                "        ELSIF (TG_OP = 'INSERT') THEN\n" +
+                "			execute ' create role ' || quote_ident(new.rol_id) || ' with superuser inherit';\n" +
+                "                       execute ' grant all privileges on all tables in schema public to ' || quote_ident(new.rol_id);\n" +
+                "			RETURN NEW;\n" +
+                "        END IF;\n" +
+                "    END;\n" +
+                "$$ LANGUAGE plpgsql;\n" +
+                "\n" +
+                "CREATE TRIGGER mirror_roles_groupRoles_trigger\n" +
+                "BEFORE INSERT OR UPDATE OR DELETE ON rol\n" +
+                "    FOR EACH ROW EXECUTE FUNCTION mirror_roles_groupRoles();");
+        } catch (Exception e) {
+            System.out.println(e);
         }
     }
     
@@ -289,6 +320,29 @@ public class DataBase {
                 System.out.println("Rol_Usuario");
                 System.out.println(e);
             }
+        }
+    }
+    
+    private void TriggerRol_Usuario (){
+        try {
+            Statement stmt = connection.createStatement();
+            stmt.executeUpdate("CREATE OR REPLACE FUNCTION mirror_rol_usuario_groupRoles_users() RETURNS TRIGGER AS $$\n" +
+            "    BEGIN\n" +
+            "        IF (TG_OP = 'UPDATE') THEN\n" +
+            "			execute ' revoke ' || quote_ident(new.rol_id) || ' from ' || quote_ident(new.usuario_id);\n" +
+            "			RETURN NEW;\n" +
+            "        ELSIF (TG_OP = 'INSERT') THEN\n" +
+            "			execute ' grant ' || quote_ident(new.rol_id) || ' to ' || quote_ident(new.usuario_id);\n" +
+            "			RETURN NEW;\n" +
+            "        END IF;\n" +
+            "    END;\n" +
+            "$$ LANGUAGE plpgsql;\n" +
+            "\n" +
+            "CREATE TRIGGER mirror_rol_usuario_groupRoles_users_trigger\n" +
+            "BEFORE INSERT OR UPDATE ON rol_usuario\n" +
+            "    FOR EACH ROW EXECUTE FUNCTION mirror_rol_usuario_groupRoles_users();");
+        } catch (Exception e) {
+            System.out.println(e);
         }
     }
     
