@@ -67,6 +67,18 @@ public class DBHandler {
         return null;
     }
     
+    public ResultSet Listar(String nombreTabla, String clausula,boolean bool){
+        try{
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM "+nombreTabla+" WHERE "+clausula+" AND "+nombreTabla+ ".habilitado=true;");
+            return rs;
+        }
+        catch (Exception e){
+            System.out.println("Error listando " + nombreTabla);
+            System.out.println(e);  
+        }
+        return null;
+    }
     public void Borrar(String nombreTabla, String clausula){
         try{
             Statement stmt = connection.createStatement();
@@ -130,6 +142,8 @@ public class DBHandler {
                     "FROM menu_rol, rol_usuario, aplicacion_menu , menu " +
                     "WHERE menu_rol.rol_id=rol_usuario.rol_id AND rol_usuario.usuario_id='" + usuario + "'" +
                     "AND menu_rol.menu_id = aplicacion_menu.menu_id AND menu.menu_id = aplicacion_menu.menu_id "+ 
+                    "AND menu_rol.habilitado=rol_usuario.habilitado AND rol_usuario.habilitado=aplicacion_menu.habilitado " +
+                    "AND aplicacion_menu.habilitado = true AND menu.habilitado=true "+
                     "AND aplicacion_menu.aplicacion_id=" + aplicacion +";");
             return rs;
         }

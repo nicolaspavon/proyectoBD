@@ -44,7 +44,7 @@ public class ControladorDeSesion
             
             DBHandler manejador = new DBHandler();
             System.out.println(user);
-            if(!manejador.Imprimir(manejador.Listar("Usuario", "usuario_id = '"+user+"'")).isEmpty()){
+            if(!manejador.Imprimir(manejador.Listar("Usuario", "usuario_id = '"+user+"'",true)).isEmpty()){
                     
                 Usuario = manejador.Imprimir(manejador.Listar("Usuario", "usuario_id = '"+user+"'")).get(0).get("usuario_id").toString();  
                 System.out.println("Ingresado con usuario: " + Usuario);
@@ -54,12 +54,8 @@ public class ControladorDeSesion
             }
             else{
                 System.out.println("no existe en la tabla Usuario");
+                base.noConnect();
                 this.mensajeErrorUsuario();
-                try {
-                    con.close();
-                } catch (SQLException ex) {
-                    System.out.println("No puedo cerrar");
-                }
             }
             
         }

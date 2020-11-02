@@ -29,7 +29,7 @@ public class ControladorAplicaciones {
         DBHandler manejador = new DBHandler();
         ArrayList<Map> apps = manejador.Imprimir(manejador.Listar("usuario_aplicacion", "usuario_id = '"+ user + "'"));
         for (Map m : apps){
-            Map app = manejador.PrimerElemento(manejador.Listar("aplicacion", "aplicacion_id = '"+(m.get("aplicacion_id")).toString() + "'"));
+            Map app = manejador.PrimerElemento(manejador.Listar("aplicacion", "aplicacion_id = '"+(m.get("aplicacion_id")).toString() + "'",true));
             agregarElemento((app.get("aplicacion_id")).toString()+" "+(app.get("nombre")).toString() );
         }
     }
