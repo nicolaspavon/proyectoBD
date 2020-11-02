@@ -27,12 +27,8 @@ public class ControladorAplicaciones {
     }
     
     public void volverLogin(){
-        
         pantallaAplicaciones.setVisible(false);
-        
         contrPantallas.activarLogin();
-       
-        
     }
     
     public void obtenerApps(String user){
@@ -49,6 +45,10 @@ public class ControladorAplicaciones {
         contrPantallas.activarMenues(aplicacion[0]);
         pantallaAplicaciones.setVisible(false);
         
+    }
+    
+    public void activarPantalla(){
+        pantallaAplicaciones.setVisible(true);
     }
     
     public void activarAplicaciones(String user){

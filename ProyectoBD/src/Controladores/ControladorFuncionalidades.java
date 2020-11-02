@@ -18,13 +18,22 @@ public class ControladorFuncionalidades {
         
     private Funcionalidades pantallaFunc;
     private ControladorDePantallas contrPantallas;
+    private ArrayList<Map> listaFunc;
     
     public ControladorFuncionalidades(ControladorDePantallas contrPantalla){
         pantallaFunc = new Funcionalidades();
         contrPantallas = contrPantalla;
         pantallaFunc.getSeleccionarButton().addActionListener(e -> ingresarFuncionalidad(pantallaFunc.getFuncSeleccionada()));
+        pantallaFunc.getAtrasButton().addActionListener(e -> volverMenus());
     }
 
+    public void volverMenus(){
+        pantallaFunc.setVisible(false);
+        listaFunc.clear();
+        pantallaFunc.vaciarItems();
+        contrPantallas.activarMenus();
+    }
+    
     void activarFunc(String menu) {
         pantallaFunc.setVisible(true);
         obtenerFuncionalidades(menu);
@@ -32,8 +41,8 @@ public class ControladorFuncionalidades {
     
     public void obtenerFuncionalidades(String menu){
         DBHandler manejador = new DBHandler();
-        ArrayList<Map> funcs = manejador.Imprimir(manejador.Listar("menu_funcionalidad", "menu_id = '"+ menu + "'"));
-        for (Map m : funcs){
+        listaFunc = manejador.Imprimir(manejador.Listar("menu_funcionalidad", "menu_id = '"+ menu + "'"));
+        for (Map m : listaFunc){
             Map func = manejador.PrimerElemento(manejador.Listar("funcionalidad", "funcionalidad_id = '"+ (m.get("funcionalidad_id")).toString() + "'",true));
             agregarElemento((func.get("funcionalidad_id")).toString()+" "+(func.get("nombre")).toString());
         }

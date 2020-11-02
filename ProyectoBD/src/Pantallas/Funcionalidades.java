@@ -34,6 +34,7 @@ public class Funcionalidades extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         Seleccionar = new javax.swing.JButton();
         funcComboBox = new javax.swing.JComboBox<>();
+        atrasButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,6 +48,8 @@ public class Funcionalidades extends javax.swing.JFrame {
                 funcComboBoxActionPerformed(evt);
             }
         });
+
+        atrasButton.setText("Atras");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -63,6 +66,10 @@ public class Funcionalidades extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(atrasButton)
+                .addGap(34, 34, 34))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -73,7 +80,9 @@ public class Funcionalidades extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Seleccionar)
                     .addComponent(funcComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(209, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
+                .addComponent(atrasButton)
+                .addGap(27, 27, 27))
         );
 
         pack();
@@ -122,6 +131,12 @@ public class Funcionalidades extends javax.swing.JFrame {
         return Seleccionar;
     }
     
+    public JButton getAtrasButton(){
+        return atrasButton;
+    }
+    public void vaciarItems(){
+        funcComboBox.removeAllItems();
+    }
     public void agregarItem(String item){
         funcComboBox.addItem(item);
     }
@@ -132,6 +147,7 @@ public class Funcionalidades extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Seleccionar;
+    private javax.swing.JButton atrasButton;
     private javax.swing.JComboBox<String> funcComboBox;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

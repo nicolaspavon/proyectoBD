@@ -24,7 +24,14 @@ public class ControladorMenues {
        pantallaMenues = new Menues();
        contrPantallas = contrPantalla;
        pantallaMenues.getIngresarButton().addActionListener(e -> ingresarMenuSeleccionado(pantallaMenues.getMenuSeleccionado()));
-        
+       pantallaMenues.getAtrasButton().addActionListener(e -> volverAplicaciones());
+    }
+    
+    public void volverAplicaciones(){
+        pantallaMenues.setVisible(false);
+        pantallaMenues.vaciarMenus();
+        listaMenues.clear();
+        contrPantallas.activarAplicaciones();
     }
     
     public void obtenerMenues(String user, String aplicacion){
@@ -64,5 +71,9 @@ public class ControladorMenues {
     }
     public void agregarElemento(String item){
         pantallaMenues.agregarItem(item);
+    }
+
+    void activarPantalla() {
+        pantallaMenues.setVisible(true);
     }
 }

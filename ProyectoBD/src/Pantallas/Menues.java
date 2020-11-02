@@ -34,6 +34,7 @@ public class Menues extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         comboBox = new javax.swing.JComboBox<>();
         Ingresar = new javax.swing.JButton();
+        atrasButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,6 +54,13 @@ public class Menues extends javax.swing.JFrame {
             }
         });
 
+        atrasButton.setText("Atras");
+        atrasButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atrasButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -68,6 +76,10 @@ public class Menues extends javax.swing.JFrame {
                         .addGap(72, 72, 72)
                         .addComponent(Ingresar)))
                 .addContainerGap(152, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(atrasButton)
+                .addGap(37, 37, 37))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -78,7 +90,9 @@ public class Menues extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Ingresar))
-                .addContainerGap(221, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
+                .addComponent(atrasButton)
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -92,8 +106,16 @@ public class Menues extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_IngresarActionPerformed
 
+    private void atrasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_atrasButtonActionPerformed
+
     public JButton getIngresarButton() {
         return Ingresar;
+    }
+    
+    public JButton getAtrasButton(){
+        return atrasButton;
     }
     
     public String getMenuSeleccionado() {
@@ -139,8 +161,13 @@ public class Menues extends javax.swing.JFrame {
         comboBox.addItem(item);
     }
     
+    public void vaciarMenus(){
+        comboBox.removeAllItems();
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Ingresar;
+    private javax.swing.JButton atrasButton;
     private javax.swing.JComboBox<String> comboBox;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

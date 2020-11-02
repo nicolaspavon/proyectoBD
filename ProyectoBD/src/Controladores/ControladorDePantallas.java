@@ -43,5 +43,13 @@ public class ControladorDePantallas {
      public void activarFuncionalidades (String menu){
         contrFunc.activarFunc(menu);
     }
+
+    public void activarAplicaciones() {
+        contrAplicaciones.activarPantalla();
+    }
+
+    public void activarMenus() {
+        contrMenues.activarPantalla();
+    }
     
 }
