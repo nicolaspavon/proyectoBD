@@ -35,6 +35,7 @@ public class Aplicaciones extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         comboBox = new javax.swing.JComboBox<>();
         Ingresar = new javax.swing.JButton();
+        atrasButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,6 +55,8 @@ public class Aplicaciones extends javax.swing.JFrame {
             }
         });
 
+        atrasButton.setText("Atras");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -69,6 +72,10 @@ public class Aplicaciones extends javax.swing.JFrame {
                         .addGap(72, 72, 72)
                         .addComponent(Ingresar)))
                 .addContainerGap(152, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(atrasButton)
+                .addGap(32, 32, 32))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -79,7 +86,9 @@ public class Aplicaciones extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Ingresar))
-                .addContainerGap(221, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 187, Short.MAX_VALUE)
+                .addComponent(atrasButton)
+                .addContainerGap())
         );
 
         pack();
@@ -95,6 +104,10 @@ public class Aplicaciones extends javax.swing.JFrame {
 
     public JButton getSeleccionarAppButton() {
         return Ingresar;
+    }
+    
+    public JButton getAtrasButton(){
+        return atrasButton;
     }
     
     public String getAppSeleccionada() {
@@ -141,6 +154,7 @@ public class Aplicaciones extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Ingresar;
+    private javax.swing.JButton atrasButton;
     private javax.swing.JComboBox<String> comboBox;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

@@ -22,6 +22,16 @@ public class ControladorAplicaciones {
        pantallaAplicaciones = new Aplicaciones();
        contrPantallas = contrPantalla;
        pantallaAplicaciones.getSeleccionarAppButton().addActionListener(e -> ingresarAppSeleccionada(pantallaAplicaciones.getAppSeleccionada()));
+       pantallaAplicaciones.getAtrasButton().addActionListener(e -> this.volverLogin());
+        
+    }
+    
+    public void volverLogin(){
+        
+        pantallaAplicaciones.setVisible(false);
+        
+        contrPantallas.activarLogin();
+       
         
     }
     

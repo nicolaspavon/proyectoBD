@@ -26,6 +26,12 @@ public class ControladorDePantallas {
         contrSesion.activarLogin();
     }
     
+    public void activarLogin(){
+        contrSesion = new ControladorDeSesion(this);
+        contrAplicaciones = new ControladorAplicaciones(this);
+        contrSesion.activarLogin();
+    }
+    
     public void activarAplicaciones(String user){
         contrAplicaciones.activarAplicaciones(user);
     }
