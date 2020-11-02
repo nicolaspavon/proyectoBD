@@ -44,7 +44,6 @@ public class ControladorMenues {
     }
     
     public void ingresarMenuSeleccionado(String menu){
-        System.out.println("alla vamos");
         String menuElegido = menu.split(" ")[0];
         for (Map m : listaMenues){
             if(m.get("menu_id").toString().equals(menuElegido)){
@@ -56,8 +55,7 @@ public class ControladorMenues {
                 contrPantallas.activarFuncionalidades(menuElegido);
             }
         }
-        //System.out.println(pantallaApp.getAppSeleccionada());
-        //pantallaApp.setVisible(false);
+        pantallaMenues.setVisible(false);
         
     }
     

@@ -49,15 +49,15 @@ public class ControladorFuncionalidades {
     }
 
     private void ingresarFuncionalidad(String funcSeleccionada) {
-        String func = funcSeleccionada.split(" ")[0];
-        pantallaFunc.getFuncSeleccionada();
         
-//        DBHandler manejador = new DBHandler();
-//        ArrayList<Map> funcs = manejador.Imprimir(manejador.Listar("funcionalidad", "funcionalidad_id = '"+ pantallaFunc.getFuncSeleccionada() + "'"));
-//        for (Map m : funcs){
-//            agregarElemento((m.get("funcionalidad_id")).toString());
-//        }
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        DBHandler manejador = new DBHandler();
+        ArrayList<Map> func = manejador.Imprimir(manejador.Listar("funcionalidad", "funcionalidad_id = '"+ funcSeleccionada.split(" ")[0] + "'"));
+        for (Map m : func){
+            if (m.get("tipo").equals("crear")){
+                pantallaFunc.setVisible(false);
+                contrPantallas.activarCrear(m);
+            };
+        }
     }
     
     public void agregarElemento(String item){

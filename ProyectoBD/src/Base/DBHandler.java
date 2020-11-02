@@ -27,6 +27,7 @@ public class DBHandler {
         
     public void Insertar(String datos, String nombreTabla){
         try {
+            System.out.println(datos);
             Statement stmt = connection.createStatement();
             String stringDatos = "INSERT INTO " + nombreTabla + " VALUES " 
                     + "(" + datos + ");";
@@ -149,6 +150,27 @@ public class DBHandler {
         }
         catch (Exception e){
             System.out.println("Error obteniendo menues para el usuario " + usuario);
+            System.out.println(e);  
+        }
+        return null;
+    }
+    
+    public ArrayList<String> GetTabla(String nombreTabla){
+        try{
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM "+nombreTabla.toLowerCase()+" LIMIT 1;");
+            ResultSetMetaData rsMetaData = rs.getMetaData();
+            int cantColumnas = rsMetaData.getColumnCount();
+            ArrayList<String> resultado = new ArrayList<String>();
+            while (rs.next()) {
+                for(int i = 1; i<=cantColumnas; i++) {
+                    resultado.add(rsMetaData.getColumnName(i));
+                }
+            }
+            return resultado;
+        }
+        catch (Exception e){
+            System.out.println("Error listando " + nombreTabla);
             System.out.println(e);  
         }
         return null;

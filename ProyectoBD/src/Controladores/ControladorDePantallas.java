@@ -6,6 +6,7 @@
 package Controladores;
 
 import Pantallas.Aplicaciones;
+import java.util.Map;
 
 /**
  *
@@ -17,12 +18,14 @@ public class ControladorDePantallas {
     private ControladorAplicaciones contrAplicaciones;
     private ControladorMenues contrMenues;
     private ControladorFuncionalidades contrFunc;
+    private ControladorCrear contrCrear;
     
     public ControladorDePantallas(){
         contrSesion = new ControladorDeSesion(this);
         contrAplicaciones = new ControladorAplicaciones(this);
         contrMenues = new ControladorMenues(this);
         contrFunc = new ControladorFuncionalidades(this);
+        contrCrear = new ControladorCrear(this);
         contrSesion.activarLogin();
     }
     
@@ -40,7 +43,7 @@ public class ControladorDePantallas {
         contrMenues.activarMenues(contrSesion.getUser(), app);
     }
     
-     public void activarFuncionalidades (String menu){
+    public void activarFuncionalidades (String menu){
         contrFunc.activarFunc(menu);
     }
 
@@ -52,4 +55,7 @@ public class ControladorDePantallas {
         contrMenues.activarPantalla();
     }
     
+    public void activarCrear (Map func){
+        contrCrear.activarCrear(func);
+    }
 }
