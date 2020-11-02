@@ -89,7 +89,21 @@ public class DBHandler {
         }
     }
     
-    
+    public Map PrimerElemento(ResultSet rs){
+        try {
+            ResultSetMetaData rsMetaData = rs.getMetaData();
+            int cantColumnas = rsMetaData.getColumnCount();
+            Map<String, String> fila = new HashMap<>();
+            rs.next();
+            for(int i = 1; i<=cantColumnas; i++) {
+                fila.put(rsMetaData.getColumnName(i), rs.getObject(rsMetaData.getColumnName(i)).toString()); 
+            } 
+            return fila;
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener primer elemento");
+        }
+        return null;
+    }
     
     public ArrayList<Map> Imprimir(ResultSet rs){
         ArrayList<Map> resultado = new ArrayList<>();
@@ -138,4 +152,5 @@ public class DBHandler {
         }
         return null;
     }
+   
 }

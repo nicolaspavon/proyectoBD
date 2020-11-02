@@ -34,8 +34,7 @@ public class ControladorFuncionalidades {
         DBHandler manejador = new DBHandler();
         ArrayList<Map> funcs = manejador.Imprimir(manejador.Listar("menu_funcionalidad", "menu_id = '"+ menu + "'"));
         for (Map m : funcs){
-            ArrayList<Map> funciones = manejador.Imprimir(manejador.Listar("funcionalidad", "funcionalidad_id = '"+ (m.get("funcionalidad_id")).toString() + "'"));
-            Map func = funciones.get(0);
+            Map func = manejador.PrimerElemento(manejador.Listar("funcionalidad", "funcionalidad_id = '"+ (m.get("funcionalidad_id")).toString() + "'"));
             agregarElemento((func.get("funcionalidad_id")).toString()+" "+(func.get("nombre")).toString());
         }
     }

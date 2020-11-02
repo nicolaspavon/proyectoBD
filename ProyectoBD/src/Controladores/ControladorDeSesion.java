@@ -9,6 +9,9 @@ import Base.DBHandler;
 import Base.DataBase;
 import java.sql.Connection;
 import Pantallas.Login;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -52,6 +55,11 @@ public class ControladorDeSesion
             else{
                 System.out.println("no existe en la tabla Usuario");
                 this.mensajeErrorUsuario();
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    System.out.println("No puedo cerrar");
+                }
             }
             
         }
