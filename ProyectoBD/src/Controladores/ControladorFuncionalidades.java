@@ -61,6 +61,11 @@ public class ControladorFuncionalidades {
             pantallaFunc.setVisible(false);
             contrPantallas.activarListar(func);
         }
+        else if (func.get("tipo").equals("eliminar")){
+            String opcion = func.get("nombretabla");
+            pantallaFunc.setVisible(false);
+            contrPantallas.activarEliminar(opcion);
+        }
     }
     
     public void agregarElemento(String item){
