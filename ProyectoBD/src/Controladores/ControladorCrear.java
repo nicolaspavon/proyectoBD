@@ -24,6 +24,13 @@ public class ControladorCrear {
         ArrayList<String> tabla = traerTabla(objeto.get("nombretabla").toString());
         pantallaCrear = new Crear(tabla, objeto.get("nombre").toString());
         pantallaCrear.getCrear().addActionListener(e -> crearObjeto(pantallaCrear.getDatos()));
+        pantallaCrear.getAtras().addActionListener(e -> volverAtras());
+    }
+    
+    public void volverAtras(){
+        pantallaCrear.apagarPantalla();
+        objeto.clear();
+        contrPantallas.activarFuncionalidades();
     }
     
     private ArrayList<String> traerTabla(String nombreTabla) {

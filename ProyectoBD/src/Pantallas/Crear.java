@@ -11,9 +11,11 @@ import javax.swing.*;
 public class Crear{
     public JButton crear;
     public ArrayList<JTextField> texts;
+    public JButton atras;
+    private JFrame frame;
     
     public Crear(ArrayList<String> tabla, String nombre){
-        JFrame frame = new JFrame(nombre);
+        frame = new JFrame(nombre);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel panel = new JPanel();
@@ -33,6 +35,9 @@ public class Crear{
 
         crear = new JButton("Crear");
         panel.add(crear);
+        
+        atras = new JButton("Atras");
+        panel.add(atras);
 
         frame.add(panel);
 
@@ -42,6 +47,14 @@ public class Crear{
     
     public JButton getCrear(){
         return crear;
+    }
+    
+    public JButton getAtras(){
+        return atras;
+    }
+    
+    public void apagarPantalla(){
+        frame.setVisible(false);
     }
     
     public String getDatos(){

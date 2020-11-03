@@ -10,12 +10,12 @@ import java.util.Map;
 import javax.swing.*;
 
 public class Listar{
-    public JButton crear;
-    public ArrayList<JTextField> texts;
+    public JButton atras;
+    private JFrame frame;
     private String primeraLinea;
     
-    public Listar(String linea,ArrayList<String> tabla, String nombreFunc, String nombreTabla, ArrayList<Map> filas){ //Recorrer las filas y ponerlas en la lista
-        JFrame frame = new JFrame(nombreFunc);
+    public Listar(String linea,ArrayList<String> tabla, String nombreFunc, String nombreTabla, ArrayList<Map> filas){
+        frame = new JFrame(nombreFunc);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel panel = new JPanel();
@@ -39,14 +39,21 @@ public class Listar{
         listaFilas.setModel(modelo);
         panel.add(listaFilas);
         
+        atras = new JButton("Atras");
+        panel.add(atras);
+        
         frame.add(panel);
 
-        frame.setSize(550, 200);	
+        frame.setSize(550, 250);	
         frame.setVisible(true);
     }
     
-    public JButton getCrear(){
-        return crear;
+    public JButton getAtras(){
+        return atras;
+    }
+
+    public void apagarPantalla() {
+        frame.setVisible(false);
     }
 
 }

@@ -49,11 +49,11 @@ public class ControladorDePantallas {
         contrFunc.activarFunc(menu);
     }
 
-    public void activarAplicaciones() {
+    public void activarAplicaciones() {//para boton atras
         contrAplicaciones.activarPantalla();
     }
 
-    public void activarMenus() {
+    public void activarMenus() { //para boton atras
         contrMenues.activarPantalla();
     }
     
@@ -63,6 +63,10 @@ public class ControladorDePantallas {
     
     public void activarListar(Map<String,String> func){
         contrListar.activarListar(func);
+    }
+
+    void activarFuncionalidades() { //para volver atras
+        contrFunc.activarFunc();
     }
 
   

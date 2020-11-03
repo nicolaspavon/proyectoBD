@@ -34,6 +34,7 @@ public class ControladorListar {
         ArrayList<Map> listaFilas = manejador.Imprimir(manejador.Listar(func.get("nombretabla").toString()));
         
         pantallaListar = new Listar(linea, tabla, func.get("nombre").toString(), func.get("nombretabla").toString(), listaFilas);
+        pantallaListar.getAtras().addActionListener(e -> volverAtras());
     }
     
     public String generarPrimeraLinea(ArrayList<String> tabla){
@@ -47,6 +48,12 @@ public class ControladorListar {
     private ArrayList<String> traerTabla(String nombreTabla) {
         DBHandler manejador = new DBHandler();
         return manejador.GetTabla(nombreTabla);
+    }
+
+    private void volverAtras() {
+        pantallaListar.apagarPantalla();
+        func.clear();
+        contrPantallas.activarFuncionalidades();
     }
 
 

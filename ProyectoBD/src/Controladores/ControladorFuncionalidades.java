@@ -66,5 +66,9 @@ public class ControladorFuncionalidades {
     public void agregarElemento(String item){
         pantallaFunc.agregarItem(item);
     }
+
+    void activarFunc() {
+        pantallaFunc.setVisible(true);
+    }
     
 }
