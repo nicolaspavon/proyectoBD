@@ -19,6 +19,7 @@ public class ControladorDePantallas {
     private ControladorMenues contrMenues;
     private ControladorFuncionalidades contrFunc;
     private ControladorCrear contrCrear;
+    private ControladorListar contrListar;
     
     public ControladorDePantallas(){
         contrSesion = new ControladorDeSesion(this);
@@ -26,6 +27,7 @@ public class ControladorDePantallas {
         contrMenues = new ControladorMenues(this);
         contrFunc = new ControladorFuncionalidades(this);
         contrCrear = new ControladorCrear(this);
+        contrListar = new ControladorListar(this);
         contrSesion.activarLogin();
     }
     
@@ -58,4 +60,10 @@ public class ControladorDePantallas {
     public void activarCrear (Map func){
         contrCrear.activarCrear(func);
     }
+    
+    public void activarListar(Map<String,String> func){
+        contrListar.activarListar(func);
+    }
+
+  
 }

@@ -22,7 +22,7 @@ public class ProyectoBD {
 //        HOLA BASE DE DATOS!!
 ////        --------------------------------------------------------------------
 //        DataBase base = new DataBase();
-//        base.getCurrentConnection("postgres", "qweqweqwe");
+//        base.getCurrentConnection("postgres", "holaquetal");
 //        base.CrearDB();
 //        base.cargarDatos();
         

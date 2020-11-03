@@ -52,10 +52,15 @@ public class ControladorFuncionalidades {
         
         DBHandler manejador = new DBHandler();
         Map<String, String> func = manejador.PrimerElemento(manejador.Listar("funcionalidad", "funcionalidad_id = '"+ funcSeleccionada.split(" ")[0] + "'"));
+        
         if (func.get("tipo").equals("crear")){
             pantallaFunc.setVisible(false);
             contrPantallas.activarCrear(func);
-        };
+        }
+        else if (func.get("tipo").equals("listar")){
+            pantallaFunc.setVisible(false);
+            contrPantallas.activarListar(func);
+        }
     }
     
     public void agregarElemento(String item){
