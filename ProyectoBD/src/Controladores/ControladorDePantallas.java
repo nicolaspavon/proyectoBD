@@ -15,16 +15,16 @@ import java.util.Map;
 public class ControladorDePantallas {
     private Aplicaciones pantallaApp;
     private ControladorDeSesion contrSesion;
-    private ControladorAplicaciones contrAplicaciones;
     private ControladorMenues contrMenues;
     private ControladorFuncionalidades contrFunc;
     private ControladorCrear contrCrear;
     private ControladorListar contrListar;
     private ControladorEliminar contrEliminar;
+    private static String app;
     
-    public ControladorDePantallas(){
-        contrSesion = new ControladorDeSesion(this);
-        contrAplicaciones = new ControladorAplicaciones(this);
+    public ControladorDePantallas(String aplicacion){
+        app = aplicacion;
+        contrSesion = new ControladorDeSesion(this,app);
         contrMenues = new ControladorMenues(this);
         contrFunc = new ControladorFuncionalidades(this);
         contrCrear = new ControladorCrear(this);
@@ -34,13 +34,8 @@ public class ControladorDePantallas {
     }
     
     public void activarLogin(){
-        contrSesion = new ControladorDeSesion(this);
-        contrAplicaciones = new ControladorAplicaciones(this);
+        contrSesion = new ControladorDeSesion(this,app);
         contrSesion.activarLogin();
-    }
-    
-    public void activarAplicaciones(String user){
-        contrAplicaciones.activarAplicaciones(user);
     }
     
     public void activarMenues(String app){
@@ -49,10 +44,6 @@ public class ControladorDePantallas {
     
     public void activarFuncionalidades (String menu){
         contrFunc.activarFunc(menu);
-    }
-
-    public void activarAplicaciones() {//para boton atras
-        contrAplicaciones.activarPantalla();
     }
 
     public void activarMenus() { //para boton atras
@@ -74,5 +65,4 @@ public class ControladorDePantallas {
         contrFunc.activarFunc();
     }
 
-  
 }

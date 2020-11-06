@@ -10,6 +10,8 @@ import Base.DataBase;
 import java.sql.Connection;
 import Pantallas.Login;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -22,15 +24,31 @@ public class ControladorDeSesion
     private String Usuario;
     private DataBase base;
     private Login login;
+    private String appID;
     private ControladorDePantallas contrPantallas;
     
-    public ControladorDeSesion(ControladorDePantallas contrPantalla) 
+    public ControladorDeSesion(ControladorDePantallas contrPantalla, String nombreAplicacion) 
     {
+       appID = nombreAplicacion;
        login = new Login();
        base = new DataBase();
        contrPantallas = contrPantalla;
        login.getIngresarButton().addActionListener(e -> connect(login.getUser(),login.getPass()));
         
+    }
+    
+    public boolean obtenerApps(String user){
+        boolean appPermitida = false;
+        DBHandler manejador = new DBHandler();
+        ArrayList<Map> apps = manejador.Imprimir(manejador.Listar("usuario_aplicacion", "usuario_id = '"+ user + "'"));
+        
+        for (Map m : apps){
+            if(m.get("aplicacion_id").equals(appID)){
+                appPermitida = true;
+            }
+            
+        }
+        return appPermitida;
     }
     
     public void connect(String user, String pass){
@@ -48,9 +66,14 @@ public class ControladorDeSesion
                     
                 Usuario = manejador.Imprimir(manejador.Listar("Usuario", "usuario_id = '"+user+"'")).get(0).get("usuario_id").toString();  
                 System.out.println("Ingresado con usuario: " + Usuario);
-                this.desactivarLogin();
-                contrPantallas.activarAplicaciones(user);
-                
+                if (obtenerApps(user)){
+                    this.desactivarLogin();
+                    contrPantallas.activarMenues(appID);
+                }
+                else{
+                    System.out.println("Aplicacion no permitida");
+                }
+
             }
             else{
                 System.out.println("no existe en la tabla Usuario");

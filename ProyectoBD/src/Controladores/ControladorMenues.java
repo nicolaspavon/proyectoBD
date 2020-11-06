@@ -24,15 +24,16 @@ public class ControladorMenues {
        pantallaMenues = new Menues();
        contrPantallas = contrPantalla;
        pantallaMenues.getIngresarButton().addActionListener(e -> ingresarMenuSeleccionado(pantallaMenues.getMenuSeleccionado()));
-       pantallaMenues.getAtrasButton().addActionListener(e -> volverAplicaciones());
+       pantallaMenues.getAtrasButton().addActionListener(e -> volverLogin());
     }
     
-    public void volverAplicaciones(){
+    public void volverLogin(){
         pantallaMenues.setVisible(false);
         pantallaMenues.vaciarMenus();
         listaMenues.clear();
-        contrPantallas.activarAplicaciones();
+        contrPantallas.activarLogin();
     }
+    
     
     public void obtenerMenues(String user, String aplicacion){
         DBHandler manejador = new DBHandler();        

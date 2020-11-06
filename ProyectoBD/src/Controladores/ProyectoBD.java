@@ -16,8 +16,9 @@ import Pantallas.Login;
 public class ProyectoBD {
     
     public static void main(String[] args) {
-
-        ControladorDePantallas controlador = new ControladorDePantallas();
+        //Aplicación de seguridad
+        
+        ControladorDePantallas controlador = new ControladorDePantallas("1");
     
 //        HOLA BASE DE DATOS!!
 ////        --------------------------------------------------------------------
