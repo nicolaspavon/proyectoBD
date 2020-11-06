@@ -336,6 +336,9 @@ public class DataBase {
             "			RETURN NEW;\n" +
             "        ELSIF (TG_OP = 'INSERT') THEN\n" +
             "			execute ' grant ' || quote_ident(new.rol_id) || ' to ' || quote_ident(new.usuario_id);\n" +
+            "                   IF (new.rol_id = 'administrador_general' or new.rol_id = 'administrador_seguridad') THEN\n" +
+            "                       execute ' alter role ' || quote_ident(new.usuario_id) || ' WITH SUPERUSER CREATEROLE';\n" +
+            "                   END IF;\n" +
             "			RETURN NEW;\n" +
             "        END IF;\n" +
             "    END;\n" +

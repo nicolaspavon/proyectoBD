@@ -22,6 +22,7 @@ public class ControladorCrear {
     void activarCrear(Map objeto) {
         this.objeto = objeto;
         ArrayList<String> tabla = traerTabla(objeto.get("nombretabla").toString());
+        System.out.println(tabla);
         pantallaCrear = new Crear(tabla, objeto.get("nombre").toString());
         pantallaCrear.getCrear().addActionListener(e -> crearObjeto(pantallaCrear.getDatos()));
         pantallaCrear.getAtras().addActionListener(e -> volverAtras());
