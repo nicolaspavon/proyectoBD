@@ -132,7 +132,27 @@ public class DBHandler {
         }
         return null;
     }
-    
+     public Map PrimerElemento(ResultSet rs,boolean a){
+        try {
+            ResultSetMetaData rsMetaData = rs.getMetaData();
+            int cantColumnas = rsMetaData.getColumnCount();
+            Map<String, String> fila = new HashMap<>();
+            rs.next();
+            for(int i = 1; i<=cantColumnas; i++) {
+                try{
+                    fila.put(rsMetaData.getColumnName(i), rs.getObject(rsMetaData.getColumnName(i)).toString()); 
+                }
+                catch(Exception e){
+                    fila.put(rsMetaData.getColumnName(i), ""); 
+                
+                }
+            } 
+            return fila;
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener primer elemento");
+        }
+        return null;
+    }
     public ArrayList<Map> Imprimir(ResultSet rs){
         ArrayList<Map> resultado = new ArrayList<>();
         try {
@@ -191,6 +211,36 @@ public class DBHandler {
         return null;
     }
 
+    public ArrayList ListarFuncionalidades( String menu_id){
+        try{
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT DISTINCT menu_funcionalidad.funcionalidad_id, funcionalidad.nombre FROM funcionalidad, menu_funcionalidad " +
+                " WHERE funcionalidad.habilitado=true AND menu_funcionalidad.menu_id="+menu_id +
+                " AND menu_funcionalidad.habilitado=true AND funcionalidad.funcionalidad_id = menu_funcionalidad.funcionalidad_id");
+            ArrayList<Map> resultado = new ArrayList<>();
+            ResultSetMetaData rsMetaData = rs.getMetaData();
+            int cantColumnas = rsMetaData.getColumnCount();
+            while (rs.next()) {
+                Map<String, String> fila = new HashMap<>();
+                for(int i = 1; i<=cantColumnas; i++) {
+                    try {
+                        fila.put(rsMetaData.getColumnName(i), rs.getObject(rsMetaData.getColumnName(i)).toString());
+                    }
+                    catch (Exception e){
+                        System.out.println("error obteniendo datos");
+                   }
+                }
+                resultado.add(fila);
+            }
+            return resultado;
+        }
+        catch (Exception e){
+            System.out.println("Error listando " + menu_id);
+            System.out.println(e);  
+        }
+        return null;
+    }
+    
    public ResultSet ListarAplicaciones(String usuario, String columnas){
         try{
             Statement stmt = connection.createStatement();

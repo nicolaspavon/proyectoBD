@@ -21,6 +21,7 @@ public class ControladorDePantallas {
     private ControladorListar contrListar;
     private ControladorEliminar contrEliminar;
     private ControladorCambiarPass contrCambiarPass;
+    private ControladorEnDesarrollo contrEnDesarrollo;
     private static String app;
     
     public ControladorDePantallas(String aplicacion){
@@ -33,6 +34,7 @@ public class ControladorDePantallas {
         contrEliminar = new ControladorEliminar(this);
         //contrCambiarPass = new ControladorCambiarPass(this);
         contrSesion.activarLogin();
+        contrEnDesarrollo = new ControladorEnDesarrollo(this);
     }
     
     public void activarLogin(){
@@ -71,6 +73,10 @@ public class ControladorDePantallas {
         contrCambiarPass =  new ControladorCambiarPass(this, contrSesion.getUser());
         contrCambiarPass.activarCambiarPass(contrSesion.getUser());
         
+    }
+    
+    void activarEnDesarrollo(){
+        contrEnDesarrollo.activarEnProceso();
     }
 
 }

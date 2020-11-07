@@ -18,12 +18,12 @@ public class ProyectoBD {
     public static void main(String[] args) {
         //Aplicación de seguridad
         
-        ControladorDePantallas controlador = new ControladorDePantallas("1");
+        ControladorDePantallas controlador = new ControladorDePantallas("2");
     
 //        HOLA BASE DE DATOS!!
 ////        --------------------------------------------------------------------
 //        DataBase base = new DataBase();
-//        base.getCurrentConnection("postgres", "holaquetal");
+//        base.getCurrentConnection("postgres", "hola1234");
 //        base.CrearDB();
 //        base.cargarDatos();
         

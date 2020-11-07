@@ -4,6 +4,8 @@ menu_id,nombre,descripcion,habilitado
 3,'Roles','CRUD Roles',true
 4,'Auditoría','Menú para realizar la traza de auditoría y aprobar/rechazar acciones',true
 5,'Aplicaciones','CRUD Aplicaciones',true
-6,'Menues','CRUD Menues',true
-7,'Negocio','Menú principal de la aplicacion de negocio',true
+6,'Menus','CRUD Menus',true
+7,'Menu de la semana','Menú que muestra los menús de comida de la semana',true
 8,'Gestion usuario', 'Menu para cambiar contraseña',true
+9,'Comidas para veganos','Muestra las opciones de comidas veganas',true
+10,'Postres','Muestra opciones de postres',true

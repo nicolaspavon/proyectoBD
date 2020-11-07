@@ -6,6 +6,8 @@ rol_id,menu_id,habilitado
 'administrador_general',5,true
 'administrador_general',6,true
 'administrador_general',7,true
+'administrador_general',9,true
+'administrador_general',10,true
 'administrador_seguridad',1,true
 'administrador_seguridad',2,true
 'administrador_seguridad',3,true
@@ -19,6 +21,8 @@ rol_id,menu_id,habilitado
 'usuario_regular',5,true
 'usuario_regular',6,true
 'usuario_regular',7,true
+'usuario_regular',10,true
+'usuario_regular',9,true
 'administrador_seguridad',8,true
 'administrador_general',8,true
 'administrador_auditoria',8,true
