@@ -9,3 +9,8 @@ nombre,descripcion,habilitado
 'Gestion usuario', 'Menu para cambiar contraseña',true
 'Comidas para veganos','Muestra las opciones de comidas veganas',true
 'Postres','Muestra opciones de postres',true
+'Aplicacion_Menu','CRUD Aplicacion_Menu',true
+'Menu_Funcionalidad','CRUD Menu_Funcionalidad',true
+'Menu_Rol','CRUD Menu_Rol',true
+'Rol_Usuario','CRUD Rol_Usuario',true
+'Usuario_Aplicacion','CRUD Usuario_Aplicacion',true

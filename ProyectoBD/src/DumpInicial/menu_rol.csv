@@ -8,6 +8,11 @@ rol_id,menu_id,habilitado
 'administrador_general',7,true
 'administrador_general',9,true
 'administrador_general',10,true
+'administrador_general',11,true
+'administrador_general',12,true
+'administrador_general',13,true
+'administrador_general',14,true
+'administrador_general',15,true
 'administrador_seguridad',1,true
 'administrador_seguridad',2,true
 'administrador_seguridad',3,true

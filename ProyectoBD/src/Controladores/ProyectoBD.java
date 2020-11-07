@@ -16,14 +16,14 @@ public class ProyectoBD {
     public static void main(String[] args) {
         //Aplicación de seguridad
         
-//        ControladorDePantallas controlador = new ControladorDePantallas("1");
+        ControladorDePantallas controlador = new ControladorDePantallas("1");
     
 //        HOLA BASE DE DATOS!!
 //        --------------------------------------------------------------------
-        DataBase base = new DataBase();
-        base.getCurrentConnection("postgres", "qweqweqwe");
-        base.CrearDB();
-        base.cargarDatos();
+//        DataBase base = new DataBase();
+//        base.getCurrentConnection("postgres", "holaquetal");
+//        base.CrearDB();
+//        base.cargarDatos();
 //        
         
     }   
