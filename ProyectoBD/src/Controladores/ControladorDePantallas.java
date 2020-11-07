@@ -5,7 +5,6 @@
  */
 package Controladores;
 
-import Pantallas.Aplicaciones;
 import java.util.Map;
 
 /**
@@ -13,7 +12,6 @@ import java.util.Map;
  * @author Vale
  */
 public class ControladorDePantallas {
-    private Aplicaciones pantallaApp;
     private ControladorDeSesion contrSesion;
     private ControladorMenues contrMenues;
     private ControladorFuncionalidades contrFunc;
@@ -22,17 +20,18 @@ public class ControladorDePantallas {
     private ControladorEliminar contrEliminar;
     private ControladorCambiarPass contrCambiarPass;
     private ControladorEnDesarrollo contrEnDesarrollo;
+    private ControladorAuditoria contrAudi;
     private static String app;
     
     public ControladorDePantallas(String aplicacion){
         app = aplicacion;
+        contrAudi = new ControladorAuditoria(this);
         contrSesion = new ControladorDeSesion(this,app);
         contrMenues = new ControladorMenues(this);
         contrFunc = new ControladorFuncionalidades(this);
         contrCrear = new ControladorCrear(this);
         contrListar = new ControladorListar(this);
         contrEliminar = new ControladorEliminar(this);
-        //contrCambiarPass = new ControladorCambiarPass(this);
         contrSesion.activarLogin();
         contrEnDesarrollo = new ControladorEnDesarrollo(this);
     }
@@ -77,6 +76,10 @@ public class ControladorDePantallas {
     
     void activarEnDesarrollo(){
         contrEnDesarrollo.activarEnProceso();
+    }
+
+    void activarAudi() {
+        contrAudi.activarPantalla();
     }
 
 }

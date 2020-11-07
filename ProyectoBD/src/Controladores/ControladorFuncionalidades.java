@@ -69,10 +69,15 @@ public class ControladorFuncionalidades {
             pantallaFunc.setVisible(false);
             contrPantallas.activarCambiarPass();
         }
+        else if (func.get("tipo").equals("auditoria")){
+            pantallaFunc.setVisible(false);
+            contrPantallas.activarAudi();
+        }
         else{
             pantallaFunc.setVisible(false);
-            contrPantallas.activarEnDesarrollo();            
+            contrPantallas.activarEnDesarrollo();  
         }
+    
     }
     
     public void agregarElemento(String item){

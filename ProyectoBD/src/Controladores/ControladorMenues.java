@@ -8,7 +8,6 @@ package Controladores;
 import Base.DBHandler;
 import java.util.ArrayList;
 import java.util.Map;
-import Pantallas.Aplicaciones;
 import Pantallas.Menues;
 
 /**

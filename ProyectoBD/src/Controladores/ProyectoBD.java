@@ -6,8 +6,6 @@
 package Controladores;
 
 import Base.DataBase;
-import Pantallas.Aplicaciones;
-import Pantallas.Login;
 
 /**
  *
@@ -26,7 +24,7 @@ public class ProyectoBD {
 //        base.getCurrentConnection("postgres", "hola1234");
 //        base.CrearDB();
 //        base.cargarDatos();
-        
+//        
         
     }   
 }
