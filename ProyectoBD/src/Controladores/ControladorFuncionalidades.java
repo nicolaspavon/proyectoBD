@@ -50,7 +50,7 @@ public class ControladorFuncionalidades {
     private void ingresarFuncionalidad(String funcSeleccionada) {
         
         DBHandler manejador = new DBHandler();
-        Map<String, String> func = manejador.PrimerElemento(manejador.Listar("funcionalidad", "funcionalidad_id = '"+ funcSeleccionada.split(" ")[0] + "'"),true);
+        Map<String, String> func = manejador.PrimerElemento(manejador.Listar("funcionalidad", "id = '"+ funcSeleccionada.split(" ")[0] + "'"),true);
         
         if (func.get("tipo").equals("crear")){
             pantallaFunc.setVisible(false);
