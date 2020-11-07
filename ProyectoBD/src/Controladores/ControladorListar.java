@@ -19,9 +19,11 @@ public class ControladorListar {
     private Listar pantallaListar;
     private ControladorDePantallas contrPantallas;
     private Map func;
+    private ControladorAutorizaciones contrAutorizaciones;
     
-    public ControladorListar(ControladorDePantallas contrPantalla){
+    public ControladorListar(ControladorDePantallas contrPantalla, ControladorAutorizaciones contrAut){
         contrPantallas = contrPantalla;
+        contrAutorizaciones = contrAut;
     }
     
     void activarListar(Map<String, String> mapFunc) {

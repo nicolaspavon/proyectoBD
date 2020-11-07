@@ -13,15 +13,19 @@ public class ControladorCrear {
         
     private Crear pantallaCrear;
     private ControladorDePantallas contrPantallas;
+    private ControladorAutorizaciones contrAutorizaciones;
     private Map objeto;
     
-    public ControladorCrear(ControladorDePantallas contrPantalla){
+    public ControladorCrear(ControladorDePantallas contrPantalla, ControladorAutorizaciones contrAut){
         contrPantallas = contrPantalla;
+        contrAutorizaciones = contrAut;
     }
 
     void activarCrear(Map objeto) {
         this.objeto = objeto;
         ArrayList<String> tabla = traerTabla(objeto.get("nombretabla").toString());
+        tabla.remove("habilitado");
+        tabla.remove("id");
         System.out.println(tabla);
         pantallaCrear = new Crear(tabla, objeto.get("nombre").toString());
         pantallaCrear.getCrear().addActionListener(e -> crearObjeto(pantallaCrear.getDatos()));
@@ -40,8 +44,7 @@ public class ControladorCrear {
     }
 
     private void crearObjeto(String datos) {
-        DBHandler manejador = new DBHandler();
-        manejador.Insertar(datos, objeto.get("nombretabla").toString());
+        this.contrAutorizaciones.generarAutorizacion(this.objeto, datos);
     }
     
     

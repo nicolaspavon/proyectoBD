@@ -1,3 +1,3 @@
-aplicacion_id,nombre,descripcion,habilitado
-1,'Seguridad','Aplicacion de Seguridad',true
-2,'Negocio','Aplicacion de Negocio',true
+nombre,descripcion,habilitado
+'Seguridad','Aplicacion de Seguridad',true
+'Negocio','Aplicacion de Negocio',true

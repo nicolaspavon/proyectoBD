@@ -42,9 +42,24 @@ public class DBHandler {
         
     public void Insertar(String datos, String nombreTabla){
         try {
-            System.out.println(datos);
             Statement stmt = connection.createStatement();
             String stringDatos = "INSERT INTO " + nombreTabla + " VALUES " 
+                    + "(" + datos + ");";
+
+            stmt.executeUpdate(stringDatos);
+            stmt.close();              
+            
+        }
+        catch (Exception e){
+            System.out.println("Error en insertar en " + nombreTabla);
+            System.out.println(e);
+        }
+    }
+    
+    public void Insertar(String columnas, String datos, String nombreTabla){
+        try {
+            Statement stmt = connection.createStatement();
+            String stringDatos = "INSERT INTO " + nombreTabla + "(" + columnas + ")"+ " VALUES " 
                     + "(" + datos + ");";
 
             stmt.executeUpdate(stringDatos);
@@ -190,7 +205,7 @@ public class DBHandler {
             ResultSet rs = stmt.executeQuery("SELECT DISTINCT menu_rol.menu_id,menu.nombre " +
                     "FROM menu_rol, rol_usuario, aplicacion_menu , menu " +
                     "WHERE menu_rol.rol_id=rol_usuario.rol_id AND rol_usuario.usuario_id='" + usuario + "'" +
-                    "AND menu_rol.menu_id = aplicacion_menu.menu_id AND menu.menu_id = aplicacion_menu.menu_id "+ 
+                    "AND menu_rol.menu_id = aplicacion_menu.menu_id AND menu.id = aplicacion_menu.menu_id "+ 
                     "AND menu_rol.habilitado=rol_usuario.habilitado AND rol_usuario.habilitado=aplicacion_menu.habilitado " +
                     "AND aplicacion_menu.habilitado = true AND menu.habilitado=true "+
                     "AND aplicacion_menu.aplicacion_id=" + aplicacion +";");
@@ -229,7 +244,7 @@ public class DBHandler {
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT DISTINCT menu_funcionalidad.funcionalidad_id, funcionalidad.nombre FROM funcionalidad, menu_funcionalidad " +
                 " WHERE funcionalidad.habilitado=true AND menu_funcionalidad.menu_id="+menu_id +
-                " AND menu_funcionalidad.habilitado=true AND funcionalidad.funcionalidad_id = menu_funcionalidad.funcionalidad_id");
+                " AND menu_funcionalidad.habilitado=true AND funcionalidad.id = menu_funcionalidad.funcionalidad_id");
             ArrayList<Map> resultado = new ArrayList<>();
             ResultSetMetaData rsMetaData = rs.getMetaData();
             int cantColumnas = rsMetaData.getColumnCount();
@@ -257,7 +272,7 @@ public class DBHandler {
    public ResultSet ListarAplicaciones(String usuario, String columnas){
         try{
             Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT aplicacion.nombre,usuario_aplicacion.aplicacion_id FROM aplicacion, usuario_aplicacion WHERE aplicacion.aplicacion_id = usuario_aplicacion.aplicacion_id AND usuario_aplicacion.usuario_id='"+usuario+"';");
+            ResultSet rs = stmt.executeQuery("SELECT aplicacion.nombre,usuario_aplicacion.aplicacion_id FROM aplicacion, usuario_aplicacion WHERE aplicacion.id = usuario_aplicacion.aplicacion_id AND usuario_aplicacion.usuario_id='"+usuario+"';");
             return rs;
         }
         catch (Exception e){

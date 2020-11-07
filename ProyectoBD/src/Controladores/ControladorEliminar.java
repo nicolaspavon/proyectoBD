@@ -18,22 +18,21 @@ public class ControladorEliminar {
     private Eliminar pantallaEliminar;
     private ControladorDePantallas contrPantallas;
     private ResultSet opciones;
-    private Map objeto;
-    private String tabla;
-    private String columna;
+    private ControladorAutorizaciones contrAutorizaciones;
+    private Map<String, String> funcionalidad;
     
-    public ControladorEliminar(ControladorDePantallas contrPantalla){
+    public ControladorEliminar(ControladorDePantallas contrPantalla, ControladorAutorizaciones contrAut){
         contrPantallas = contrPantalla;
         pantallaEliminar = new Eliminar();
-        pantallaEliminar.getSeleccionarButton().addActionListener(e -> eliminarObjeto(pantallaEliminar.getEliminar()));
+        pantallaEliminar.getSeleccionarButton().addActionListener(e -> contrAutorizaciones.generarAutorizacion(funcionalidad, pantallaEliminar.getEliminar()));
         pantallaEliminar.getAtrasButton().addActionListener(e -> volverAtras());
-        
+        contrAutorizaciones = contrAut;
     }
 
-    void activarEliminar(String tabla) {
+    void activarEliminar(Map<String, String> func) {
+        funcionalidad = func;
         pantallaEliminar.setVisible(true);
-        this.tabla=tabla;
-        obtenerOpciones(tabla);
+        obtenerOpciones(func.get("nombretabla"));
     }
     
     public void obtenerOpciones(String tabla){
@@ -41,13 +40,10 @@ public class ControladorEliminar {
         opciones = manejador.Listar(tabla); // usar prim elemento
         try {
             ResultSetMetaData rsMetaData = opciones.getMetaData();
-            columna = rsMetaData.getColumnName(1);
             while (opciones.next()) {
                 String data=opciones.getObject(rsMetaData.getColumnName(1)).toString();
                 agregarElemento(data);
-                
             }
-
         } catch (SQLException ex) {
         }
     }
@@ -56,16 +52,6 @@ public class ControladorEliminar {
         pantallaEliminar.setVisible(false);
         pantallaEliminar.vaciarItems();
         contrPantallas.activarFuncionalidades();
-    }
-    
-
-    private void eliminarObjeto(String datos) {
-        
-        DBHandler manejador = new DBHandler();
-        String clausula = columna+"="+datos;
-        
-        manejador.Borrar(tabla, clausula);
-        this.volverAtras();
     }
     
     public void agregarElemento(String item){

@@ -16,6 +16,7 @@ public class ControladorDePantallas {
     private ControladorMenues contrMenues;
     private ControladorFuncionalidades contrFunc;
     private ControladorCrear contrCrear;
+    private ControladorAutorizaciones contrAut;
     private ControladorListar contrListar;
     private ControladorEliminar contrEliminar;
     private ControladorCambiarPass contrCambiarPass;
@@ -27,11 +28,12 @@ public class ControladorDePantallas {
         app = aplicacion;
         contrAudi = new ControladorAuditoria(this);
         contrSesion = new ControladorDeSesion(this,app);
+        contrAut = new ControladorAutorizaciones(contrSesion);
         contrMenues = new ControladorMenues(this);
         contrFunc = new ControladorFuncionalidades(this);
-        contrCrear = new ControladorCrear(this);
-        contrListar = new ControladorListar(this);
-        contrEliminar = new ControladorEliminar(this);
+        contrCrear = new ControladorCrear(this, contrAut);
+        contrListar = new ControladorListar(this, contrAut);
+        contrEliminar = new ControladorEliminar(this, contrAut);
         contrSesion.activarLogin();
         contrEnDesarrollo = new ControladorEnDesarrollo(this);
     }
@@ -56,7 +58,7 @@ public class ControladorDePantallas {
     public void activarCrear (Map func){
         contrCrear.activarCrear(func);
     }
-    public void activarEliminar (String func){
+    public void activarEliminar (Map func){
         contrEliminar.activarEliminar(func);
     }
     

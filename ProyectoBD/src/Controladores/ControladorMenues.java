@@ -47,10 +47,6 @@ public class ControladorMenues {
         String menuElegido = menu.split(" ")[0];
         for (Map m : listaMenues){
             if(m.get("menu_id").toString().equals(menuElegido)){
-                System.out.println(m.get("menu_id"));
-                System.out.println(m.get("nombre"));
-                System.out.println(m.get("descripcion"));
-                
                 pantallaMenues.setVisible(false);
                 contrPantallas.activarFuncionalidades(menuElegido);
             }

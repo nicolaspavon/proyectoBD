@@ -1,11 +1,11 @@
-menu_id,nombre,descripcion,habilitado
-1,'Personas','CRUD Personas',true
-2,'Usuarios','CRUD Usuarios',true
-3,'Roles','CRUD Roles',true
-4,'Auditoría','Menú para realizar la traza de auditoría y aprobar/rechazar acciones',true
-5,'Aplicaciones','CRUD Aplicaciones',true
-6,'Menus','CRUD Menus',true
-7,'Menu de la semana','Menú que muestra los menús de comida de la semana',true
-8,'Gestion usuario', 'Menu para cambiar contraseña',true
-9,'Comidas para veganos','Muestra las opciones de comidas veganas',true
-10,'Postres','Muestra opciones de postres',true
+nombre,descripcion,habilitado
+'Personas','CRUD Personas',true
+'Usuarios','CRUD Usuarios',true
+'Roles','CRUD Roles',true
+'Auditoría','Menú para realizar la traza de auditoría y aprobar/rechazar acciones',true
+'Aplicaciones','CRUD Aplicaciones',true
+'Menus','CRUD Menus',true
+'Menu de la semana','Menú que muestra los menús de comida de la semana',true
+'Gestion usuario', 'Menu para cambiar contraseña',true
+'Comidas para veganos','Muestra las opciones de comidas veganas',true
+'Postres','Muestra opciones de postres',true

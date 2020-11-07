@@ -1,2 +1,2 @@
-autorizacion_id,usuario_solicitante_id,usuario_validador_id,fecha,descripcion,funcionalidad_id,estado
+usuario_solicitante_id,usuario_validador_id,fecha,descripcion,funcionalidad_id,estado
 

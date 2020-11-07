@@ -58,11 +58,9 @@ public class ControladorDeSesion
         else{
             
             DBHandler manejador = new DBHandler();
-            System.out.println(user);
             if(!manejador.Imprimir(manejador.Listar("Usuario", "usuario_id = '"+user+"'",true)).isEmpty()){
                     
                 Usuario = manejador.Imprimir(manejador.Listar("Usuario", "usuario_id = '"+user+"'")).get(0).get("usuario_id").toString();  
-                System.out.println("Ingresado con usuario: " + Usuario);
                 if (obtenerApps(user)){
                     this.desactivarLogin();
                     contrPantallas.activarMenues(appID);

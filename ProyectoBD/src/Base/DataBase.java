@@ -95,7 +95,7 @@ public class DataBase {
     private void Aplicacion(){
         try {
             Statement stmt = connection.createStatement();
-            stmt.executeUpdate("CREATE TABLE Aplicacion (Aplicacion_ID serial PRIMARY KEY, "
+            stmt.executeUpdate("CREATE TABLE Aplicacion (id SERIAL PRIMARY KEY, "
                     + "Nombre varchar, "
                     + "Descripcion varchar, "
                     + "Habilitado boolean); ");
@@ -111,7 +111,7 @@ public class DataBase {
         try {
             Statement stmt = connection.createStatement();
             stmt.executeUpdate("CREATE TABLE Menu ( "
-                + "Menu_ID serial PRIMARY KEY, "
+                + "id SERIAL PRIMARY KEY, "
                 + "Nombre varchar, "
                 + "Descripcion varchar, "
                 + "Habilitado boolean ); ");
@@ -168,7 +168,7 @@ public class DataBase {
         try {
             Statement stmt = connection.createStatement();
             stmt.executeUpdate("CREATE TABLE Funcionalidad ( "
-                + "Funcionalidad_ID serial PRIMARY KEY, "
+                + "id SERIAL PRIMARY KEY, "
                 + "Rol_ID_Autorizador varchar, "
                 + "Nombre varchar, "
                 + "Descripcion varchar, "
@@ -193,9 +193,9 @@ public class DataBase {
                 + "CONSTRAINT PK_Menu_Aplicacion PRIMARY KEY( "
                 + "Menu_ID, "
                 + "Aplicacion_ID), "
-                + "FOREIGN KEY(Menu_ID) REFERENCES Menu(Menu_ID) ON DELETE CASCADE, "
+                + "FOREIGN KEY(Menu_ID) REFERENCES Menu(id) ON DELETE CASCADE, "
                 + "Habilitado boolean, "    
-                + "FOREIGN KEY(Aplicacion_ID) REFERENCES Aplicacion(Aplicacion_ID) ON DELETE CASCADE); "); 
+                + "FOREIGN KEY(Aplicacion_ID) REFERENCES Aplicacion(id) ON DELETE CASCADE); "); 
         } catch (Exception e) {
             if (!e.getMessage().contains("already exists")){
                 System.out.println("Aplicacion_Menu");
@@ -214,8 +214,8 @@ public class DataBase {
                 + "Menu_ID, "
                 + "Funcionalidad_ID), "
                 + "Habilitado boolean, "
-                + "FOREIGN KEY(Menu_ID) REFERENCES Menu(Menu_ID) ON DELETE CASCADE, "
-                + "FOREIGN KEY(Funcionalidad_ID) REFERENCES Funcionalidad(Funcionalidad_ID) ON DELETE CASCADE);" );
+                + "FOREIGN KEY(Menu_ID) REFERENCES Menu(id) ON DELETE CASCADE, "
+                + "FOREIGN KEY(Funcionalidad_ID) REFERENCES Funcionalidad(id) ON DELETE CASCADE);" );
         } catch (Exception e) {
             if (!e.getMessage().contains("already exists")){
                 System.out.println("Menu_Funcionalidad");
@@ -234,7 +234,7 @@ public class DataBase {
                 + "Menu_ID, "
                 + "Rol_ID), "                    
                 + "Habilitado boolean, "
-                + "FOREIGN KEY(Menu_ID) REFERENCES Menu(Menu_ID) ON DELETE CASCADE, "
+                + "FOREIGN KEY(Menu_ID) REFERENCES Menu(id) ON DELETE CASCADE, "
                 + "FOREIGN KEY(Rol_ID) REFERENCES Rol(Rol_ID) ON DELETE CASCADE);"); 
         } catch (Exception e) {
             if (!e.getMessage().contains("already exists")){
@@ -366,7 +366,7 @@ public class DataBase {
                 + "Aplicacion_ID), "
                 + "Habilitado boolean, "
                 + "FOREIGN KEY(Usuario_ID) REFERENCES Usuario(Usuario_ID) ON DELETE CASCADE, "
-                + "FOREIGN KEY(Aplicacion_ID) REFERENCES Aplicacion(Aplicacion_ID) ON DELETE CASCADE);"); 
+                + "FOREIGN KEY(Aplicacion_ID) REFERENCES Aplicacion(id) ON DELETE CASCADE);"); 
         } catch (Exception e) {
             if (!e.getMessage().contains("already exists")){
                 System.out.println("Usuario_Aplicacion");
@@ -379,16 +379,16 @@ public class DataBase {
         try {
             Statement stmt = connection.createStatement();
             stmt.executeUpdate("CREATE TABLE Autorizacion ("
-                + "Autorizacion_ID serial PRIMARY KEY, "
+                + "id SERIAL PRIMARY KEY, "
                 + "Usuario_solicitante_ID varchar, "
                 + "Usuario_validador_ID varchar, "
                 + "Fecha date, "
                 + "Referencia_ID varchar, "
-                + "Descripcion varchar, "
+                + "Datos varchar, "
                 + "Funcionalidad_ID serial, "
                 + "Estado varchar, "
                 + "FOREIGN KEY(Usuario_validador_ID) REFERENCES Usuario(Usuario_ID), "
-                + "FOREIGN KEY(Funcionalidad_ID) REFERENCES Funcionalidad(Funcionalidad_ID), "
+                + "FOREIGN KEY(Funcionalidad_ID) REFERENCES Funcionalidad(id), "
                 + "FOREIGN KEY(Usuario_solicitante_ID) REFERENCES Usuario(Usuario_ID)); ");
         } catch (Exception e) {
             if (!e.getMessage().contains("already exists")){
@@ -405,9 +405,9 @@ public class DataBase {
         try {
             f = new FileReader(archivo);
             BufferedReader b = new BufferedReader(f);
-            datos = b.readLine();
+            String tabla = b.readLine();
             while((datos = b.readLine())!=null) {
-                handler.Insertar(datos, nombreTabla);
+                handler.Insertar(tabla, datos, nombreTabla);
             }
             b.close();
         } catch (Exception ex) {
