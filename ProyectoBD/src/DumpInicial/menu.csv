@@ -14,3 +14,4 @@ nombre,descripcion,habilitado
 'Menu_Rol','CRUD Menu_Rol',true
 'Rol_Usuario','CRUD Rol_Usuario',true
 'Usuario_Aplicacion','CRUD Usuario_Aplicacion',true
+'Autorizaciones','Aceptar/Denegar autorizaciones',true

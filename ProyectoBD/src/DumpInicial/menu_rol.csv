@@ -19,7 +19,12 @@ rol_id,menu_id,habilitado
 'administrador_seguridad',5,true
 'administrador_seguridad',6,true
 'administrador_seguridad',7,true
-'administrador_auditoria',4,true
+'administrador_seguridad',11,true
+'administrador_seguridad',12,true
+'administrador_seguridad',13,true
+'administrador_seguridad',14,true
+'administrador_seguridad',15,true
+'administrador_seguridad',4,true
 'usuario_regular',1,true
 'usuario_regular',2,true
 'usuario_regular',3,true
@@ -32,3 +37,5 @@ rol_id,menu_id,habilitado
 'administrador_general',8,true
 'administrador_auditoria',8,true
 'usuario_regular',8,true
+'administrador_seguridad',16,true
+'administrador_general',16,true

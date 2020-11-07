@@ -24,8 +24,8 @@ menu_id,funcionalidad_id,habilitado
 7,24,true
 7,23,true
 7,25,true
-8,24,true
 9,24,true
+10,24,true
 11,26,true
 11,31,true
 11,36,true
@@ -46,3 +46,4 @@ menu_id,funcionalidad_id,habilitado
 15,35,true
 15,40,true
 15,45,true
+16,46,true
