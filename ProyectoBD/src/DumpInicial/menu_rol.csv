@@ -19,3 +19,7 @@ rol_id,menu_id,habilitado
 'usuario_regular',5,true
 'usuario_regular',6,true
 'usuario_regular',7,true
+'administrador_seguridad',8,true
+'administrador_general',8,true
+'administrador_auditoria',8,true
+'usuario_regular',8,true

@@ -6,3 +6,4 @@ menu_id,nombre,descripcion,habilitado
 5,'Aplicaciones','CRUD Aplicaciones',true
 6,'Menues','CRUD Menues',true
 7,'Negocio','Menú principal de la aplicacion de negocio',true
+8,'Gestion usuario', 'Menu para cambiar contraseña',true

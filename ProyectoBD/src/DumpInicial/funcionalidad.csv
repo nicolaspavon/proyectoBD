@@ -20,3 +20,4 @@ funcionalidad_id,rol_id_autorizador,nombre,descripcion,habilitado,nombretabla,ti
 19,'usuario_regular','listar rol','listar rol',true,'Rol','listar'
 20,'usuario_regular','listar usuario','listar usuario',true,'Usuario','listar'
 21,'administrador_auditoria','Auditoría','Ver traza de auditoría',true,'Auditoria','listar'
+22,'administrador_seguridad','Cambiar contraseña','Cambiar contraseña',true,'Usuario','pass'

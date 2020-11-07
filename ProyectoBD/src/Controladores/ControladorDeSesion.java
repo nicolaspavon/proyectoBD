@@ -9,11 +9,8 @@ import Base.DBHandler;
 import Base.DataBase;
 import java.sql.Connection;
 import Pantallas.Login;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -89,6 +86,7 @@ public class ControladorDeSesion
     }
 
     public void activarLogin(){
+        base.setNullConnection();
         login.setVisible(true);
     }
     public void desactivarLogin(){

@@ -66,6 +66,10 @@ public class ControladorFuncionalidades {
             pantallaFunc.setVisible(false);
             contrPantallas.activarEliminar(opcion);
         }
+        else if (func.get("tipo").equals("pass")){
+            pantallaFunc.setVisible(false);
+            contrPantallas.activarCambiarPass();
+        }
     }
     
     public void agregarElemento(String item){

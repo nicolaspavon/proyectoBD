@@ -25,6 +25,9 @@ import java.util.logging.Logger;
 public class DataBase {
     public static Connection connection = null;
     
+    public void setNullConnection(){
+        connection = null;
+    }
 
     public Connection getCurrentConnection(String user, String password)
     {

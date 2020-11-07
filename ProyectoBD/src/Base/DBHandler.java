@@ -24,6 +24,21 @@ import java.util.Map;
  */
 public class DBHandler {
     
+    public void cambiarPassword(String usuario_id, String pass){
+        try {
+            Statement stmt = connection.createStatement();
+            String stringDatos = "UPDATE " + "usuario" + " SET contrasena='" + pass + "' WHERE "+"usuario_id='"+usuario_id+"';";
+            
+            stmt.executeUpdate("ALTER ROLE "+ usuario_id+ " WITH PASSWORD '"+pass+"';");
+            stmt.executeUpdate(stringDatos);
+            stmt.close(); 
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
         
     public void Insertar(String datos, String nombreTabla){
         try {
