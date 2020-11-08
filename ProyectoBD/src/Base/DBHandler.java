@@ -135,6 +135,7 @@ public class DBHandler {
     }
     
      public void Actualizar(String nombreTabla,  String cambio, String clausula){
+         System.out.println("UPDATE " + nombreTabla + " SET " + cambio + " WHERE "+clausula+";");
         try{
             Statement stmt = connection.createStatement();
             stmt.executeUpdate("UPDATE " + nombreTabla + " SET " + cambio + " WHERE "+clausula+";");

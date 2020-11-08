@@ -70,7 +70,7 @@ public class Actualizar{
     
     public String getDatos(){
         String datos = "";
-        datos=id.getText().split(" ")[1];
+        datos="'"+id.getText().split(" ")[1]+"'";
         for(JTextField campo:texts){
             if(datos.equals("")){
                 datos = "'" + campo.getText() + "'";

@@ -28,41 +28,38 @@ public class ControladorAutorizaciones {
         contrPantallas = contrPant;
     }
     
-    public void generarAutorizacion(Map funcionalidad, String datos){
-        System.out.println(datos);
+    public void generarAutorizacion(Map funcionalidad, String datos, String clausula){
         DBHandler manejador = new DBHandler();
         
 //        Limpiar y formatear datos para la autorizacion
         String id_funcionalidad = funcionalidad.get("id").toString();
         String rol_validador = funcionalidad.get("rol_id_autorizador").toString();
         String id_usuario = contrSesion.getUser();
-        String idObjeto = datos.split(",")[0].replaceAll("'", "");
         String datosFormateados = datos.replace(",", "-").replace("'", ":");
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
         LocalDateTime now = LocalDateTime.now();
         
 //        Crear autorizacion
-
         String columnas = "usuario_solicitante_id, fecha, referencia_id, datos, funcionalidad_id, rol_validador, estado";
-        String autorizacion = "'"+id_usuario+"', '" + now +"', '"+ idObjeto +"', '"  + datosFormateados + "', '" + id_funcionalidad + "', '"+rol_validador + "', 'pendiente'";
+        String autorizacion = "'"+id_usuario+"', '" + now +"', '"+ clausula +"', '"  + datosFormateados + "', '" + id_funcionalidad + "', '"+rol_validador + "', 'pendiente'";
         System.out.println(autorizacion);
         manejador.Insertar(columnas, autorizacion, "autorizacion");
-        
     }
+    
     
     private void crearObjeto(String columnas, String datos, String tabla) {
         DBHandler manejador = new DBHandler();
         manejador.Insertar(columnas, datos.replace(":", "'").replace("-", ","), tabla);
     }
     
-    private void eliminarObjeto(String datos, String tabla) { 
+    private void eliminarObjeto(String tabla, String clausula) { 
         DBHandler manejador = new DBHandler();
-        manejador.Borrar(tabla, datos);
+        manejador.Borrar(tabla, clausula);
     }
     
-    private void actualizarObjeto(String columnas, String datos, String tabla) { 
+    private void actualizarObjeto(String tabla, String datos, String clausula) { 
         DBHandler manejador = new DBHandler();
-        manejador.Actualizar(tabla, datos, columnas);
+        manejador.Actualizar(tabla, datos.replace(":", "'").replace("-", ","), clausula);
     }
     
     public void activarAut() {
@@ -87,10 +84,10 @@ public class ControladorAutorizaciones {
             String datos = autorizacion.get("datos").toString() + ", 'true'";
             this.crearObjeto(tabla.toString().replace("[", "").replace("]", ""), datos, Funcionalidad.get("nombretabla"));
         }else if (Funcionalidad.get("tipo").equals("eliminar")){
-            System.out.println(autorizacion.get("datos").toString());
-            this.eliminarObjeto(autorizacion.get("datos").toString(), Funcionalidad.get("nombretabla"));
+            this.eliminarObjeto(Funcionalidad.get("nombretabla"), autorizacion.get("referencia_id").toString());
         }else if (Funcionalidad.get("tipo").equals("actualizar")){
-            System.out.println(autorizacion.get("datos").toString());
+            String datos = autorizacion.get("datos").toString() + ", 'true'";
+            this.actualizarObjeto(Funcionalidad.get("nombretabla"), datos ,autorizacion.get("referencia_id").toString());
         }
 //        System.out.println("actualizar la autorizacion a estado autorizado y ingresar usuario actual en usuario autorizador id");// completar
     }

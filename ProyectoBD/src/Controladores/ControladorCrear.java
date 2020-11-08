@@ -44,8 +44,9 @@ public class ControladorCrear {
     }
 
     private void crearObjeto(String datos) {
-        
-        this.contrAutorizaciones.generarAutorizacion(this.objeto, datos);
+        String idObjeto = datos.split(",")[0].replaceAll("'", "");
+        System.out.println(datos);
+        this.contrAutorizaciones.generarAutorizacion(this.objeto, datos, idObjeto);
         this.volverAtras();
     }
     
