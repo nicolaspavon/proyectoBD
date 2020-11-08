@@ -26,7 +26,12 @@ public class DataBase {
     public static Connection connection = null;
     
     public void setNullConnection(){
-        connection = null;
+        try {
+            connection.close();
+            connection = null;
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public Connection getCurrentConnection(String user, String password)
@@ -47,7 +52,12 @@ public class DataBase {
     }
     
     public void noConnect(){
-            connection=null;
+            try {
+            connection.close();
+            connection = null;
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public void  CrearDB(){

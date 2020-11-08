@@ -37,7 +37,7 @@ public class ControladorDePantallas {
         contrCrear = new ControladorCrear(this, contrAut);
         contrListar = new ControladorListar(this, contrAut);
         contrEliminar = new ControladorEliminar(this, contrAut);
-        contrSesion.activarLogin();
+        contrSesion.activarPantallaLogin();
         contrEnDesarrollo = new ControladorEnDesarrollo(this);
         contrActualizar = new ControladorActualizar(this);
         contrAct = new ControladorActualizacion(this,contrAut);

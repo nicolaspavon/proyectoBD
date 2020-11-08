@@ -36,6 +36,7 @@ rol_id,menu_id,habilitado
 'administrador_seguridad',8,true
 'administrador_general',8,true
 'administrador_auditoria',8,true
+'administrador_auditoria',4,true
 'usuario_regular',8,true
 'administrador_seguridad',16,true
 'administrador_general',16,true

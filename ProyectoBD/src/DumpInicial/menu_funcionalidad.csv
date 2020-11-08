@@ -13,7 +13,6 @@ menu_id,funcionalidad_id,habilitado
 5,12,true
 1,13,true
 3,14,true
-2,15,true
 6,16,true
 5,17,true
 1,18,true
@@ -41,4 +40,4 @@ menu_id,funcionalidad_id,habilitado
 15,30,true
 15,35,true
 15,40,true
-16,41,true
+16,15,true
