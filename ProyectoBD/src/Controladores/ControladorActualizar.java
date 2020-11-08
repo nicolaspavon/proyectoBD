@@ -22,8 +22,7 @@ public class ControladorActualizar {
     private ControladorDePantallas contrPantallas;
     private ResultSet opciones;
     private ControladorAutorizaciones contrAut;
-    private Map<String, String> tabla;
-    private ArrayList<Map> actuali;
+    private Map<String, String> tabla; 
     
     public ControladorActualizar(ControladorDePantallas contrPantalla){
         contrPantallas = contrPantalla;
@@ -40,6 +39,8 @@ public class ControladorActualizar {
     
     public void obtenerOpciones(String tabla){
         DBHandler manejador = new DBHandler();
+        pantallaActualizar.vaciarItems();
+        
         opciones = manejador.ListarHab(tabla); // usar prim elemento
         try {
             ResultSetMetaData rsMetaData = opciones.getMetaData();

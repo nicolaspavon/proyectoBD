@@ -19,6 +19,7 @@ public class Actualizar{
     public ArrayList<JTextField> texts;
     public JButton atras;
     private JFrame frame;
+    private JLabel id;
     
     public Actualizar(ArrayList<String> tabla, Map nombre){
         frame = new JFrame("Actualizacion");
@@ -26,8 +27,11 @@ public class Actualizar{
         JPanel panel = new JPanel();
         BoxLayout boxLayoutManager = new BoxLayout(panel, BoxLayout.Y_AXIS);
         panel.setLayout(boxLayoutManager);
-
         ArrayList<JLabel> labels = new ArrayList<JLabel>();
+        String etiqueta =tabla.remove(0).toString();
+        id= new JLabel(etiqueta + ": "+ nombre.get(etiqueta).toString());
+        labels.add(id);
+        panel.add(id);
         texts = new ArrayList<JTextField>();
         for(int i=0; i< tabla.size();i++){
             JLabel temp = new JLabel(tabla.get(i).toString());
@@ -65,6 +69,7 @@ public class Actualizar{
     
     public String getDatos(){
         String datos = "";
+        //datos=id.getText().split(" ")[1];
         for(JTextField campo:texts){
             if(datos.equals("")){
                 datos = "'" + campo.getText() + "'";

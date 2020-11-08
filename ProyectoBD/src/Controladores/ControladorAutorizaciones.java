@@ -39,8 +39,10 @@ public class ControladorAutorizaciones {
         LocalDateTime now = LocalDateTime.now();
         
 //        Crear autorizacion
+
         String columnas = "usuario_solicitante_id, fecha, referencia_id, datos, funcionalidad_id, rol_validador, estado";
         String autorizacion = "'"+id_usuario+"', '" + now +"', "+ idObjeto +", '"  + datosFormateados + "', '" + id_funcionalidad + "', '"+rol_validador + "', 'pendiente'";
+
         manejador.Insertar(columnas, autorizacion, "autorizacion");
     }
     

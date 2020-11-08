@@ -22,6 +22,7 @@ public class ControladorFuncionalidades {
     
     public ControladorFuncionalidades(ControladorDePantallas contrPantalla){
         pantallaFunc = new Funcionalidades();
+        listaFunc=new ArrayList<Map>();
         contrPantallas = contrPantalla;
         pantallaFunc.getSeleccionarButton().addActionListener(e -> ingresarFuncionalidad(pantallaFunc.getFuncSeleccionada()));
         pantallaFunc.getAtrasButton().addActionListener(e -> volverMenus());
@@ -45,6 +46,7 @@ public class ControladorFuncionalidades {
     
     public void obtenerFuncionalidades(String menu){
         DBHandler manejador = new DBHandler();
+        listaFunc.clear();
         listaFunc = manejador.ListarFuncionalidades( menu ); // usar prim elemento
         for (Map m : listaFunc){
           agregarElemento((m.get("funcionalidad_id")).toString()+" "+(m.get("nombre")).toString());
@@ -52,6 +54,7 @@ public class ControladorFuncionalidades {
     }
 
     private void ingresarFuncionalidad(String funcSeleccionada) {
+        
         
         DBHandler manejador = new DBHandler();
 

@@ -43,9 +43,7 @@ class ControladorActualizacion {
       //  ArrayList<Map> elem=manejador.Imprimir(objeto);
         
         ArrayList<String> tabla = traerTabla(this.tablanombre);
-        tabla.remove(0);
         tabla.remove("habilitado");
-        tabla.remove("id");
         
         pantallaAct = new Actualizar(tabla, ver);
         pantallaAct.getActualizar().addActionListener(e -> actualizarObjeto(pantallaAct.getDatos()));

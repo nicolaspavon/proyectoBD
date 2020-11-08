@@ -20,6 +20,7 @@ public class ControladorAuditoria {
     private Auditoria pantallaAudi;
     private Listar pantallaListar;
     private ControladorDePantallas contrPantallas;
+    private String user;
     
     public ControladorAuditoria(ControladorDePantallas contrPantalla){
         pantallaAudi = new Auditoria();
@@ -67,7 +68,7 @@ public class ControladorAuditoria {
     }
     
 
-    void activarPantalla() {
+    void activarPantalla(String user) {
         pantallaAudi.vaciarItems();
         filtrados();
         pantallaAudi.setVisible(true);

@@ -91,7 +91,7 @@ public class ControladorDePantallas {
     }
 
     void activarAudi() {
-        contrAudi.activarPantalla();
+        contrAudi.activarPantalla(contrSesion.getUser());
     }
 
     void activarActualizar(Map func) {
