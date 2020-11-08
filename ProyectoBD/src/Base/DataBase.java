@@ -386,6 +386,7 @@ public class DataBase {
                 + "Referencia_ID varchar, "
                 + "Datos varchar, "
                 + "Funcionalidad_ID serial, "
+                + "Rol_validador varchar, "
                 + "Estado varchar, "
                 + "FOREIGN KEY(Usuario_validador_ID) REFERENCES Usuario(Usuario_ID), "
                 + "FOREIGN KEY(Funcionalidad_ID) REFERENCES Funcionalidad(id), "

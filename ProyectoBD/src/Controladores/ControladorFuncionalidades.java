@@ -82,6 +82,10 @@ public class ControladorFuncionalidades {
             this.desactivar();
             contrPantallas.activarActualizar(func);
         }
+        else if (func.get("tipo").equals("autorizar")){
+            this.desactivar();
+            contrPantallas.activarAutorizaciones();
+        }
         else{
             this.desactivar();
             contrPantallas.activarEnDesarrollo();  

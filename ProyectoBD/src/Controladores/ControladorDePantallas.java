@@ -25,6 +25,7 @@ public class ControladorDePantallas {
     private ControladorAuditoria contrAudi;
     private ControladorActualizar contrActualizar;
     private ControladorActualizacion contrAct;
+    private ControladorAutorizaciones contrAutori;
     private static String app;
     
     public ControladorDePantallas(String aplicacion){
@@ -73,6 +74,10 @@ public class ControladorDePantallas {
 
     void activarFuncionalidades() { //para volver atras
         contrFunc.activarFunc();
+    }
+    
+    void activarAutorizaciones() { //para volver atras
+        contrAutori.activarAut();
     }
 
     void activarCambiarPass() {

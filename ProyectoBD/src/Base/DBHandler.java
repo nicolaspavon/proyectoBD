@@ -175,7 +175,12 @@ public class DBHandler {
             while (rs.next()) {
                 Map<String, String> fila = new HashMap<>();
                 for(int i = 1; i<=cantColumnas; i++) {
-                    fila.put(rsMetaData.getColumnName(i), rs.getObject(rsMetaData.getColumnName(i)).toString());
+                    if (rs.getObject(rsMetaData.getColumnName(i)) != null){
+                        fila.put(rsMetaData.getColumnName(i), rs.getObject(rsMetaData.getColumnName(i)).toString());
+                    }else{
+                        fila.put(rsMetaData.getColumnName(i), "null");
+                    }
+                    
                 }
                 resultado.add(fila);
             }
