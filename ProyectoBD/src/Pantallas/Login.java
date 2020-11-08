@@ -150,6 +150,11 @@ public class Login extends javax.swing.JFrame {
     public void errorUsuario(){
         labelErrorUsuario.setVisible(true);
     }
+    
+    public void vaciarCampos(){
+        passText.setText("");
+        userText.setText("");
+    }
     /**
      * @param args the command line arguments
      */

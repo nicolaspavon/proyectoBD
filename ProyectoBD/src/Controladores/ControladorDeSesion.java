@@ -87,7 +87,7 @@ public class ControladorDeSesion
 
     public void activarLogin(){
         base.setNullConnection();
-        Usuario = null;
+        login.vaciarCampos();
         login.setVisible(true);
     }
     public void desactivarLogin(){

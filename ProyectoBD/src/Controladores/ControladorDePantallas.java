@@ -44,7 +44,7 @@ public class ControladorDePantallas {
     }
     
     public void activarLogin(){
-        contrSesion = new ControladorDeSesion(this,app);
+       // contrSesion = new ControladorDeSesion(this,app);
         contrSesion.activarLogin();
     }
     
