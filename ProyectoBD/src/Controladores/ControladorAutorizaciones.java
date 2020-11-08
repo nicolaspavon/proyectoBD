@@ -81,12 +81,12 @@ public class ControladorAutorizaciones {
         if(Funcionalidad.get("tipo").equals("crear")){
             ArrayList<String> tabla = manejador.GetTabla(Funcionalidad.get("nombretabla"));
             tabla.remove("id");
-            String datos = autorizacion.get("datos").toString() + ", 'true'";
+            String datos = autorizacion.get("datos").toString() + ", habilitado='true'";
             this.crearObjeto(tabla.toString().replace("[", "").replace("]", ""), datos, Funcionalidad.get("nombretabla"));
         }else if (Funcionalidad.get("tipo").equals("eliminar")){
             this.eliminarObjeto(Funcionalidad.get("nombretabla"), autorizacion.get("referencia_id").toString());
         }else if (Funcionalidad.get("tipo").equals("actualizar")){
-            String datos = autorizacion.get("datos").toString() + ", 'true'";
+            String datos = autorizacion.get("datos").toString() + ", habilitado='true'";
             this.actualizarObjeto(Funcionalidad.get("nombretabla"), datos ,autorizacion.get("referencia_id").toString());
         }
         manejador.Actualizar("autorizacion","estado='autorizado', usuario_validador_id='"+contrSesion.getUser()+"'","id="+autorizacion.get("id"));
