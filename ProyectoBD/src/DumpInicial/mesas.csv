@@ -1,7 +1,7 @@
-asientos,ocupada,ubicacion
-4,true,'afuera'
-2,false,'afuera'
-2,false,'adentro'
-5,true,'adentro'
-4,false,'adentro'
-4,false,'adentro'
+asientos,ocupada,ubicacion,habilitado
+4,true,'afuera',true
+2,false,'afuera',true
+2,false,'adentro',true
+5,true,'adentro',true
+4,false,'adentro',true
+4,false,'adentro',true

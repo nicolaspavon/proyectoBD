@@ -1,5 +1,5 @@
-nombre,cantidad,estado
-'Boñato',15,'sano'
-'Papas',3,'medio podri'
-'Pollo',1,'vivo'
-'Lechuga',2,'frescas'
+nombre,cantidad,estado,habilitado
+'Boñato',15,'sano',true
+'Papas',3,'medio podri',true
+'Pollo',1,'vivo',true
+'Lechuga',2,'frescas',true

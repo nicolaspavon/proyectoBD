@@ -165,6 +165,7 @@ public class DataBase {
                 "        ELSIF (TG_OP = 'INSERT') THEN\n" +
                 "			execute ' create role ' || quote_ident(new.rol_id) || ' with superuser inherit';\n" +
                 "                       execute ' grant all privileges on all tables in schema public to ' || quote_ident(new.rol_id);\n" +
+                "                       execute ' grant usage, select on all sequences in schema public to ' || quote_ident(new.rol_id);\n" +
                 "			RETURN NEW;\n" +
                 "        END IF;\n" +
                 "    END;\n" +
