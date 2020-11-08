@@ -13,7 +13,7 @@ rol_id_autorizador,nombre,descripcion,habilitado,nombretabla,tipo
 'administrador_seguridad','actualizar aplicacion','actualizar app',true,'Aplicacion','actualizar'
 'administrador_seguridad','actualizar persona','actualizar persona',true,'Persona','actualizar'
 'administrador_seguridad','actualizar rol','actualizar rol',true,'Rol','actualizar'
-'administrador_seguridad','actualizar usuario','actualizar usuario',true,'Usuario','actualizar'
+null,'Aceptar/Denegar Autorizacion','Aceptar/Denegar Autorizacion',true,'autorizacion','autorizar'
 'usuario_regular','listar menu','creacion de menu',true,'Menu','listar'
 'usuario_regular','listar aplicacion','listar app',true,'Aplicacion','listar'
 'usuario_regular','listar persona','listar persona',true,'Persona','listar'
@@ -39,4 +39,3 @@ null,'obtener nombre del chef del mes','se obtiene el nombre del chef',true,null
 'administrador_seguridad','listar menu_rol','listar menu_rol',true,'menu_rol','listar'
 'administrador_seguridad','listar rol_usuario','listar rol_usuario',true,'rol_usuario','listar'
 'administrador_seguridad','listar usuario_aplicacion','listar usuario_aplicacion',true,'usuario_aplicacion','listar'
-null,'Aceptar/Denegar Autorizacion','Aceptar/Denegar Autorizacion',true,'autorizacion','autorizar'

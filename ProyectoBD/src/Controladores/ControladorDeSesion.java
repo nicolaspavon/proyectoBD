@@ -98,4 +98,8 @@ public class ControladorDeSesion
     public void mensajeErrorUsuario(){
         login.errorUsuario();
     }
+
+    void activarPantallaLogin() {
+        login.setVisible(true);
+    }
 }
