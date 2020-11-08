@@ -64,13 +64,16 @@ class ControladorActualizacion {
 
     private void actualizarObjeto() {
         String datos = pantallaAct.getDatos();
-        System.out.println(datos);
         String id = datos.split(",")[0].replaceAll("'", "");
         DBHandler manejador = new DBHandler();
         ArrayList<String> columnas=manejador.GetTabla(tablanombre);
+        String campos=columnas.get(0)+"="+datos.split(",")[0];
+        for(int i=1; i<columnas.size()-1;i++){
+            campos=campos+","+columnas.get(i)+"="+datos.split(",")[i];
+        }
         String clausula = columnas.get(0)+"="+id;
         manejador.Actualizar(tablanombre,"habilitado=false",clausula);
-        this.contrAutorizaciones.generarAutorizacion(func, datos, clausula);
+        this.contrAutorizaciones.generarAutorizacion(func, campos, clausula);
         this.volverAtras();
     }
     
