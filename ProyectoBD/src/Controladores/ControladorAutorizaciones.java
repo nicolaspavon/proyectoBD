@@ -29,6 +29,7 @@ public class ControladorAutorizaciones {
     }
     
     public void generarAutorizacion(Map funcionalidad, String datos){
+        System.out.println(datos);
         DBHandler manejador = new DBHandler();
         
 //        Limpiar y formatear datos para la autorizacion
@@ -48,15 +49,19 @@ public class ControladorAutorizaciones {
         
     }
     
-    private void crearObjeto(String tabla, String datos) {
-        System.out.println(datos);
+    private void crearObjeto(String columnas, String datos, String tabla) {
         DBHandler manejador = new DBHandler();
-        manejador.Insertar(tabla, datos.replace(" ", "="));
+        manejador.Insertar(columnas, datos.replace(":", "'").replace("-", ","), tabla);
     }
     
-    private void eliminarObjeto(String tabla, String datos) { 
+    private void eliminarObjeto(String datos, String tabla) { 
         DBHandler manejador = new DBHandler();
-        manejador.Borrar(datos.replace(" ", "="), tabla);
+        manejador.Borrar(tabla, datos);
+    }
+    
+    private void actualizarObjeto(String columnas, String datos, String tabla) { 
+        DBHandler manejador = new DBHandler();
+        manejador.Actualizar(tabla, datos, columnas);
     }
     
     public void activarAut() {
@@ -76,19 +81,17 @@ public class ControladorAutorizaciones {
         DBHandler manejador = new DBHandler();
         Map<String, String> Funcionalidad = manejador.PrimerElemento(manejador.Listar("Funcionalidad", "id='" +autorizacion.get("funcionalidad_id").toString()+ "'"));
         if(Funcionalidad.get("tipo").equals("crear")){
-            //GET TABLA  
-            //agregar a datos habilitado =true
-            //REMOVE ID
-            //obtener columnas
-            // problema crear, necesito saber los nombres de las columnas que estoy ingresando ayudaaa
-            this.crearObjeto(autorizacion.get("datos").toString(), Funcionalidad.get("nombretabla"));
+            ArrayList<String> tabla = manejador.GetTabla(Funcionalidad.get("nombretabla"));
+            tabla.remove("id");
+            String datos = autorizacion.get("datos").toString() + ", 'true'";
+            this.crearObjeto(tabla.toString().replace("[", "").replace("]", ""), datos, Funcionalidad.get("nombretabla"));
         }else if (Funcionalidad.get("tipo").equals("eliminar")){
+            System.out.println(autorizacion.get("datos").toString());
             this.eliminarObjeto(autorizacion.get("datos").toString(), Funcionalidad.get("nombretabla"));
         }else if (Funcionalidad.get("tipo").equals("actualizar")){
-            // problema actualizar, necesito saber los nombres de las columnas que estoy ingresando ayudaaa
-            System.out.println("aiuda");// completar
+            System.out.println(autorizacion.get("datos").toString());
         }
-        System.out.println("actualizar la autorizacion a estado autorizado y ingresar usuario actual en usuario autorizador id");// completar
+//        System.out.println("actualizar la autorizacion a estado autorizado y ingresar usuario actual en usuario autorizador id");// completar
     }
     
     public void denegar(Map autorizacion){

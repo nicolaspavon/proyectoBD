@@ -61,7 +61,6 @@ public class Autorizar{
     }
     
     public void agregarItem(String item){
-        System.out.println(item);
         autComboBox.addItem(item);
     }
     

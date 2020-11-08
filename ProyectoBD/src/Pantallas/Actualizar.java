@@ -29,7 +29,6 @@ public class Actualizar{
         panel.setLayout(boxLayoutManager);
         ArrayList<JLabel> labels = new ArrayList<JLabel>();
         String etiqueta =tabla.remove(0);
-        System.out.println("loreeeeeeeeeeeeeeeee "+nombre.keySet());
         String cosa =nombre.get(etiqueta).toString();
         id= new JLabel(etiqueta + ": "+ cosa);
         labels.add(id);
