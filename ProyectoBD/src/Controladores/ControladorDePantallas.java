@@ -5,6 +5,7 @@
  */
 package Controladores;
 
+import java.sql.ResultSet;
 import java.util.Map;
 
 /**
@@ -22,6 +23,8 @@ public class ControladorDePantallas {
     private ControladorCambiarPass contrCambiarPass;
     private ControladorEnDesarrollo contrEnDesarrollo;
     private ControladorAuditoria contrAudi;
+    private ControladorActualizar contrActualizar;
+    private ControladorActualizacion contrAct;
     private static String app;
     
     public ControladorDePantallas(String aplicacion){
@@ -36,6 +39,8 @@ public class ControladorDePantallas {
         contrEliminar = new ControladorEliminar(this, contrAut);
         contrSesion.activarLogin();
         contrEnDesarrollo = new ControladorEnDesarrollo(this);
+        contrActualizar = new ControladorActualizar(this);
+        contrAct = new ControladorActualizacion(this,contrAut);
     }
     
     public void activarLogin(){
@@ -82,6 +87,14 @@ public class ControladorDePantallas {
 
     void activarAudi() {
         contrAudi.activarPantalla();
+    }
+
+    void activarActualizar(Map func) {
+        contrActualizar.activarActualizar(func);
+    }
+
+    void activarActualizacion(String opcion, Map data, String func) {
+        contrAct.activarActualizacion(opcion, data, func);
     }
 
 }

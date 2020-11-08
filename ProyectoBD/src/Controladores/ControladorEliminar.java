@@ -37,7 +37,7 @@ public class ControladorEliminar {
     
     public void obtenerOpciones(String tabla){
         DBHandler manejador = new DBHandler();
-        opciones = manejador.Listar(tabla); // usar prim elemento
+        opciones = manejador.ListarHab(tabla); // usar prim elemento
         try {
             ResultSetMetaData rsMetaData = opciones.getMetaData();
             while (opciones.next()) {

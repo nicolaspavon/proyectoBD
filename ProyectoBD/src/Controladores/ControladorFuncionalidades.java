@@ -39,6 +39,10 @@ public class ControladorFuncionalidades {
         obtenerFuncionalidades(menu);
     }
     
+    void desactivar(){
+        pantallaFunc.setVisible(false);
+    }
+    
     public void obtenerFuncionalidades(String menu){
         DBHandler manejador = new DBHandler();
         listaFunc = manejador.ListarFuncionalidades( menu ); // usar prim elemento
@@ -50,30 +54,36 @@ public class ControladorFuncionalidades {
     private void ingresarFuncionalidad(String funcSeleccionada) {
         
         DBHandler manejador = new DBHandler();
-        Map<String, String> func = manejador.PrimerElemento(manejador.Listar("funcionalidad", "id = '"+ funcSeleccionada.split(" ")[0] + "'"),true);
+
+        Map<String, String> func = manejador.PrimerElemento(manejador.Listar("funcionalidad", "id = '"+ funcSeleccionada.split(" ")[0] + "'",true));
+
         
         if (func.get("tipo").equals("crear")){
-            pantallaFunc.setVisible(false);
+            this.desactivar();
             contrPantallas.activarCrear(func);
         }
         else if (func.get("tipo").equals("listar")){
-            pantallaFunc.setVisible(false);
+            this.desactivar();
             contrPantallas.activarListar(func);
         }
         else if (func.get("tipo").equals("eliminar")){
-            pantallaFunc.setVisible(false);
+            this.desactivar();
             contrPantallas.activarEliminar(func);
         }
         else if (func.get("tipo").equals("pass")){
-            pantallaFunc.setVisible(false);
+            this.desactivar();
             contrPantallas.activarCambiarPass();
         }
         else if (func.get("tipo").equals("auditoria")){
-            pantallaFunc.setVisible(false);
+            this.desactivar();
             contrPantallas.activarAudi();
         }
+        else if (func.get("tipo").equals("actualizar")){
+            this.desactivar();
+            contrPantallas.activarActualizar(func);
+        }
         else{
-            pantallaFunc.setVisible(false);
+            this.desactivar();
             contrPantallas.activarEnDesarrollo();  
         }
     

@@ -25,7 +25,7 @@ public class ControladorAutorizaciones {
         DBHandler manejador = new DBHandler();
         
 //        Limpiar y formatear datos para la autorizacion
-        String id_funcionalidad = funcionalidad.get("funcionalidad_id").toString();
+        String id_funcionalidad = funcionalidad.get("id").toString();
         String id_usuario = contrSesion.getUser();
         String idObjeto = datos.split(",")[0];
         String datosFormateados = datos.replace(",", "-").replace("'", ":");
@@ -33,7 +33,7 @@ public class ControladorAutorizaciones {
         LocalDateTime now = LocalDateTime.now();
         
 //        Crear autorizacion
-        String columnas = "usuario_solicitante_id, fecha, referencia_id, query, funcionalidad_id, estado";
+        String columnas = "usuario_solicitante_id, fecha, referencia_id, id, estado";
         String autorizacion = "'"+id_usuario+"', '" + now +"', "+ idObjeto +", '"  + datosFormateados + "', '" + id_funcionalidad + "', 'pendiente'";
         manejador.Insertar(columnas, autorizacion, "autorizacion");
     }

@@ -32,8 +32,8 @@ public class ControladorListar {
         String linea = generarPrimeraLinea(tabla);
         
         DBHandler manejador = new DBHandler();
-        manejador.Listar(func.get("nombretabla").toString());
-        ArrayList<Map> listaFilas = manejador.Imprimir(manejador.Listar(func.get("nombretabla").toString()));
+        manejador.ListarHab(func.get("nombretabla").toString());
+        ArrayList<Map> listaFilas = manejador.Imprimir(manejador.ListarHab(func.get("nombretabla").toString()));
         
         pantallaListar = new Listar(linea, tabla, func.get("nombre").toString(), func.get("nombretabla").toString(), listaFilas);
         pantallaListar.getAtras().addActionListener(e -> volverAtras());

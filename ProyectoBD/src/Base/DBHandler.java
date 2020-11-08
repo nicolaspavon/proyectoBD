@@ -72,10 +72,10 @@ public class DBHandler {
         }
     }
 	
-    public ResultSet Listar(String nombreTabla){
+    public ResultSet ListarHab(String nombreTabla){
         try{
             Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM "+nombreTabla+";");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM "+nombreTabla+" WHERE "+nombreTabla+".habilitado=true;");
             return rs;
         }
         catch (Exception e){
@@ -152,21 +152,6 @@ public class DBHandler {
             Map<String, String> fila = new HashMap<>();
             rs.next();
             for(int i = 1; i<=cantColumnas; i++) {
-                fila.put(rsMetaData.getColumnName(i), rs.getObject(rsMetaData.getColumnName(i)).toString()); 
-            } 
-            return fila;
-        } catch (SQLException ex) {
-            System.out.println("Error al obtener primer elemento");
-        }
-        return null;
-    }
-     public Map PrimerElemento(ResultSet rs,boolean a){
-        try {
-            ResultSetMetaData rsMetaData = rs.getMetaData();
-            int cantColumnas = rsMetaData.getColumnCount();
-            Map<String, String> fila = new HashMap<>();
-            rs.next();
-            for(int i = 1; i<=cantColumnas; i++) {
                 try{
                     fila.put(rsMetaData.getColumnName(i), rs.getObject(rsMetaData.getColumnName(i)).toString()); 
                 }
@@ -181,6 +166,7 @@ public class DBHandler {
         }
         return null;
     }
+    
     public ArrayList<Map> Imprimir(ResultSet rs){
         ArrayList<Map> resultado = new ArrayList<>();
         try {
