@@ -25,7 +25,7 @@ public class ProyectoBD {
 //        base.getCurrentConnection("postgres", "qweqweqwe");
 //        base.CrearDB();
 //        base.cargarDatos();
-//        
+        
         
     }   
 }
