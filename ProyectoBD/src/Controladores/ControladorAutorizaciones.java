@@ -46,11 +46,6 @@ public class ControladorAutorizaciones {
         String autorizacion = "'"+id_usuario+"', '" + now +"', "+ idObjeto +", '"  + datosFormateados + "', '" + id_funcionalidad + "', '"+rol_validador + "', 'pendiente'";
         manejador.Insertar(columnas, autorizacion, "autorizacion");
         
-//      Setear objeto en false
-        if (!funcionalidad.get("tipo").toString().equals("crear")){
-            String nombTabla = funcionalidad.get("nombretabla").toString();
-            // completar
-        }
     }
     
     private void crearObjeto(String tabla, String datos) {
@@ -81,6 +76,10 @@ public class ControladorAutorizaciones {
         DBHandler manejador = new DBHandler();
         Map<String, String> Funcionalidad = manejador.PrimerElemento(manejador.Listar("Funcionalidad", "id='" +autorizacion.get("funcionalidad_id").toString()+ "'"));
         if(Funcionalidad.get("tipo").equals("crear")){
+            //GET TABLA  
+            //agregar a datos habilitado =true
+            //REMOVE ID
+            //obtener columnas
             // problema crear, necesito saber los nombres de las columnas que estoy ingresando ayudaaa
             this.crearObjeto(autorizacion.get("datos").toString(), Funcionalidad.get("nombretabla"));
         }else if (Funcionalidad.get("tipo").equals("eliminar")){
@@ -107,7 +106,6 @@ public class ControladorAutorizaciones {
         for (Map rol_usuario : listaRoles){
             listaAutorizaciones.addAll(manejador.Imprimir(manejador.Listar("autorizacion", "rol_validador='"+rol_usuario.get("rol_id")+"' AND estado='pendiente' AND NOT usuario_solicitante_id='" +contrSesion.getUser()+"'" )));
         }
-        System.out.println(listaAutorizaciones);
         return listaAutorizaciones;
     }
 }

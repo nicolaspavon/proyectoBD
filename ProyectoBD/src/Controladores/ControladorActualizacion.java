@@ -25,6 +25,7 @@ class ControladorActualizacion {
     private String tabl;
     private String tablanombre;
     private Map ver;
+    private String key;
     
     public ControladorActualizacion(ControladorDePantallas contrPantalla, ControladorAutorizaciones contrAut) {
         contrPantallas = contrPantalla;
@@ -35,8 +36,8 @@ class ControladorActualizacion {
             
         DBHandler manejador = new DBHandler();
         this.tablanombre = data.get("nombretabla").toString();
-        String prueba = tablanombre+"."+tabl+"='"+primKey+"'";
-        this.objeto = manejador.Listar(tablanombre,prueba , true);
+        String key = tablanombre+"."+tabl+"='"+primKey+"'";
+        this.objeto = manejador.Listar(tablanombre,key , true);
         this.func = data;
         this.tabl=tabl;
         this.ver = manejador.PrimerElemento(objeto);
@@ -62,6 +63,9 @@ class ControladorActualizacion {
     }
 
     private void actualizarObjeto(String datos) {
+        
+        DBHandler manejador = new DBHandler();
+        manejador.Actualizar(tablanombre,"habilitado=false",key );
         this.contrAutorizaciones.generarAutorizacion(func, datos);
     }
     

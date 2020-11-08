@@ -273,4 +273,22 @@ public class DBHandler {
         return null;
     }
    
+   public ResultSet ObtenerAutorizaciones(String usuario){
+       
+        try{
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT DISTINCT autorizacion.id FROM autorizacion, rol_usuario, usuario "+
+                    " WHERE usuario.usuario_id='"+ usuario+"' AND NOT (usuario.usuario_id = autorizacion.usuario_solicitante_id) "+
+                    " AND autorizacion.rol_validador=rol_usuario.rol_id AND usuario.usuario_id=rol_usuario.usuario_id " +
+                    " AND autorizacion.estado='pendiente' AND rol_usuario.habilitado=true AND usuario.habilitado=true; ");
+            
+                    return rs;
+        }
+        catch (Exception e){
+            System.out.println("Error listando autorizaciones de " + usuario);
+            System.out.println(e);  
+        }
+        return null;
+   }
+   
 }

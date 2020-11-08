@@ -20,19 +20,21 @@ public class ControladorEliminar {
     private ResultSet opciones;
     private ControladorAutorizaciones contrAutorizaciones;
     private Map<String, String> funcionalidad;
+    private String nombreTabla;
     
     public ControladorEliminar(ControladorDePantallas contrPantalla, ControladorAutorizaciones contrAut){
         contrAutorizaciones = contrAut;
         contrPantallas = contrPantalla;
         pantallaEliminar = new Eliminar();
-        pantallaEliminar.getSeleccionarButton().addActionListener(e -> contrAutorizaciones.generarAutorizacion(funcionalidad, pantallaEliminar.getEliminar()));
+        pantallaEliminar.getSeleccionarButton().addActionListener(e -> enviarAutorizacion());
         pantallaEliminar.getAtrasButton().addActionListener(e -> volverAtras());
     }
 
     void activarEliminar(Map<String, String> func) {
         funcionalidad = func;
         pantallaEliminar.setVisible(true);
-        obtenerOpciones(func.get("nombretabla"));
+        nombreTabla=func.get("nombretabla");
+        obtenerOpciones(nombreTabla);
     }
     
     public void obtenerOpciones(String tabla){
@@ -73,6 +75,26 @@ public class ControladorEliminar {
     public void agregarElemento(String item){
         pantallaEliminar.agregarItem(item);
     }
-
+    
+    public void enviarAutorizacion(){
+        DBHandler manejador = new DBHandler();
+        String data = pantallaEliminar.getEliminar();
+        String[] datos = data.split(" ");
+        String aut = datos[0];
+        try {
+            ResultSetMetaData rsMetaData = opciones.getMetaData();
+            datos[0]= nombreTabla+"."+rsMetaData.getColumnName(1).toString()+"="+datos[0];
+            data = datos[0];
+            if(nombreTabla.contains("_")){
+                aut= aut+","+datos[1];
+                datos[1]= nombreTabla+"."+rsMetaData.getColumnName(2).toString()+"="+datos[1];
+                data = data + " AND "+datos[1];
+            }
+        } catch (SQLException ex) {
+        }
+        manejador.Actualizar(nombreTabla,"habilitado=false",data );
+        contrAutorizaciones.generarAutorizacion(funcionalidad, aut);
+        volverAtras();
+    }
     
 }
