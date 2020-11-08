@@ -97,6 +97,18 @@ public class DBHandler {
         }
         return null;
     }
+    public ResultSet listarFiltradoDesc(String nombreTabla,String filtro){
+        try{
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM "+nombreTabla+" ORDER BY " + filtro+" DESC;");
+            return rs;
+        }
+        catch (Exception e){
+            System.out.println("Error listando " + nombreTabla);
+            System.out.println(e);  
+        }
+        return null;
+    }
     
     public ResultSet Listar(String nombreTabla, String clausula){
         try{

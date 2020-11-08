@@ -32,7 +32,8 @@ public class ControladorAuditoria {
     
     private void filtrados(){
         pantallaAudi.agregarItem("fecha");
-        pantallaAudi.agregarItem("autorizacion_id");
+        pantallaAudi.agregarItem("estado");
+        pantallaAudi.agregarItem("id");
     }
     
     void activarListar(String filtro) {
@@ -40,8 +41,15 @@ public class ControladorAuditoria {
         String linea = generarPrimeraLinea(tabla);
         
         DBHandler manejador = new DBHandler();
+        ArrayList<Map> listaFilas;
+        if(pantallaAudi.DescOAsc().equals("Descendente")){
+            listaFilas = manejador.Imprimir(manejador.listarFiltradoDesc("autorizacion", filtro));
+        }
+        else{
+            listaFilas = manejador.Imprimir(manejador.listarFiltrado("autorizacion", filtro));
+        }
         
-        ArrayList<Map> listaFilas = manejador.Imprimir(manejador.listarFiltrado("autorizacion", filtro));
+        
         
         pantallaAudi.setVisible(false);
         pantallaListar = new Listar(linea, tabla, "Listar", "autorizacion", listaFilas);

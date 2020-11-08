@@ -33,7 +33,7 @@ public class Listar{
             for(int i=0; i<tabla.size(); i++){
                 line += m.get(tabla.get(i)) + "   |   ";
             }
-            modelo.addElement(line);
+            modelo.addElement((line.replaceAll("-", "   |    ")).replaceAll(":", "    "));
         }
         
         listaFilas.setModel(modelo);
