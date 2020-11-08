@@ -37,12 +37,28 @@ public class ControladorEliminar {
     
     public void obtenerOpciones(String tabla){
         DBHandler manejador = new DBHandler();
-        opciones = manejador.ListarHab(tabla); // usar prim elemento
+        opciones = manejador.ListarHab(tabla); 
         try {
             ResultSetMetaData rsMetaData = opciones.getMetaData();
-            while (opciones.next()) {
-                String data=opciones.getObject(rsMetaData.getColumnName(1)).toString();
-                agregarElemento(data);
+            if(!tabla.contains("_")){
+                
+                pantallaEliminar.setLabel((rsMetaData.getColumnName(1)).toString());
+                while (opciones.next()) {
+
+                    String data=opciones.getObject(rsMetaData.getColumnName(1)).toString();
+                    agregarElemento(data);
+                }
+            }
+            else{
+                
+                pantallaEliminar.setLabel((rsMetaData.getColumnName(1)).toString()+" "+(rsMetaData.getColumnName(2)).toString());
+                while (opciones.next()) {
+
+                    String data=opciones.getObject(rsMetaData.getColumnName(1)).toString();
+                    
+                    String data2=opciones.getObject(rsMetaData.getColumnName(2)).toString();
+                    agregarElemento(data +" "+ data2);
+                }
             }
         } catch (SQLException ex) {
         }
