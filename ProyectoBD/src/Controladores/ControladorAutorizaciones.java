@@ -89,15 +89,17 @@ public class ControladorAutorizaciones {
             String datos = autorizacion.get("datos").toString() + ", 'true'";
             this.actualizarObjeto(Funcionalidad.get("nombretabla"), datos ,autorizacion.get("referencia_id").toString());
         }
-//        System.out.println("actualizar la autorizacion a estado autorizado y ingresar usuario actual en usuario autorizador id");// completar
+        manejador.Actualizar("autorizacion","estado='autorizado', usuario_validador_id='"+contrSesion.getUser()+"'","id="+autorizacion.get("id"));
     }
     
     public void denegar(Map autorizacion){
         System.out.println("denegado!" + autorizacion);
         DBHandler manejador = new DBHandler();
         Map<String, String> Funcionalidad = manejador.PrimerElemento(manejador.Listar("Funcionalidad", "id='" +autorizacion.get("funcionalidad_id").toString()+ "'"));
-        System.out.println("ACA SE ACTUALIZA EL CAMPO del objeto a habilitado");// completar
-        System.out.println("actualizar la autorizacion a estado denegado y ingresar usuario actual en usuario autorizador id");// completar
+        manejador.Actualizar("autorizacion","estado='denegado', usuario_validador_id='"+contrSesion.getUser()+"'","id="+autorizacion.get("id"));
+        if(!Funcionalidad.get("tipo").toString().equals("crear")){
+            manejador.Actualizar(Funcionalidad.get("nombretabla"), "habilitado=true",autorizacion.get("referencia_id").toString());
+        }
     }
     
     public ArrayList<Map> getAutorizaciones(){
