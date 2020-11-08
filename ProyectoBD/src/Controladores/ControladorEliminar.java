@@ -80,20 +80,18 @@ public class ControladorEliminar {
         DBHandler manejador = new DBHandler();
         String data = pantallaEliminar.getEliminar();
         String[] datos = data.split(" ");
-        String aut = datos[0];
         try {
             ResultSetMetaData rsMetaData = opciones.getMetaData();
-            datos[0]= nombreTabla+"."+rsMetaData.getColumnName(1).toString()+"="+datos[0];
+            datos[0]= rsMetaData.getColumnName(1).toString()+"="+datos[0];
             data = datos[0];
             if(nombreTabla.contains("_")){
-                aut= aut+","+datos[1];
-                datos[1]= nombreTabla+"."+rsMetaData.getColumnName(2).toString()+"="+datos[1];
+                datos[1]= rsMetaData.getColumnName(2).toString()+"="+datos[1];
                 data = data + " AND "+datos[1];
             }
         } catch (SQLException ex) {
         }
         manejador.Actualizar(nombreTabla,"habilitado=false",data );
-        contrAutorizaciones.generarAutorizacion(funcionalidad, aut);
+        contrAutorizaciones.generarAutorizacion(funcionalidad, data);
         volverAtras();
     }
     
