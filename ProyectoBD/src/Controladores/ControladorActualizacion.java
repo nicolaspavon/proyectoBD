@@ -35,7 +35,8 @@ class ControladorActualizacion {
             
         DBHandler manejador = new DBHandler();
         this.tablanombre = data.get("nombretabla").toString();
-        this.objeto = manejador.Listar(tablanombre, tabl+"="+primKey, true);
+        String prueba = tablanombre+"."+tabl+"='"+primKey+"'";
+        this.objeto = manejador.Listar(tablanombre,prueba , true);
         this.func = data;
         this.tabl=tabl;
         this.ver = manejador.PrimerElemento(objeto);
