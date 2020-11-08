@@ -1,8 +1,7 @@
 cedula,nombre,apellido,telefono,direccion,habilitado
-47363390,'Joaquin','Campos',098123456,'Joaquin requena 1438',true
-49663815,'Maria','Chiappe',091987654,'Ellauri 147',true
-47684249,'Maria','Suarez',099325532,'Libertador 2068',true
-15873080,'Sandra','Campos',097852741,'Almeria 574',true
 47354799,'Lorena','Ferrando',094684496,'Libertador 2070',true
 48310247,'Nicolas','Pavon',095124852,'Gandhi 521',true
 48310248,'Valentina','Palladino',095113411,'Por ahi',true
+11111111,'El Jefe','Hernandez',095124852,'Vive en el restoran',true
+22222222,'El Cocinero','Perez',095113411,'Vive en la cocina',true
+33333333,'El Mesero','Rodriguez',095124852,'No tiene casa',true

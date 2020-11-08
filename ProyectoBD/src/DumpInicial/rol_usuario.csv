@@ -5,3 +5,11 @@ usuario_id,rol_id,habilitado
 'nico','administrador_seguridad',true
 'lore','administrador_seguridad',true
 'vale','administrador_seguridad',true
+'jefe','personal_jefe',true
+'jefe','personal_cocinero',true
+'jefe','personal_mesero',true
+'cocinero','personal_cocinero',true
+'mesero','personal_mesero',true
+'nico','personal_mesero',true
+'nico','personal_cocinero',true
+'nico','personal_jefe',true

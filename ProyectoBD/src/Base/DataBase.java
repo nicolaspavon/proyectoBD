@@ -100,6 +100,10 @@ public class DataBase {
 
         this.Autorizacion();
         
+        this.Mesas();
+        
+        this.Stock();
+        
     }
     
     private void Aplicacion(){
@@ -408,6 +412,40 @@ public class DataBase {
             }
         }
     }
+    
+    private void Mesas (){
+        try {
+            Statement stmt = connection.createStatement();
+            stmt.executeUpdate("CREATE TABLE Mesa ("
+                + "id SERIAL PRIMARY KEY, "
+                + "asientos serial, "
+                + "ocupada boolean, "
+                + "ubicacion varchar, "
+                + "Habilitado boolean);");
+        } catch (Exception e) {
+            if (!e.getMessage().contains("already exists")){
+                System.out.println("Mesas");
+                System.out.println(e);
+            }
+        }
+    }
+    
+    private void Stock (){
+        try {
+            Statement stmt = connection.createStatement();
+            stmt.executeUpdate("CREATE TABLE Stock ("
+                + "id SERIAL PRIMARY KEY, "
+                + "nombre varchar, "
+                + "cantidad serial, "
+                + "estado varchar, "
+                + "Habilitado boolean);");
+        } catch (Exception e) {
+            if (!e.getMessage().contains("already exists")){
+                System.out.println("Stock");
+                System.out.println(e);
+            }
+        }
+    }
 
     private void InsertarDatos(String archivo, String nombreTabla) {
         String datos;
@@ -452,6 +490,10 @@ public class DataBase {
         this.InsertarDatos("src/DumpInicial/menu_funcionalidad.csv", "Menu_Funcionalidad");
         
         this.InsertarDatos("src/DumpInicial/autorizacion.csv", "Autorizacion");
+        
+        this.InsertarDatos("src/DumpInicial/mesas.csv", "Mesa");
+        
+        this.InsertarDatos("src/DumpInicial/stock.csv", "Stock");
         
     }
 }

@@ -2,3 +2,6 @@ usuario_id,contrasena,cedula,habilitado
 'lore','hola1234',47354799,true
 'nico','qweqweqwe',48310247,true
 'vale','qweqweqwe',48310248,true
+'jefe','qweqweqwe',11111111,true
+'cocinero','qweqweqwe',22222222,true
+'mesero','qweqweqwe',33333333,true

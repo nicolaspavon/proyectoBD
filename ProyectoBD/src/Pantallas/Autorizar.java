@@ -56,7 +56,7 @@ public class Autorizar{
 
         frame.add(panel);
 
-        frame.setSize(600, 120);	
+        frame.setSize(600, 200);	
         frame.setVisible(true);
     }
     

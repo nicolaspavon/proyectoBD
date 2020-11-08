@@ -3,3 +3,6 @@ rol_id,descripcion,habilitado
 'administrador_seguridad','encargado de la administracion del sistema de seguridad',true
 'administrador_auditoria','acceso a registros y auditorías',true
 'usuario_regular','usuario basico de lectura',true
+'personal_jefe','Rol de jefe',true
+'personal_cocinero','Rol de cocinero',true
+'personal_mesero','Rol de mesero',true

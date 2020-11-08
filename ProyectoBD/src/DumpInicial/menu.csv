@@ -2,13 +2,12 @@ nombre,descripcion,habilitado
 'Personas','CRUD Personas',true
 'Usuarios','CRUD Usuarios',true
 'Roles','CRUD Roles',true
-'Auditoría','Menú para realizar la traza de auditoría y aprobar/rechazar acciones',true
+'Auditoría','Menú para traza de auditoria',true
 'Aplicaciones','CRUD Aplicaciones',true
 'Menus','CRUD Menus',true
-'Menu de la semana','Menú que muestra los menús de comida de la semana',true
+'Menu de cocinero','Menú que muestra las funcionalidades disponibles para el cocinero',true
 'Gestion usuario', 'Menu para cambiar contraseña',true
-'Comidas para veganos','Muestra las opciones de comidas veganas',true
-'Postres','Muestra opciones de postres',true
+'Menu del mesero','Muestra las mesas disponibles y su informacion',true
 'Aplicacion_Menu','CRUD Aplicacion_Menu',true
 'Menu_Funcionalidad','CRUD Menu_Funcionalidad',true
 'Menu_Rol','CRUD Menu_Rol',true

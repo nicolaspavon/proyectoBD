@@ -1,7 +1,8 @@
 usuario_id,aplicacion_id,habilitado
 'nico',1,true
-'nico',2,true
 'lore',1,true
-'lore',2,true
 'vale',1,true
-'vale',2,true
+'jefe',2,true
+'cocinero',2,true
+'mesero',2,true
+'nico',2,true
