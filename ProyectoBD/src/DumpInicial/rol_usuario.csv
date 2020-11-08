@@ -2,3 +2,6 @@ usuario_id,rol_id,habilitado
 'nico','administrador_general',true
 'lore','administrador_general',true
 'vale','administrador_general',true
+'nico','administrador_seguridad',true
+'lore','administrador_seguridad',true
+'vale','administrador_seguridad',true
