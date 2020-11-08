@@ -44,7 +44,8 @@ public class ControladorAutorizaciones {
 //        Crear autorizacion
 
         String columnas = "usuario_solicitante_id, fecha, referencia_id, datos, funcionalidad_id, rol_validador, estado";
-        String autorizacion = "'"+id_usuario+"', '" + now +"', "+ idObjeto +", '"  + datosFormateados + "', '" + id_funcionalidad + "', '"+rol_validador + "', 'pendiente'";
+        String autorizacion = "'"+id_usuario+"', '" + now +"', '"+ idObjeto +"', '"  + datosFormateados + "', '" + id_funcionalidad + "', '"+rol_validador + "', 'pendiente'";
+        System.out.println(autorizacion);
         manejador.Insertar(columnas, autorizacion, "autorizacion");
         
     }
