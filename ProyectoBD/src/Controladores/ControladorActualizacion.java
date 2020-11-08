@@ -67,9 +67,9 @@ class ControladorActualizacion {
         String[] da= datos.split(",");
         DBHandler manejador = new DBHandler();
         ArrayList<String> columnas=manejador.GetTabla(tablanombre);
-        String clausula = tablanombre+"."+columnas.get(0)+"="+da[0];
+        String clausula = columnas.get(0)+"="+da[0];
         manejador.Actualizar(tablanombre,"habilitado=false",clausula);
-        this.contrAutorizaciones.generarAutorizacion(func, datos);
+        this.contrAutorizaciones.generarAutorizacion(func, datos, clausula);
         this.volverAtras();
     }
     

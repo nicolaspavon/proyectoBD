@@ -44,7 +44,9 @@ public class ControladorCrear {
     }
 
     private void crearObjeto(String datos) {
+        
         this.contrAutorizaciones.generarAutorizacion(this.objeto, datos);
+        this.volverAtras();
     }
     
     

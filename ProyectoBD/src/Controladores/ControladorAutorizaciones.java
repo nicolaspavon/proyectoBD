@@ -36,7 +36,7 @@ public class ControladorAutorizaciones {
         String id_funcionalidad = funcionalidad.get("id").toString();
         String rol_validador = funcionalidad.get("rol_id_autorizador").toString();
         String id_usuario = contrSesion.getUser();
-        String idObjeto = datos.split(",")[0];
+        String idObjeto = datos.split(",")[0].replaceAll("'", "");
         String datosFormateados = datos.replace(",", "-").replace("'", ":");
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
         LocalDateTime now = LocalDateTime.now();

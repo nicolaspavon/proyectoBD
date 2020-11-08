@@ -47,6 +47,7 @@ public class DataBase {
     }
     
     public void noConnect(){
+            
             connection=null;
     }
     

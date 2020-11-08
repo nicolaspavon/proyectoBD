@@ -49,6 +49,7 @@ public class ControladorDeSesion
     }
     
     public void connect(String user, String pass){
+        
         Connection con = base.getCurrentConnection(user, pass);
         
         if (con == null){
@@ -89,6 +90,7 @@ public class ControladorDeSesion
     }
     public void desactivarLogin(){
         login.setVisible(false);
+        
     }
     public void mensajeErrorConexion(){
         login.datosIncorrectos();
