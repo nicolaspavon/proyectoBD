@@ -61,7 +61,8 @@ public class ControladorDeSesion
             DBHandler manejador = new DBHandler();
             if(!manejador.Imprimir(manejador.Listar("Usuario", "usuario_id = '"+user+"'",true)).isEmpty()){
                     
-                Usuario = manejador.Imprimir(manejador.Listar("Usuario", "usuario_id = '"+user+"'")).get(0).get("usuario_id").toString();  
+               // Usuario = manejador.Imprimir(manejador.Listar("Usuario", "usuario_id = '"+user+"'")).get(0).get("usuario_id").toString();  
+               Usuario=user;
                 if (obtenerApps(user)){
                     this.desactivarLogin();
                     contrPantallas.activarMenues(appID);
@@ -86,6 +87,7 @@ public class ControladorDeSesion
 
     public void activarLogin(){
         base.setNullConnection();
+        Usuario = null;
         login.setVisible(true);
     }
     public void desactivarLogin(){

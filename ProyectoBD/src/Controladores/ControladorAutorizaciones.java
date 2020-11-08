@@ -105,6 +105,7 @@ public class ControladorAutorizaciones {
     public ArrayList<Map> getAutorizaciones(){
         DBHandler manejador = new DBHandler();
         ArrayList<Map> listaRoles = manejador.Imprimir(manejador.Listar("rol_usuario", " usuario_id = '"+contrSesion.getUser()+"'"));
+        System.out.println(contrSesion.getUser());
         ArrayList<Map> listaAutorizaciones = new ArrayList();
         for (Map rol_usuario : listaRoles){
             listaAutorizaciones.addAll(manejador.Imprimir(manejador.Listar("autorizacion", "rol_validador='"+rol_usuario.get("rol_id")+"' AND estado='pendiente' AND NOT usuario_solicitante_id='" +contrSesion.getUser()+"'" )));
