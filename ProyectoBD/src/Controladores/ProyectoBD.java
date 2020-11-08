@@ -16,7 +16,7 @@ public class ProyectoBD {
     public static void main(String[] args) {
         //Aplicación de seguridad
         
-        ControladorDePantallas controlador = new ControladorDePantallas("2");
+        ControladorDePantallas controlador = new ControladorDePantallas("1");
     
 //        HOLA BASE DE DATOS!!
 //        --------------------------------------------------------------------

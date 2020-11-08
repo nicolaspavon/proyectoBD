@@ -81,7 +81,8 @@ public class ControladorAutorizaciones {
         if(Funcionalidad.get("tipo").equals("crear")){
             ArrayList<String> tabla = manejador.GetTabla(Funcionalidad.get("nombretabla"));
             tabla.remove("id");
-            String datos = autorizacion.get("datos").toString() + ", habilitado='true'";
+            String datos = autorizacion.get("datos").toString() + "-:true:";
+            System.out.println(datos);
             this.crearObjeto(tabla.toString().replace("[", "").replace("]", ""), datos, Funcionalidad.get("nombretabla"));
         }else if (Funcionalidad.get("tipo").equals("eliminar")){
             this.eliminarObjeto(Funcionalidad.get("nombretabla"), autorizacion.get("referencia_id").toString());
