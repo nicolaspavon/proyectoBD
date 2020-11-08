@@ -25,14 +25,13 @@ public class ControladorDePantallas {
     private ControladorAuditoria contrAudi;
     private ControladorActualizar contrActualizar;
     private ControladorActualizacion contrAct;
-    private ControladorAutorizaciones contrAutori;
     private static String app;
     
     public ControladorDePantallas(String aplicacion){
         app = aplicacion;
         contrAudi = new ControladorAuditoria(this);
         contrSesion = new ControladorDeSesion(this,app);
-        contrAut = new ControladorAutorizaciones(contrSesion);
+        contrAut = new ControladorAutorizaciones(contrSesion, this);
         contrMenues = new ControladorMenues(this);
         contrFunc = new ControladorFuncionalidades(this);
         contrCrear = new ControladorCrear(this, contrAut);
@@ -76,8 +75,8 @@ public class ControladorDePantallas {
         contrFunc.activarFunc();
     }
     
-    void activarAutorizaciones() { //para volver atras
-        contrAutori.activarAut();
+    void activarAutorizaciones() {
+        contrAut.activarAut();
     }
 
     void activarCambiarPass() {

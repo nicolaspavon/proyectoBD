@@ -441,7 +441,7 @@ public class DataBase {
         
         this.InsertarDatos("src/DumpInicial/menu_funcionalidad.csv", "Menu_Funcionalidad");
         
-//        this.InsertarDatos("src/DumpInicial/autorizacion.csv", "Autorizacion");
+        this.InsertarDatos("src/DumpInicial/autorizacion.csv", "Autorizacion");
         
     }
 }

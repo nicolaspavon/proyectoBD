@@ -22,11 +22,11 @@ public class ControladorEliminar {
     private Map<String, String> funcionalidad;
     
     public ControladorEliminar(ControladorDePantallas contrPantalla, ControladorAutorizaciones contrAut){
+        contrAutorizaciones = contrAut;
         contrPantallas = contrPantalla;
         pantallaEliminar = new Eliminar();
         pantallaEliminar.getSeleccionarButton().addActionListener(e -> contrAutorizaciones.generarAutorizacion(funcionalidad, pantallaEliminar.getEliminar()));
         pantallaEliminar.getAtrasButton().addActionListener(e -> volverAtras());
-        contrAutorizaciones = contrAut;
     }
 
     void activarEliminar(Map<String, String> func) {
