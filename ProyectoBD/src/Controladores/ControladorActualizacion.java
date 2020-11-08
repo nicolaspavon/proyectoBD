@@ -48,7 +48,7 @@ class ControladorActualizacion {
         tabla.remove("habilitado");
         
         pantallaAct = new Actualizar(tabla, ver);
-        pantallaAct.getActualizar().addActionListener(e -> actualizarObjeto(pantallaAct.getDatos()));
+        pantallaAct.getActualizar().addActionListener(e -> actualizarObjeto());
         pantallaAct.getAtras().addActionListener(e -> volverAtras());
         }
     
@@ -62,11 +62,15 @@ class ControladorActualizacion {
         return manejador.GetTabla(nombreTabla);
     }
 
-    private void actualizarObjeto(String datos) {
-        
+    private void actualizarObjeto() {
+        String datos = pantallaAct.getDatos();
+        String[] da= datos.split(",");
         DBHandler manejador = new DBHandler();
-        manejador.Actualizar(tablanombre,"habilitado=false",key );
+        ArrayList<String> columnas=manejador.GetTabla(tablanombre);
+        String clausula = tablanombre+"."+columnas.get(0)+"="+da[0];
+        manejador.Actualizar(tablanombre,"habilitado=false",clausula);
         this.contrAutorizaciones.generarAutorizacion(func, datos);
+        this.volverAtras();
     }
     
 }
