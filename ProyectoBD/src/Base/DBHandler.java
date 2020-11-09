@@ -71,6 +71,23 @@ public class DBHandler {
             System.out.println(e);
         }
     }
+    
+    public ResultSet InsertarYDevolverId(String columnas, String datos, String nombreTabla){
+        try {
+            Statement stmt = connection.createStatement();
+            String stringDatos = "INSERT INTO " + nombreTabla + "(" + columnas + ")"+ " VALUES " 
+                    + "(" + datos + ") RETURNING id;";
+
+            ResultSet rs = stmt.executeQuery(stringDatos);
+            return rs;           
+            
+        }
+        catch (Exception e){
+            System.out.println("Error en insertar en " + nombreTabla);
+            System.out.println(e);
+        }
+        return null;
+    }
 	
     public ResultSet ListarHab(String nombreTabla){
         try{

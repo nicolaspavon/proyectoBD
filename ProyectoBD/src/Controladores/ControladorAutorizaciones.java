@@ -43,8 +43,12 @@ public class ControladorAutorizaciones {
 //        Crear autorizacion
         String columnas = "usuario_solicitante_id, fecha, referencia_id, datos, funcionalidad_id, rol_validador, estado";
         String autorizacion = "'"+id_usuario+"', '" + now +"', '"+ clausulaFormateada +"', '"  + datosFormateados + "', '" + id_funcionalidad + "', '"+rol_validador + "', 'pendiente'";
-        manejador.Insertar(columnas, autorizacion, "autorizacion");
-
+        Map nuevaAut = manejador.PrimerElemento(manejador.InsertarYDevolverId(columnas, autorizacion, "autorizacion"));
+        nuevaAut.get("id");
+        
+        if(rol_validador.isEmpty()){
+            this.autorizar(manejador.PrimerElemento(manejador.Listar("autorizacion", "id="+nuevaAut.get("id"))));
+        }
     }
     
     
