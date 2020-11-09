@@ -35,15 +35,16 @@ public class ControladorAutorizaciones {
         String id_funcionalidad = funcionalidad.get("id").toString();
         String rol_validador = funcionalidad.get("rol_id_autorizador").toString();
         String id_usuario = contrSesion.getUser();
+        String clausulaFormateada = clausula.replace(",", "-").replace("'", ":");
         String datosFormateados = datos.replace(",", "-").replace("'", ":");
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
         LocalDateTime now = LocalDateTime.now();
         
 //        Crear autorizacion
         String columnas = "usuario_solicitante_id, fecha, referencia_id, datos, funcionalidad_id, rol_validador, estado";
-        String autorizacion = "'"+id_usuario+"', '" + now +"', '"+ clausula +"', '"  + datosFormateados + "', '" + id_funcionalidad + "', '"+rol_validador + "', 'pendiente'";
-        System.out.println(autorizacion);
+        String autorizacion = "'"+id_usuario+"', '" + now +"', '"+ clausulaFormateada +"', '"  + datosFormateados + "', '" + id_funcionalidad + "', '"+rol_validador + "', 'pendiente'";
         manejador.Insertar(columnas, autorizacion, "autorizacion");
+
     }
     
     
