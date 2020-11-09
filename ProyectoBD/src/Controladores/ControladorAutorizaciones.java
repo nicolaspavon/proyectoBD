@@ -55,12 +55,12 @@ public class ControladorAutorizaciones {
     
     private void eliminarObjeto(String tabla, String clausula) { 
         DBHandler manejador = new DBHandler();
-        manejador.Borrar(tabla, clausula);
+        manejador.Borrar(tabla, clausula.replace(":", "'").replace("-", ","));
     }
     
     private void actualizarObjeto(String tabla, String datos, String clausula) { 
         DBHandler manejador = new DBHandler();
-        manejador.Actualizar(tabla, datos.replace(":", "'").replace("-", ","), clausula);
+        manejador.Actualizar(tabla, datos.replace(":", "'").replace("-", ","), clausula.replace(":", "'").replace("-", ","));
     }
     
     public void activarAut() {
