@@ -82,10 +82,10 @@ public class ControladorEliminar {
         String[] datos = data.split(" ");
         try {
             ResultSetMetaData rsMetaData = opciones.getMetaData();
-            datos[0]= rsMetaData.getColumnName(1).toString()+"="+datos[0];
+            datos[0]= rsMetaData.getColumnName(1).toString()+"='"+datos[0]+"'";
             data = datos[0];
             if(nombreTabla.contains("_")){
-                datos[1]= rsMetaData.getColumnName(2).toString()+"="+datos[1];
+                datos[1]= rsMetaData.getColumnName(2).toString()+"='"+datos[1]+"'";
                 data = data + " AND "+datos[1];
             }
         } catch (SQLException ex) {
